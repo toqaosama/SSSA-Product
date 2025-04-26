@@ -32,7 +32,10 @@ app.delete('/category/:id', require('./routes/category/category').deleteCategory
 app.get('/category/:id/products', require('./routes/category/category').getCategoryProducts);
 
 // Product Routes
-app.post('/product/create', require('./routes/product/product'));
+app.post('/product/create', require('./routes/product/product').createProduct);
+app.post('/product/delete/:id', require('./routes/product/product').deleteProduct);
+app.get('/products', require('./routes/product/product').getAllProducts);
+app.post('/product/update/:id', require('./routes/product/product').updateProduct);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
