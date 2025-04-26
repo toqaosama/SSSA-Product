@@ -3,12 +3,11 @@ const dotenv = require('dotenv');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
+const upload = require('./middleware/upload');
 
 dotenv.config();
 
 app.use(express.json());
-
-
 
 // Serve static files from the "uploads" directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -26,14 +25,14 @@ app.post('/auth/login', require('./routes/auth/login'));
 app.post('/auth/logout', require('./routes/auth/logout'));
 
 // Category Routes
-app.post('/category', require('./routes/category/category').createCategory);
+app.post('/category', upload.single('image'), require('./routes/category/category').createCategory);
 app.get('/category', require('./routes/category/category').getCategories);
-app.put('/category/:id', require('./routes/category/category').updateCategory);
+app.put('/category/:id', upload.single('image'), require('./routes/category/category').updateCategory);
 app.delete('/category/:id', require('./routes/category/category').deleteCategory);
+app.get('/category/:id/products', require('./routes/category/category').getCategoryProducts);
 
 // Product Routes
 app.post('/product/create', require('./routes/product/product'));
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

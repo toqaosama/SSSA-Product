@@ -1,17 +1,23 @@
 const util = require('util');
 const connection = require('../../database/connection');
+const upload = require('../../middleware/upload');
 
 // Create a new category
 const createCategory = async (req, res) => {
     const { name } = req.body;
+    const image = req.file ? req.file.filename : null;
 
     if (!name) {
         return res.status(400).json({ message: 'Category name is required' });
     }
 
+    if (!image) {
+        return res.status(400).json({ message: 'Category image is required' });
+    }
+
     try {
         const query = util.promisify(connection.query).bind(connection);
-        await query('INSERT INTO category (name) VALUES (?)', [name]);
+        await query('INSERT INTO category (name, img) VALUES (?, ?)', [name, image]);
         res.status(201).json({ message: 'Category created successfully' });
     } catch (error) {
         console.error('Error creating category:', error);
@@ -49,6 +55,18 @@ const getCategoryProducts = async (req, res) => {
 const updateCategory = async (req, res) => {
     const { id } = req.params;
     const { name } = req.body;
+    const image = req.file ? req.file.filename : null;
+
+
+    if (image) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            await query('UPDATE category SET img = ? WHERE id = ?', [image, id]);
+        } catch (error) {
+            console.error('Error updating category image:', error);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+    }
 
     if (!name) {
         return res.status(400).json({ message: 'Category name is required' });
