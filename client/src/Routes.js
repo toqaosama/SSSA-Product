@@ -5,6 +5,7 @@ import NotFound from "./Shared/Error";
 import Register from "./Auth/RegisterModal";
 import BehindStory from "./Component/AboutUs/Section/BehindStory";
 
+// Layouts
 import AdminLayout from "./Layout/AdminLayout";
 
 export const router = createBrowserRouter([
