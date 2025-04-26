@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const expressValidator = require('express-validator');
 const util = require('util');
 const connection = require('../../database/connection');
+const bcrypt = require('bcrypt');
 
 const login = async (req, res) => {
     const { email, password } = req.body;
