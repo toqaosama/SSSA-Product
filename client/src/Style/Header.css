@@ -53,7 +53,7 @@
 }
 
 .nav-dropdown-white .dropdown-item {
-  color: #333;
+  color: #ffffff;
   padding: 0.5rem 1.5rem;
   transition: all 0.2s ease;
 }
@@ -99,15 +99,15 @@
   height: 32px;
   line-height: 32px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.05);
-  color: #333;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
   border-radius: 50%;
   margin: 0 4px;
   transition: all 0.2s ease;
 }
 
 .social-icon:hover {
-  background-color: #ddd;
+  background-color: #000000;
   color: white;
   transform: translateY(-2px);
 }
