@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -8,6 +8,12 @@ dotenv.config();
 
 app.use(express.json());
 
+
+
+// Serve static files from the "uploads" directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // --------- Routes --------- 
 app.get('/', (req, res) => {
@@ -22,9 +28,11 @@ app.post('/auth/logout', require('./routes/auth/logout'));
 // Category Routes
 app.post('/category', require('./routes/category/category').createCategory);
 app.get('/category', require('./routes/category/category').getCategories);
-app.get('/category/:id/products', require('./routes/category/category').getCategoryProducts);
 app.put('/category/:id', require('./routes/category/category').updateCategory);
 app.delete('/category/:id', require('./routes/category/category').deleteCategory);
+
+// Product Routes
+app.post('/product/create', require('./routes/product/product'));
 
 
 app.listen(port, () => {
