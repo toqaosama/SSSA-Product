@@ -5,6 +5,7 @@ import NotFound from "./Shared/Error";
 import Register from "./Auth/RegisterModal";
 import BehindStory from "./Component/AboutUs/Section/BehindStory";
 import Support from "./Component/Support/Section/Support";
+import Categores from "./Component/Categores/Categores";
 
 
 
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       { path: "BehindStory", element: <BehindStory /> }, 
       { path: "Support", element: <Support /> }, 
       { path: "Tables", element: <Tables /> }, 
+      { path: "Categores", element: <Categores /> }, 
    
     ],
   },
