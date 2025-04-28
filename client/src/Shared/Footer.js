@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer style={{ paddingTop: '80px', margin: 'auto', boxSizing: 'border-box', backgroundColor:'#ddd',marginTop:'6%' ,color:'rgba(114, 5, 5, 0.9)' }}>
+    <footer style={{ paddingTop: '80px', margin: 'auto', boxSizing: 'border-box', backgroundColor:'#ECECEC',marginTop:'6%' ,color:'#917243' }}>
       <Container>
-        <Row style={{ padding: '20px 40px 12px', borderTop: '0px none rgb(0, 0, 0)' }}>
+        <Row style={{ padding: '20px 40px 12px', borderTop: '0px none #231f20' }}>
           <Col md={3}>
             <h3 style={{ fontSize: '14px', fontWeight: 600, height: '20px', margin: '5px 0 20px' }}>
               <strong>SHOP BY</strong>
@@ -109,14 +109,14 @@ const Footer = () => {
                   type="submit" 
                   style={{ 
                     height: '48px', 
-                    backgroundColor: '#222', 
+                    backgroundColor: '#231f20', 
                     display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'center', 
                     width: '11rem', 
                     borderRadius: '0px', 
                     fontWeight: 600, 
-                    border: '0.8px solid rgba(0, 0, 0, 0)', 
+                    border: '0.8px solid #231f20', 
                     padding: '12px 24px', 
                     whiteSpace: 'nowrap', 
                     overflow: 'hidden', 

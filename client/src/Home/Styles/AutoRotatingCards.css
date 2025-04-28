@@ -1,10 +1,13 @@
 /* Container styles */
 .cards-container {
-    height: 60vh;
+    height: 70vh;
     padding: 0;
     margin: 0;
     width: 100%;
     max-width: 100%;
+    box-shadow: 0 5px 5px #917243;
+    position: relative; /* or 'absolute' or 'fixed' depending on your layout */
+    z-index: -1; 
   }
   
   /* Cards container */
@@ -43,14 +46,14 @@
   
   /* Dark theme card */
   .card-dark {
-    background-color: #212529; /* Bootstrap's dark color */
-    color: #f8f9fa; /* Bootstrap's light text color */
+    background-color: #917243; /* Bootstrap's dark color */
+    color: #231f20; /* Bootstrap's light text color */
   }
   
   /* Light theme card */
   .card-light {
-    background-color: #f8f9fa; /* Bootstrap's light color */
-    color: #212529; /* Bootstrap's dark text color */
+    background-color: #231f20; /* Bootstrap's light color */
+    color: #917243; /* Bootstrap's dark text color */
   }
   
   /* You can add more card variations as needed */
