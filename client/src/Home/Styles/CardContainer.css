@@ -1,0 +1,37 @@
+/* CardContainer.css */
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0 10%;
+    overflow-x: auto; /* Allows horizontal scrolling if cards don't fit */
+    width: 100%; /* 100% - 2*5% padding */
+  }
+  
+  /* Optional: Style for the CardComponent */
+  .CardComponent {
+    flex: 0 0 auto; /* Don't grow or shrink */
+    min-width: 300px; /* Set minimum width for each card */
+  }
+  
+  /* Optional: Scrollbar styling for better appearance */
+  .card-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .card-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .card-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  .card-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

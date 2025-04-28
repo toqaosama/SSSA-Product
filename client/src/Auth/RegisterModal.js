@@ -1,33 +1,16 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col, InputGroup } from 'react-bootstrap';
-import LoginModal from './Login';
-import { useLoginModal } from '../Hook/useLoginModal';
 
-const SignupModal = ({ show, handleClose }) => {
+const SignupModal = ({ show, onClose, onSwitchToLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const togglePasswordVisibility = () => setShowPassword(!showPassword);
-  const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
-
-   const [showSignup, setShowSignup] = useState(false);
-  
-  const handleSignupClick = () => {
-    handleClose(); // Close the login modal first
-    setShowSignup(true); // Then open the signup modal
-  };
   return (
-    <Modal 
-      show={show} 
-      onHide={handleClose} 
-      centered 
-      size="lg"
-    >
+    <Modal show={show} onHide={onClose} centered size="lg">
       <Modal.Body className="p-0">
         <Row className="g-0">
-          {/* Left Column with Custom Background */}
-          <Col md={6} className="bg" style={{ 
-            minHeight: '350px', 
+          <Col md={6} className="bg" style={{
+            minHeight: '350px',
             backgroundColor: 'rgba(114, 5, 5, 0.9)',
             display: 'flex',
             alignItems: 'center',
@@ -36,11 +19,9 @@ const SignupModal = ({ show, handleClose }) => {
             <h3 className="text-white">Join Us!</h3>
           </Col>
 
-          {/* Right Column with Form */}
           <Col md={6} className="p-4 position-relative">
-            {/* Close button positioned at top right */}
             <button 
-              onClick={handleClose}
+              onClick={onClose}
               style={{
                 position: 'absolute',
                 top: '15px',
@@ -53,64 +34,53 @@ const SignupModal = ({ show, handleClose }) => {
             >
               &times;
             </button>
-            
+
             <Form>
-              <Form.Group className="mb-3" controlId="formBasicUsername">
+              <Form.Group className="mb-3">
                 <Form.Label style={{fontWeight:'bolder'}}>Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter username" />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Label style={{fontWeight:'bolder'}}>Email</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPhone">
+              <Form.Group className="mb-3">
                 <Form.Label style={{fontWeight:'bolder'}}>Phone Number</Form.Label>
                 <Form.Control type="tel" placeholder="Enter phone number" />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3">
                 <Form.Label style={{fontWeight:'bolder'}}>Password</Form.Label>
                 <InputGroup>
-                  <Form.Control 
-                    type={showPassword ? "text" : "password"} 
-                    placeholder="Enter password" 
-                  />
-                  <InputGroup.Text onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
+                  <Form.Control type={showPassword ? "text" : "password"} placeholder="Enter password" />
+                  <InputGroup.Text onClick={() => setShowPassword(!showPassword)} style={{ cursor: 'pointer' }}>
                     {showPassword ? '👁️' : '👁️‍🗨️'}
                   </InputGroup.Text>
                 </InputGroup>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+              <Form.Group className="mb-3">
                 <Form.Label style={{fontWeight:'bolder'}}>Confirm Password</Form.Label>
                 <InputGroup>
-                  <Form.Control 
-                    type={showConfirmPassword ? "text" : "password"} 
-                    placeholder="Confirm password" 
-                  />
-                  <InputGroup.Text onClick={toggleConfirmPasswordVisibility} style={{ cursor: 'pointer' }}>
+                  <Form.Control type={showConfirmPassword ? "text" : "password"} placeholder="Confirm password" />
+                  <InputGroup.Text onClick={() => setShowConfirmPassword(!showConfirmPassword)} style={{ cursor: 'pointer' }}>
                     {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
                   </InputGroup.Text>
                 </InputGroup>
               </Form.Group>
 
               <div className="d-grid gap-2 mb-3">
-                <Button 
-                  variant="primary" 
-                  type="submit" 
-                  style={{ backgroundColor: 'rgba(114, 5, 5, 0.9)', border: 'none' }}
-                >
+                <Button variant="primary" type="submit" style={{ backgroundColor: 'rgba(114, 5, 5, 0.9)', border: 'none' }}>
                   Sign Up
                 </Button>
               </div>
 
               <div className="d-grid gap-2">
-                <Button variant="outline-secondary" type="button" onClick={() => setShowSignup(true)}>
+                <Button variant="outline-secondary" type="button" onClick={onSwitchToLogin}>
                   Already have an account? Login
                 </Button>
-                <LoginModal show={showSignup} handleClose={() => setShowSignup(false)} />
               </div>
 
               <p className="text-muted small mt-2 text-center">

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer style={{ paddingTop: '80px', margin: 'auto', boxSizing: 'border-box', backgroundColor:'#ddd',marginTop:'6%'  }}>
+    <footer style={{ paddingTop: '80px', margin: 'auto', boxSizing: 'border-box', backgroundColor:'#ddd',marginTop:'6%' ,color:'rgba(114, 5, 5, 0.9)' }}>
       <Container>
         <Row style={{ padding: '20px 40px 12px', borderTop: '0px none rgb(0, 0, 0)' }}>
           <Col md={3}>

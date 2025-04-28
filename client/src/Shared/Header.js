@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Style/Header.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import LoginModal from '../Auth/Login';
-import SignupModal from '../Auth/Register';
-import { useLoginModal } from '../Hook/useLoginModal';
+import LoginModal from '../Auth/LoginModal';
+import RegisterModal from '../Auth/RegisterModal'; 
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Replace with your actual auth state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const { showLoginModal, openLoginModal, closeLoginModal } = useLoginModal();
+  const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+
+  const openLogin = () => {
+    setShowSignup(false);
+    setShowLogin(true);
+  };
+
+  const openSignup = () => {
+    setShowLogin(false);
+    setShowSignup(true);
+  };
+
+  const closeModals = () => {
+    setShowLogin(false);
+    setShowSignup(false);
+  };
 
   return (
     <header className="white-header">
@@ -33,8 +47,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" className="custom-toggler" />
 
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-            {/* Main Navigation */}
             <Nav className="align-items-center">
+
+              {/* Pages */}
               <Nav.Link as={Link} to="/" className="nav-link-white">Home</Nav.Link>
               <Nav.Link as={Link} to="/about" className="nav-link-white">About</Nav.Link>
               
@@ -84,46 +99,50 @@ const Header = () => {
                 </a>
               </div>
 
-              {/* Auth Section */}
+              {/* Authentication Section */}
               {isLoggedIn ? (
                 <NavDropdown
-                  title={
-                    <span className="d-inline-flex align-items-center">
-                      <i className="fas fa-user-circle me-1"></i>
-                    </span>
-                  }
+                  title={<i className="fas fa-user-circle"></i>}
                   id="profile-dropdown"
                   align="end"
                   className="profile-dropdown"
                 >
                   <NavDropdown.Item as={Link} to="/profile" className="dropdown-item-white">
-                    <i className="fas fa-user me-2 Login"></i> Profile
+                    <i className="fas fa-user me-2"></i> Profile
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/settings" className="dropdown-item-white">
-                    <i className="fas fa-cog me-2 Login"></i> Settings
+                    <i className="fas fa-cog me-2"></i> Settings
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item 
-                    onClick={() => setIsLoggedIn(false)} 
-                    className="dropdown-item-white"
-                  >
-                    <i className="fas fa-sign-out-alt me-2 Login"></i> Logout
+                  <NavDropdown.Item onClick={() => setIsLoggedIn(false)} className="dropdown-item-white">
+                    <i className="fas fa-sign-out-alt me-2"></i> Logout
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/Login" className="nav-link-icon Login" title="Login"  onClick={openLoginModal}>
+                  <Nav.Link onClick={openLogin} className="nav-link-icon Login" title="Login">
                     <i className="fas fa-sign-in-alt"></i>
                   </Nav.Link>
-                  <LoginModal show={showLoginModal} handleClose={closeLoginModal} />
-                  <Nav.Link as={Link} to="/register" className="nav-link-icon Login" title="Register" onClick={() => setShowSignup(true)}>
+                  <Nav.Link onClick={openSignup} className="nav-link-icon Login" title="Register">
                     <i className="fas fa-user-plus"></i>
                   </Nav.Link>
-                  <SignupModal show={showSignup} handleClose={() => setShowSignup(false)} />
                 </>
               )}
             </Nav>
           </Navbar.Collapse>
+
+          {/* Modals Rendered outside Nav */}
+          <LoginModal 
+            show={showLogin} 
+            onClose={closeModals} 
+            onSwitchToSignup={openSignup}
+          />
+          <RegisterModal 
+            show={showSignup} 
+            onClose={closeModals} 
+            onSwitchToLogin={openLogin}
+          />
+
         </Navbar>
       </Container>
     </header>
