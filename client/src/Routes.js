@@ -6,8 +6,11 @@ import Register from "./Auth/RegisterModal";
 import BehindStory from "./Component/AboutUs/Section/BehindStory";
 import Support from "./Component/Support/Section/Support";
 
+
+
 // Layouts
 import AdminLayout from "./Layout/AdminLayout";
+import Tables from "./Component/Admin/Tables";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +20,7 @@ export const router = createBrowserRouter([
       { path: "", element: <Home /> }, // shows at "/"
       { path: "BehindStory", element: <BehindStory /> }, 
       { path: "Support", element: <Support /> }, 
+      { path: "Tables", element: <Tables /> }, 
    
     ],
   },
