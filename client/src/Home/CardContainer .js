@@ -1,5 +1,5 @@
 import React from 'react';
-import CardComponent from './Sections/AboutCard';
+import CardComponent from './Section/AboutCard';
 import { cardDetails } from '../Core/cardDetails';
 import './Styles/CardContainer.css';
 
