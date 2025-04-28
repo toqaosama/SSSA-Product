@@ -9,7 +9,7 @@ const Footer = () => {
         <Row style={{ padding: '20px 40px 12px', borderTop: '0px none #231f20' }}>
           <Col md={3}>
             <h3 style={{ fontSize: '14px', fontWeight: 600, height: '20px', margin: '5px 0 20px' }}>
-              <strong>SHOP BY</strong>
+              <strong>Our Services</strong>
             </h3>
             <ul style={{ maxHeight: '140px', padding: 0, transition: 'max-height 0.6s ease', margin: 0, overflow: 'hidden' }}>
               <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>

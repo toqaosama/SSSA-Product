@@ -59,8 +59,8 @@ const Header = () => {
                 id="services-dropdown" 
                 className="nav-dropdown-white"
               >
-                <NavDropdown.Item as={Link} to="/social-media-management" className="dropdown-item-white">
-                  Social Media Management
+                <NavDropdown.Item as={Link} to="/Categores" className="dropdown-item-white">
+                Electronics
                 </NavDropdown.Item>
             
               </NavDropdown>
