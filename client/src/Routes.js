@@ -6,6 +6,7 @@ import Register from "./Auth/RegisterModal";
 import BehindStory from "./Component/AboutUs/Section/BehindStory";
 import Support from "./Component/Support/Section/Support";
 import Categores from "./Component/Categores/Categores";
+import Offers from "./Component/Offers/Section/Offers";
 
 
 
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
       { path: "Support", element: <Support /> }, 
       // { path: "Tables", element: <Tables /> }, 
       { path: "Categores", element: <Categores /> }, 
+      { path: "Offers", element: <Offers /> }, 
    
    
     ],
