@@ -9,6 +9,7 @@ import Categores from "./Component/Categores/Categores";
 
 
 
+
 // Layouts
 import AdminLayout from "./Layout/AdminLayout";
 import Tables from "./Component/Admin/Tables";
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
       { path: "Support", element: <Support /> }, 
       { path: "Tables", element: <Tables /> }, 
       { path: "Categores", element: <Categores /> }, 
+   
    
     ],
   },
