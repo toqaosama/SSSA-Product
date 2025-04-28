@@ -23,15 +23,15 @@
   }
   
   .card-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #ECECEC;
     border-radius: 10px;
   }
   
   .card-container::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #231f20;
     border-radius: 10px;
   }
   
   .card-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #231f20;
   }

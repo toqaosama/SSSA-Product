@@ -8,7 +8,7 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
         <Row className="g-0">
           <Col md={6} className="bg" style={{
             minHeight: '350px',
-            backgroundColor: 'rgba(114, 5, 5, 0.9)',
+            backgroundColor: '#917243',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
@@ -44,7 +44,7 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
               </Form.Group>
 
               <div className="d-grid gap-2 mb-3">
-                <Button variant="primary" type="submit" style={{ backgroundColor: 'rgba(114, 5, 5, 0.9)', border: 'none' }}>
+                <Button variant="primary" type="submit" style={{ backgroundColor: '#917243', border: 'none' }}>
                   Login
                 </Button>
               </div>

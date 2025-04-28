@@ -2,7 +2,7 @@ export const cardDetails = [
     {
       id: 1,
       title: "Trusted Partnership",
-      content: "Choosing 'Backlink' means choosing a partner dedicated to your success. We offer more than just marketing services; we offer a partnership built on trust, transparency, and tangible results.",
+      content: "Choosing 'Backlink' means choosing a partner dedicated to your success.",
       icon: "✓" // You can use any icon here or an icon component
     },
     {

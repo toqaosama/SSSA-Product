@@ -6,6 +6,7 @@ import '../Style/Header.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import LoginModal from '../Auth/LoginModal';
 import RegisterModal from '../Auth/RegisterModal'; 
+import Logo from '../Assetes/imgs/Logo.png'
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
@@ -36,7 +37,7 @@ const Header = () => {
           {/* Logo */}
           <Navbar.Brand as={Link} to="/" className="logo-brand">
             <img 
-              src="https://backlink-group.com/wp-content/uploads/2024/05/ai_3-01-removebg-preview-e1714950330613.webp" 
+              src={Logo} 
               alt="Backlink Group" 
               width="240"
               height="auto"

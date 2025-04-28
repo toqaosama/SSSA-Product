@@ -8,13 +8,13 @@ function AutoRotatingCards() {
   
   const cards = [
     {
-      title: "First Card",
-      text: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+      title: "Stop Thinking",
+
       className: "card-dark" // CSS class for first card
     },
     {
-      title: "Second Card",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      title: "Start Calling",
+    
       className: "card-light" // CSS class for second card
     },
   ];
@@ -38,8 +38,8 @@ function AutoRotatingCards() {
             }`}
           >
             <Card.Body className="card-content">
-              <Card.Title>{card.title}</Card.Title>
-              <Card.Text>{card.text}</Card.Text>
+              <Card.Title style={{fontSize:'6rem'}}>{card.title}</Card.Title>
+              {/* <Card.Text>{card.title}</Card.Text> */}
             </Card.Body>
           </Card>
         ))}
