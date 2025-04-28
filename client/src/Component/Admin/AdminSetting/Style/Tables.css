@@ -1,0 +1,256 @@
+/* Base Styles */
+.admin-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f5f7fa;
+}
+
+.admin-sidebar {
+  color: rgb(145, 114, 67);
+  background-color:rgb(145, 114, 67);
+  color: white;
+  padding: 20px;
+  width: 250px;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  position: fixed;
+  height: 100%;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  color: white;
+  padding: 15px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  color: #ecf0f1;
+  padding: 12px 15px;
+  margin: 5px 0;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color:  #c7c09c;
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Admin Content Area */
+.admin-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 20px;
+}
+
+.content-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+  margin-bottom: 20px;
+}
+
+.nav-tabs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.nav-tabs-header h5 {
+  font-weight: 600;
+  margin: 0;
+  color: #c7c09c;
+}
+
+.tab-actions .btn {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.nav-tabs-container {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-tab {
+  padding: 10px 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  color: #7f8c8d;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-tab:hover, .nav-tab.active {
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+}
+
+/* Data Table Styles */
+.data-table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background-color: #f8f9fa;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.data-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #34495e;
+}
+
+.data-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Action Buttons */
+.action-btn {
+  padding: 6px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.action-btn.edit {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.action-btn.delete {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.action-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Pagination */
+.table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  color: #7f8c8d;
+}
+
+.pagination-controls button {
+  padding: 6px 12px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-controls button.active {
+  background-color: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .admin-sidebar {
+    width: 220px;
+  }
+  .admin-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 100%;
+    position: relative;
+    min-height: auto;
+  }
+  .admin-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  .nav-tabs-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tab-actions {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-tabs-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: block;
+    padding-bottom: 5px;
+  }
+  .nav-tab {
+    display: inline-block;
+  }
+  .table-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pagination-controls {
+    margin-top: 10px;
+  }
+}
