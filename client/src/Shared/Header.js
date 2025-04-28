@@ -39,7 +39,7 @@ const Header = () => {
             <img 
               src={Logo} 
               alt="Backlink Group" 
-              width="240"
+              width="150"
               height="auto"
               className="logo-img"
             />
@@ -52,7 +52,7 @@ const Header = () => {
 
               {/* Pages */}
               <Nav.Link as={Link} to="/" className="nav-link-white">Home</Nav.Link>
-              <Nav.Link as={Link} to="/about" className="nav-link-white">About</Nav.Link>
+              <Nav.Link as={Link} to="/BehindStory" className="nav-link-white">About</Nav.Link>
               
               <NavDropdown 
                 title="Services" 

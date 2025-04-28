@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AboutCard from './CardContainer '
 import AutoRotatingCards from './AutoRotatingCards'
-import Split from './Sections/Split'
+import Split from './Section/SplitBar'
 
 const Home = () => {
   

@@ -10,12 +10,13 @@ const BehindStory = () => {
   // Styles object for consistent styling
   const styles = {
     heroSection: {
-      minHeight: "70vh",
+      minHeight: "80vh",
       display: "flex",
-      backgroundColor: "#f8f9fa",
+      backgroundColor: "#ECECEC",
       justifyContent: "center",
       alignItems: "center",
-      textAlign: "center"
+      textAlign: "center",
+      color:'#917243',
     },
     section: {
       minHeight: "70vh",
@@ -31,7 +32,7 @@ const BehindStory = () => {
       justifyContent: "center",
       alignItems: "center",
       textAlign: "center",
-      backgroundColor: "#e8f3e8"
+      backgroundColor: "#ECECEC"
     },
     imageTextSection: {
       minHeight: "70vh",
@@ -41,7 +42,7 @@ const BehindStory = () => {
     },
     growthSection: {
       minHeight: "70vh",
-      backgroundColor: "#e8f3e8",
+      backgroundColor: "#ECECEC",
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
@@ -49,7 +50,7 @@ const BehindStory = () => {
     youtubeIcon: {
       width: "60px",
       height: "60px",
-      backgroundColor: "#ff0000",
+      backgroundColor: "#917243",
       borderRadius: "50%",
       display: "flex",
       justifyContent: "center",
@@ -59,16 +60,16 @@ const BehindStory = () => {
       textDecoration: "none"
     },
     textGradient: {
-      background: "linear-gradient(to right, #6a11cb, #2575fc)",
+      // background: "linear-gradient(to right, #6a11cb, #2575fc)",
       WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent"
+      WebkitTextFillColor: "#917243"
     },
     highlightText: {
-      color: "#dc3545",
+      color: "#917243",
       fontWeight: "bold"
     },
     testimonialCard: {
-      background: "#fff",
+      background: "#917243",
       padding: "30px",
       margin: "0 15px",
       borderRadius: "10px",
@@ -132,16 +133,16 @@ const BehindStory = () => {
       {/* Hero Section */}
       <div style={styles.heroSection}>
         <Container>
-          <h5>About Us</h5>
-          <h1>Behind Story</h1>
+          <h5 style={{fontWeight:'bolder'}}>About Us</h5>
+          <h1 style={{fontWeight:'bolder'}}>Behind Story</h1>
         </Container>
       </div>
 
       {/* History Section */}
       <div style={styles.section}>
         <div>
-          <h2 style={{ ...styles.textGradient, fontWeight: 'bold', textAlign: 'center' }}>The History Of</h2>
-          <h2><span style={{ fontWeight: 'bold' }}>HappyAddons</span></h2>
+          <h2 style={{ ...styles.textGradient, fontWeight: 'bold', textAlign: 'center' ,color:'#917243'}}>The History Of</h2>
+          <h2><span style={{ fontWeight: 'bold',color:'#231f20' }}>HappyAddons</span></h2>
           <p style={{ maxWidth: '700px', margin: '0 auto' }}>
             HappyAddons started its journey in 2019 with a vision of making web development easier. <br />
             And it is doing so from the very beginning by empowering the Elementor Page Builder.
@@ -213,7 +214,7 @@ const BehindStory = () => {
       <div style={styles.growthSection}>
         <Container style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '3rem' }}>
           <div style={{ maxWidth: '500px', textAlign: 'left' }}>
-            <h1>HappyAddons Keeps <br /> Growing</h1>
+            <h1 style={{color:'#917243'}}>HappyAddons Keeps <br /> Growing</h1>
             <p>
               We are the pioneer of creating features like Cross-Domain Copy paste, design presets, unlimited nested sections, 
               image masking, live copying facility from our demo website to anyone's site, floating effects, CSS transforms, 
@@ -236,8 +237,8 @@ const BehindStory = () => {
       {/* Users Love Us Section */}
       <div style={styles.section}>
         <Container style={{ maxWidth: '1200px' }}>
-          <h1 style={{ fontWeight: 'lighter', color: '#a52a2a', fontSize: '2.5rem' }}>Why Our Users</h1>
-          <h1 style={{ fontWeight: 'bold', color: '#a52a2a', fontSize: '2.5rem' }}> Love Us</h1>
+          <h1 style={{ fontWeight: 'lighter', color: '#917243', fontSize: '2.5rem' }}>Why Our Users</h1>
+          <h1 style={{ fontWeight: 'bold', color: '#917243', fontSize: '2.5rem' }}> Love Us</h1>
           <p style={{ marginBottom: '3rem' }}>
             300k+ users are now actively using HappyAddons. Check our users' reviews to see how much they love us.
           </p>
@@ -250,7 +251,7 @@ const BehindStory = () => {
                   "{testimonial.quote}"
                 </blockquote>
                 <div style={{ fontWeight: 'bold' }}>{testimonial.author}</div>
-                <div style={{ color: '#6c757d' }}>{testimonial.role}</div>
+                <div style={{ color: '#917243' }}>{testimonial.role}</div>
               </div>
             ))}
           </Slider>
