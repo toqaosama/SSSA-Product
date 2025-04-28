@@ -1,23 +1,44 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
-// Define different animation directions for variety
-const animationDirections = [
-  { transform: 'translateY(-5px) rotate(2deg)' }, // up-right
-  { transform: 'translateY(5px) rotate(-2deg)' }, // down-left
-  { transform: 'translateX(-5px) rotate(-1deg)' }, // left-up
-  { transform: 'translateX(5px) rotate(1deg)' }, // right-down
-  { transform: 'translate(-5px, -5px) rotate(1.5deg)' }, // up-left
-  { transform: 'translate(5px, 5px) rotate(-1.5deg)' } // down-right
-];
+const BrandIdentityCard = () => {
+  const cardRef = useRef(null);
+  const [transform, setTransform] = useState('');
 
-const BrandIdentityCard = ({ index }) => {
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Calculate distance from center (normalized to -1 to 1)
+    const moveX = (x - centerX) / centerX;
+    const moveY = (y - centerY) / centerY;
+    
+    // Move in opposite direction (parallax effect)
+    const translateX = -moveX * 10; // 10px max movement
+    const translateY = -moveY * 10;
+    
+    setTransform(`translate(${translateX}px, ${translateY}px)`);
+  };
+
+  const handleMouseLeave = () => {
+    setTransform('');
+  };
+
   return (
     <Card 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{
         position: 'relative',
         padding: '40px 34px 35px',
-        transition: 'all 0.4s ease 0s',
+        transition: 'transform 0.3s ease-out, all 0.4s ease 0s',
         backgroundColor: '#ECECEC',
         overflow: 'hidden',
         backgroundRepeat: 'no-repeat',
@@ -28,13 +49,12 @@ const BrandIdentityCard = ({ index }) => {
         borderRadius: '9.44283px',
         marginBottom: '20px',
         height: '100%',
-        transform: 'translate(0, 0) rotate(0)',
+        transform: transform,
+        willChange: 'transform',
         '&:hover': {
-          transform: animationDirections[index % animationDirections.length].transform,
           boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
         }
       }}
-      className="card-hover-animation" // We'll use this for the CSS
     >
       <div style={{ display: 'flex', alignItems: 'flex-start' }}>
         <div style={{ marginRight: '20px' }}>
@@ -96,13 +116,8 @@ const BrandIdentityCard = ({ index }) => {
               fill: '#917243',
               border: '1.6px groove #231f20',
               textDecoration: 'none',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                transform: 'scale(1.05)',
-                boxShadow: '0 5px 15px rgba(145, 114, 67, 0.4)'
-              }
+              transition: 'transform 0.3s ease'
             }}
-            className="button-hover-animation"
           >
             More Details <i aria-hidden="true" style={{ marginLeft: '5px' }}></i>
           </Button>
@@ -115,59 +130,22 @@ const BrandIdentityCard = ({ index }) => {
 const CardsPage = () => {
   return (
     <Container>
-      <h1 style={{
-        textAlign: 'center',
-        justifyContent: 'center',
-        justifyItems: 'center',
-        fontWeight: 'bolder',
-        color: '#917243',
-        marginTop: '2%',
-        marginBottom: '2%'
-      }}>
-        Our Services
-      </h1>
+        <h1 style={{
+            textAlign:'center',
+            justifyContent:'center',
+            justifyItems:'center',
+            fontWeight:'bolder',
+            color:'#917243',
+            marginTop:'2%',
+            marginBottom:'2%'
+        }}>Our Services</h1>
       <Row>
         {[...Array(6)].map((_, index) => (
           <Col key={index} md={4} className="mb-4">
-            <BrandIdentityCard index={index} />
+            <BrandIdentityCard />
           </Col>
         ))}
       </Row>
-      
-      {/* Add CSS for animations */}
-      <style jsx>{`
-        .card-hover-animation {
-          transition: all 0.3s ease-out;
-        }
-        .card-hover-animation:hover {
-          transform: ${animationDirections[0].transform};
-          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-          z-index: 10;
-        }
-        .button-hover-animation:hover {
-          transform: scale(1.05);
-          box-shadow: 0 5px 15px rgba(145, 114, 67, 0.4);
-        }
-        /* Apply different animations based on card position */
-        .mb-4:nth-child(1) .card-hover-animation:hover {
-          transform: translateY(-5px) rotate(2deg);
-        }
-        .mb-4:nth-child(2) .card-hover-animation:hover {
-          transform: translateY(5px) rotate(-2deg);
-        }
-        .mb-4:nth-child(3) .card-hover-animation:hover {
-          transform: translateX(-5px) rotate(-1deg);
-        }
-        .mb-4:nth-child(4) .card-hover-animation:hover {
-          transform: translateX(5px) rotate(1deg);
-        }
-        .mb-4:nth-child(5) .card-hover-animation:hover {
-          transform: translate(-5px, -5px) rotate(1.5deg);
-        }
-        .mb-4:nth-child(6) .card-hover-animation:hover {
-          transform: translate(5px, 5px) rotate(-1.5deg);
-        }
-      `}</style>
     </Container>
   );
 };
