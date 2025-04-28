@@ -1,0 +1,119 @@
+
+/* Base styles */
+.review-container {
+    
+    padding: 10px;
+    width: calc(100% - 2px);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  /* Header styles */
+  .review-header {
+    padding: 0 0 36px;
+color: #917243;
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .review-header h2 {
+    font-weight: 700;
+    transition: all 0.3s ease;
+    margin: 0 0 4px;
+    color: #917243;
+    font-family: 'Heebo', sans-serif;
+    font-size: 46px;
+    line-height: 60px;
+  }
+  
+  .header-underline {
+    margin-left: auto;
+    margin-right: auto;
+    height: 4px;
+    width: 30px;
+    background: #917243;
+    border-radius: 2px;
+    position: relative;
+    left: 13px;
+  }
+  
+  /* Carousel styles */
+  .review-carousel {
+    position: relative;
+    width: 100%;
+    padding-bottom: 30px;
+   
+  }
+  
+  .review-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
+  .review-item {
+    flex: 0 0 calc(33.333% - 20px);
+    text-align: center;
+  }
+  
+  .review-image {
+    border-radius: 10px;
+    box-shadow: none;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 2%;
+    box-shadow: 0 6px 15px rgba(145, 114, 67, 0.19);
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+  
+  }
+  
+  /* Carousel indicators */
+  .carousel-indicators {
+    bottom: 5px;
+  }
+  
+  .carousel-indicators [data-bs-target] {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ECECEC;
+    margin: 0 6px;
+    opacity: 1;
+  }
+  
+  .carousel-indicators .active {
+    background-color: #917243;
+  }
+  
+  /* Animation and transition */
+  .carousel-item {
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767.98px) {
+    /* Small screens - show 1 item */
+    .review-header h2 {
+      font-size: 36px;
+      line-height: 48px;
+    }
+    
+    .review-carousel {
+      padding-bottom: 20px;
+    }
+  
+    .review-group {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .review-item {
+      flex: 0 0 100%;
+    }
+  }

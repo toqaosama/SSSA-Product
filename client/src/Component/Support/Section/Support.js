@@ -1,44 +1,34 @@
 import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import '../styles//Support.css';
 
 const Support = () => {
   return (
     <Container 
-      className="my-5 p-4 rounded" 
-      style={{
-        backgroundColor: '#ECECEC',
-        boxShadow: '0 4px 8px 0 rgba(145, 114, 67, 0.2), 0 6px 20px 0 rgba(145, 114, 67, 0.19)',
-        transition: 'box-shadow 0.3s ease-in-out'
-      }}
+      className="my-5 p-4 rounded support-container"
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = '0 8px 16px 0 rgba(145, 114, 67, 0.3), 0 12px 25px 0 rgba(145, 114, 67, 0.29)';
+        e.currentTarget.classList.add('support-container:hover');
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = '0 4px 8px 0 rgba(145, 114, 67, 0.2), 0 6px 20px 0 rgba(145, 114, 67, 0.19)';
+        e.currentTarget.classList.remove('support-container:hover');
       }}
     >
       <Row className="justify-content-center">
         <Col md={8} className="text-center mb-4">
-          <h2 style={{fontWeight:'bolder', color:'#917243',marginTop:'2%'}}>Contact Support</h2>
-          <p className="lead" style={{fontWeight:'bold', color: '#231f20'}}>We're here to help you with any questions or issues</p>
+          <h2 className="support-title">Contact Support</h2>
+          <p className="lead support-subtitle">We're here to help you with any questions or issues</p>
         </Col>
       </Row>
 
       <Row className="justify-content-center">
         <Col md={6} className="mb-4">
           <div 
-            className="p-4 rounded" 
-            style={{ 
-              color: '#231f20',
-              backgroundColor: '#ffffff',
-              boxShadow: '0 4px 8px 0 rgba(145, 114, 67, 0.2), 0 6px 20px 0 rgba(145, 114, 67, 0.19)',
-              transition: 'box-shadow 0.3s ease-in-out'
-            }}
+            className="p-4 rounded info-card"
             onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '0 8px 16px 0 rgba(145, 114, 67, 0.3), 0 12px 25px 0 rgba(145, 114, 67, 0.29)';
+              e.currentTarget.classList.add('info-card:hover');
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = '0 4px 8px 0 rgba(145, 114, 67, 0.2), 0 6px 20px 0 rgba(145, 114, 67, 0.19)';
+              e.currentTarget.classList.remove('info-card:hover');
             }}
           >
             <h4 className="mb-3">Support Information</h4>
@@ -55,55 +45,49 @@ const Support = () => {
         
         <Col md={6}>
           <div 
-            className="p-4 rounded"
-            style={{ 
-              color: '#231f20',
-              backgroundColor: '#ffffff',
-              boxShadow: '0 4px 8px 0 rgba(145, 114, 67, 0.2), 0 6px 20px 0 rgba(145, 114, 67, 0.19)',
-              transition: 'box-shadow 0.3s ease-in-out'
-            }}
+            className="p-4 rounded form-card"
             onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '0 8px 16px 0 rgba(145, 114, 67, 0.3), 0 12px 25px 0 rgba(145, 114, 67, 0.29)';
+              e.currentTarget.classList.add('form-card:hover');
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = '0 4px 8px 0 rgba(145, 114, 67, 0.2), 0 6px 20px 0 rgba(145, 114, 67, 0.19)';
+              e.currentTarget.classList.remove('form-card:hover');
             }}
           >
             <Form>
               <Form.Group className="mb-3">
-                <Form.Label style={{fontWeight:'bolder', color: '#917243'}}>Your Name</Form.Label>
+                <Form.Label className="form-label">Your Name</Form.Label>
                 <Form.Control 
                   type="text" 
                   placeholder="Enter your name" 
-                  style={{borderColor: '#917243'}}
+                  className="form-control-custom"
                 />
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label style={{fontWeight:'bolder', color: '#917243'}}>Email Address</Form.Label>
+                <Form.Label className="form-label">Email Address</Form.Label>
                 <Form.Control 
                   type="email" 
                   placeholder="Enter your email" 
-                  style={{borderColor: '#917243'}}
+                  className="form-control-custom"
                 />
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label style={{fontWeight:'bolder', color: '#917243'}}>Subject</Form.Label>
+                <Form.Label className="form-label">Subject</Form.Label>
                 <Form.Control 
                   type="text" 
                   placeholder="What's this about?" 
-                  style={{borderColor: '#917243'}}
+                  className="form-control-custom"
                 />
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label style={{fontWeight:'bolder', color: '#917243'}}>Message</Form.Label>
+                <Form.Label className="form-label">Message</Form.Label>
                 <Form.Control 
                   as="textarea" 
                   rows={4} 
                   placeholder="Describe your issue in detail" 
-                  style={{borderColor: '#917243'}}
+                  className="form-control-custom"
                 />
               </Form.Group>
 
@@ -111,21 +95,7 @@ const Support = () => {
                 <Button 
                   variant="primary" 
                   type="submit" 
-                  style={{ 
-                    backgroundColor: '#917243', 
-                    border: 'none',
-                    fontWeight: 'bold',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#7a5f38';
-                    e.currentTarget.style.boxShadow = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#917243';
-                    e.currentTarget.style.boxShadow = '0 2px 4px 0 rgba(0, 0, 0, 0.1)';
-                  }}
+                  className="submit-btn"
                 >
                   Submit Request
                 </Button>
@@ -137,15 +107,15 @@ const Support = () => {
 
       <Row className="mt-5 justify-content-center">
         <Col md={8} className="text-center">
-          <h4 className="mb-3" style={{fontWeight:'bolder', color:'#917243'}}>Frequently Asked Questions</h4>
+          <h4 className="mb-3 faq-title">Frequently Asked Questions</h4>
           <div className="text-start">
-            <h5 style={{fontWeight:'bold', color:'#917243'}}>How do I reset my password?</h5>
+            <h5 className="faq-question">How do I reset my password?</h5>
             <p>Go to the login page and click "Forgot Password" to receive reset instructions via email.</p>
             
-            <h5 style={{fontWeight:'bold', color:'#917243'}}>Where can I find my order history?</h5>
+            <h5 className="faq-question">Where can I find my order history?</h5>
             <p>Log in to your account and navigate to the "My Orders" section in your dashboard.</p>
             
-            <h5 style={{fontWeight:'bold', color:'#917243'}}>What's your return policy?</h5>
+            <h5 className="faq-question">What's your return policy?</h5>
             <p>We accept returns within 30 days of purchase with original receipt. See our Returns page for details.</p>
           </div>
         </Col>

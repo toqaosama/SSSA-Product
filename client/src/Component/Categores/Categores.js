@@ -58,7 +58,7 @@ const Categores = () => {
                 loading="lazy"
               />
             </div>
-            <div className="card-content">
+            <div className="card-contents">
               <h3 className="card-title">{category.title}</h3>
               <p className="card-description">{category.description}</p>
               <button className="explore-btn">Explore {category.title}</button>

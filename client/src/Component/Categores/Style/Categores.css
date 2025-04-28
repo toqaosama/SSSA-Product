@@ -69,7 +69,7 @@
     transform: scale(1.05);
   }
   
-  .card-content {
+  .card-contents {
     flex: 1;
     padding: 2rem;
     display: flex;
