@@ -34,6 +34,13 @@ app.get('/category/:id/products', require('./routes/category/category').getCateg
 // Product Routes
 app.post('/product/create', require('./routes/product/product'));
 
+// Review Routes
+app.get('/product/:id/reviews', require('./routes/reviews/reviews').getProductReviews);
+app.post('/review/create', require('./routes/reviews/reviews').createReview);
+app.post('/review/:id/activate', require('./routes/reviews/reviews').activateReview);
+app.post('/review/:id/deactivate', require('./routes/reviews/reviews').deactivateReview);
+
+// Init settings
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
