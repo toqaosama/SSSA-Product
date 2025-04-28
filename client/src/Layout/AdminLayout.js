@@ -1,16 +1,17 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../Component/Admin/Sidebar';
+import './AdminLayout.css';
 
-
-
-const Layout = ({ children }) => {
+const AdminLayout = () => {
   return (
-    <div className="layout-container">
-     
-      <main className="main-content">
-        {children}
+    <div className="admin-layout">
+      <Sidebar />
+      <main className="admin-main-content">
+        <Outlet />
       </main>
     </div>
   );
 };
 
-export default Layout;
+export default AdminLayout;

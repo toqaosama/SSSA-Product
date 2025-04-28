@@ -1,0 +1,83 @@
+.sidebar {
+    transition: all 0.3s ease;
+    color: #ECECEC;
+    background-color: #231f20;
+    width: 16rem;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .sidebar.collapsed {
+    width: 110px;
+  }
+  
+  .sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid #ECECEC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    align-items: center;
+  }
+  
+  .collapse-btn {
+    background-color: #ECECEC;
+    color: #0f172a;
+    border: none;
+    border-radius: 9999px;
+    width: 2.5rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 24px;
+    right: -16px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+  }
+  
+  .chevron-icon {
+    width: 1rem;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+  
+  .chevron-icon.rotated {
+    transform: rotate(180deg);
+  }
+  
+  .nav-link.dash {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #ECECEC;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-link.dash:hover {
+    background-color: #ECECEC;
+    color: #917243;
+    border-color: #917243;
+    box-shadow: #917243 1px;
+  }
+  
+  .sidebar.collapsed .nav-link span {
+    display: none;
+  }
+  
+  .nav-icon {
+    width: 1.25rem;
+    height: 20px;
+    margin-right: 0.75rem;
+    color: #917243;
+    text-align: center;
+  }
+  

@@ -10,9 +10,12 @@ import Categores from "./Component/Categores/Categores";
 
 
 
+
+
 // Layouts
 import AdminLayout from "./Layout/AdminLayout";
-import Tables from "./Component/Admin/Tables";
+import AdminDashboard from "./Component/Admin/AdminDashboard";
+import AdminTables from "./Component/Admin/UserMangement";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +25,7 @@ export const router = createBrowserRouter([
       { path: "", element: <Home /> }, // shows at "/"
       { path: "BehindStory", element: <BehindStory /> }, 
       { path: "Support", element: <Support /> }, 
-      { path: "Tables", element: <Tables /> }, 
+      // { path: "Tables", element: <Tables /> }, 
       { path: "Categores", element: <Categores /> }, 
    
    
@@ -32,9 +35,11 @@ export const router = createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,
     children: [
-      { path: "", element: <Navigate to="Home" replace /> }, // redirect "/admin" → "/admin/dashboard"
-
-      
+      // Redirect empty admin path to dashboard
+      { path: "", element: <Navigate to="dashboard" replace /> },
+      { path: "dashboard", element: <AdminDashboard /> },
+      { path: "tables", element: <AdminTables /> },
+      // Add more admin routes here as needed
     ],
   },
   {
