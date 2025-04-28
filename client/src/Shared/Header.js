@@ -55,34 +55,17 @@ const Header = () => {
               <Nav.Link as={Link} to="/BehindStory" className="nav-link-white">About</Nav.Link>
               
               <NavDropdown 
-                title="Services" 
+                title="Our Services" 
                 id="services-dropdown" 
                 className="nav-dropdown-white"
               >
                 <NavDropdown.Item as={Link} to="/social-media-management" className="dropdown-item-white">
                   Social Media Management
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/google-ads" className="dropdown-item-white">
-                  Google Ads
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/media-production" className="dropdown-item-white">
-                  Media Production
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/web-design-and-development" className="dropdown-item-white">
-                  Web Design & Development
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/public-relations" className="dropdown-item-white">
-                  Public Relations
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/ooh-marketing" className="dropdown-item-white">
-                  OOH Marketing
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/brand-identity" className="dropdown-item-white">
-                  Brand Identity
-                </NavDropdown.Item>
+            
               </NavDropdown>
 
-              <Nav.Link as={Link} to="/contact" className="nav-link-white">Contact</Nav.Link>
+              <Nav.Link as={Link} to="/Support" className="nav-link-white">Contact</Nav.Link>
               
               {/* Social Icons */}
               <div className="social-icons d-flex">
