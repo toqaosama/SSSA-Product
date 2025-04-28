@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import LoginModal from '../Auth/LoginModal';
 import RegisterModal from '../Auth/RegisterModal'; 
 import Logo from '../Assetes/imgs/Logo.png'
+import { FaArrowUp } from 'react-icons/fa';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
@@ -29,6 +30,32 @@ const Header = () => {
     setShowLogin(false);
     setShowSignup(false);
   };
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Show button when page is scrolled down
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  // Smooth scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+
 
   return (
     <header className="white-header">
@@ -129,7 +156,21 @@ const Header = () => {
 
         </Navbar>
       </Container>
+      <div>
+        {/* Scroll to Top Button */}
+              {isVisible && (
+                <button 
+                  onClick={scrollToTop}
+                  className="scroll-to-top"
+                  aria-label="Scroll to top"
+                >
+                  <FaArrowUp />
+                </button>
+              )}
+      </div>
     </header>
+
+    
   );
 };
 // 2025
