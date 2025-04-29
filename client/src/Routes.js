@@ -6,7 +6,8 @@ import Register from "./Auth/RegisterModal";
 import BehindStory from "./Component/AboutUs/Section/BehindStory";
 import Support from "./Component/Support/Section/Support";
 import Categores from "./Component/Categores/Categores";
-import Offers from "./Component/Offers/Section/Offers";
+
+
 
 
 
@@ -17,6 +18,8 @@ import Offers from "./Component/Offers/Section/Offers";
 import AdminLayout from "./Layout/AdminLayout";
 import AdminDashboard from "./Component/Admin/AdminDashboard";
 import AdminTables from "./Component/Admin/UserMangement";
+import Sales from "./Component/Sales/Section/Sales";
+
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +31,10 @@ export const router = createBrowserRouter([
       { path: "Support", element: <Support /> }, 
       // { path: "Tables", element: <Tables /> }, 
       { path: "Categores", element: <Categores /> }, 
-      { path: "Offers", element: <Offers /> }, 
+      { path: "Sales", element: <Sales /> }, 
+     
+     
+
    
    
     ],

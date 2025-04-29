@@ -1,0 +1,254 @@
+/* Compact Sales Page */
+.compact-sales-page {
+    font-family: 'Inter', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* Hero Section */
+  .compact-hero {
+    background: linear-gradient(135deg, #917243 0%, #7a5f38 100%);
+    color: #ECECEC;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+  
+  .cta-button {
+    background: #ECECEC;
+    color: #231F20;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Sales Container */
+  .compact-sales-container {
+    margin-bottom: 2rem;
+  }
+  
+  .compact-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .compact-header h2 {
+    font-size: 1.5rem;
+    color: #231F20;
+  }
+  
+  .compact-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .compact-tabs button {
+    background: none;
+    border: 1px solid #d1d1d1;
+    color: #231F20;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .compact-tabs button.active {
+    background: #917243;
+    border-color: #917243;
+    color: #ECECEC;
+  }
+  
+  /* Cards Grid */
+  .compact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+  
+  .compact-card {
+    background: #ECECEC;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(35, 31, 32, 0.1);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .compact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(35, 31, 32, 0.15);
+  }
+  
+  .compact-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #e11d48;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    z-index: 2;
+  }
+  
+  .compact-image {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .compact-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .compact-content h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #231F20;
+  }
+  
+  .compact-content p {
+    font-size: 0.8rem;
+    color: #5a5a5a;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  .compact-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    margin-top: auto;
+    margin-bottom: 1rem;
+    color: #5a5a5a;
+  }
+  
+  .compact-shop-button {
+    background: #917243;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .compact-shop-button:hover {
+    background: #7a5f38;
+  }
+  
+  /* Newsletter */
+  .compact-newsletter {
+    background: #231F20;
+    color: #ECECEC;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .compact-newsletter h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .compact-newsletter p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+  
+  .compact-subscribe {
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .compact-subscribe input {
+    flex: 1;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 0.9rem;
+  }
+  
+  .compact-subscribe button {
+    background: #917243;
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .compact-subscribe button:hover {
+    background: #7a5f38;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .compact-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .compact-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .compact-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .compact-hero {
+      padding: 1.5rem 1rem;
+    }
+    
+    .hero-content h1 {
+      font-size: 1.5rem;
+    }
+  }
