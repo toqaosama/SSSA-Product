@@ -16,15 +16,17 @@ const getProductReviews = async (req, res) => {
 
 
 const createReview = async (req, res) => {
-    const { product_id, user_id, rating, comment } = req.body;
+    const { product_id, rate, comment } = req.body;
 
-    if (!product_id || !user_id || !rating) {
+    const user_id = req.user.id;
+
+    if (!product_id || !user_id || !rate) {
         return res.status(400).json({ message: 'Product ID, User ID, and Rating are required' });
     }
 
     try {
         const query = util.promisify(connection.query).bind(connection);
-        await query('INSERT INTO reviews (product_id, user_id, rating, comment, isActive) VALUES (?, ?, ?, ?, ?)', [product_id, user_id, rating, comment,0]);
+        await query('INSERT INTO review (product_id, user_id, rate, comment, isActive) VALUES (?, ?, ?, ?, ?)', [product_id, user_id, rate, comment,0]);
         res.status(201).json({ message: 'Review created successfully' });
     } catch (error) {
         console.error('Error creating review:', error);
@@ -66,10 +68,27 @@ const deactivateReview = async (req, res) => {
     }
 }
 
+const deleteReview = async (req, res) => {
+    const { id } = req.params;
+
+    if (!id) {
+        return res.status(400).json({ message: 'Review ID is required' });
+    }
+
+    try {
+        const query = util.promisify(connection.query).bind(connection);
+        await query('DELETE FROM review WHERE id = ?', [id]);
+        res.status(200).json({ message: 'Review deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting review:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
 
 module.exports = {
     getProductReviews,
     createReview,
     activateReview,
-    deactivateReview
+    deactivateReview,
+    deleteReview
 };
