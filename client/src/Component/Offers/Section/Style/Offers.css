@@ -1,0 +1,46 @@
+/* Compact Sales Page */
+.compact-sales-page {
+    font-family: 'Inter', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* Hero Section */
+  .compact-hero {
+    background: linear-gradient(135deg, #917243 0%, #7a5f38 100%);
+    color: #ECECEC;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+  
+  .cta-button {
+    background: #ECECEC;
+    color: #231F20;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-2px);
+  }

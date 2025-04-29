@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <nav className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-header">
-        <h1>Admin</h1>
+        <h1>Admin Dashboard</h1>
         <button className="collapse-btn" onClick={toggleSidebar}>
           <ChevronLeft className={`chevron-icon ${collapsed ? 'rotated' : ''}`} />
         </button>
@@ -24,29 +24,29 @@ const Sidebar = () => {
           <FiGrid className="nav-icon" />
           <span>Dashboard</span>
           </Nav.Link>
-          <Nav.Link  as={Link} to="/Admin/startcard" className="nav-link dash">
+          <Nav.Link  as={Link} to="/admin/Product" className="nav-link dash">
           <FiSettings className="nav-icon" />
-          <span>StartCard</span>
+          <span>Product Manage</span>
           </Nav.Link>
-          <Nav.Link  as={Link} to="/admin/dashboard" className="nav-link dash">
+          <Nav.Link  as={Link} to="/admin/tables" className="nav-link dash">
           <FiUsers className="nav-icon" />
-          <span>Users</span>
+          <span>Users Manage</span>
         </Nav.Link>
-        <Nav.Link  as={Link} to="/admin/dashboard" className="nav-link dash">
+        <Nav.Link  as={Link} to="/admin/Categories" className="nav-link dash">
           <FiBarChart2 className="nav-icon" />
-          <span>Analytics</span>
+          <span>Categores Manage</span>
         </Nav.Link>
-        <Nav.Link  as={Link} to="/admin/dashboard" className="nav-link dash">
+        <Nav.Link  as={Link} to="/admin/OfferTable" className="nav-link dash">
           <FiBell className="nav-icon" />
-          <span>Notifications</span>
+          <span>Offer Manage</span>
         </Nav.Link>
-        <Nav.Link  as={Link} to="/admin/dashboard" className="nav-link dash">
+        <Nav.Link  as={Link} to="/admin/Meeting" className="nav-link dash">
           <FiSettings className="nav-icon" />
-          <span>Settings</span>
+          <span>Meeting Schedule</span>
         </Nav.Link>
-        <Nav.Link  as={Link} to="/Admin/ProductManage" className="nav-link dash">
+        <Nav.Link  as={Link} to="/admin/Rate" className="nav-link dash">
           <FiSettings className="nav-icon" />
-          <span>product</span>
+          <span>Rate Manage</span>
         </Nav.Link>
       </Nav>
     </nav>

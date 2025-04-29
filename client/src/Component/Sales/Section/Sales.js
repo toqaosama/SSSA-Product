@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import './Sales.css';
 import { FiClock, FiShoppingBag, FiTag, FiChevronRight } from 'react-icons/fi';
+import Offers from '../../Offers/Section/Offers';
+import OfferContact from '../../Offers/Section/OfferContact';
 
 const Sales = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -43,6 +45,43 @@ const Sales = () => {
       validUntil: "2023-08-15",
       image: "clearance.jpg",
       urgent: true
+    },
+    {
+      id: 5,
+      title: "Summer Collection",
+      discount: "40% OFF",
+      description: "End-of-season clearance",
+      category: "fashion",
+      validUntil: "2023-08-31",
+      image: "summer-sale.jpg",
+      featured: true
+    },
+    {
+      id: 6,
+      title: "Tech Gadgets",
+      discount: "25% OFF",
+      description: "Latest electronics sale",
+      category: "electronics",
+      validUntil: "2023-09-15",
+      image: "tech-sale.jpg"
+    },
+    {
+      id: 7,
+      title: "Home Decor",
+      description: "Buy 1 Get 1 Free",
+      category: "home",
+      validUntil: "2023-09-30",
+      image: "home-decor.jpg"
+    },
+    {
+      id: 8,
+      title: "Clearance",
+      discount: "70% OFF",
+      description: "Final reductions",
+      category: "clearance",
+      validUntil: "2023-08-15",
+      image: "clearance.jpg",
+      urgent: true
     }
   ];
 
@@ -58,15 +97,7 @@ const Sales = () => {
 
   return (
     <div className="compact-sales-page">
-      <div className="compact-hero">
-        <div className="hero-content">
-          <h1>Seasonal Sales</h1>
-          <p>Limited-time offers across all categories</p>
-          <button className="cta-button">
-            Shop Now <FiChevronRight className="icon" />
-          </button>
-        </div>
-      </div>
+      <Offers />
 
       <div className="compact-sales-container">
         <div className="compact-header">
@@ -121,14 +152,7 @@ const Sales = () => {
         </div>
       </div>
 
-      <div className="compact-newsletter">
-        <h3>Get More Deals</h3>
-        <p>Subscribe for exclusive offers</p>
-        <div className="compact-subscribe">
-          <input type="email" placeholder="Email address" />
-          <button>Join</button>
-        </div>
-      </div>
+     <OfferContact />
     </div>
   );
 };
