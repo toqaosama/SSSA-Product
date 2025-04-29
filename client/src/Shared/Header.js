@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Style/Header.css';
@@ -8,6 +8,8 @@ import LoginModal from '../Auth/LoginModal';
 import RegisterModal from '../Auth/RegisterModal'; 
 import Logo from '../Assetes/imgs/Logo.png'
 import { FaArrowUp } from 'react-icons/fa';
+import { useAuth } from '../Context/AuthContext';
+import authApi from '../api/authApi';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
@@ -15,6 +17,10 @@ const Header = () => {
 
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+
+  const {user, loading, removeAuthToken} = useAuth(); 
+
+  const navigate = useNavigate();
 
   const openLogin = () => {
     setShowSignup(false);
@@ -50,12 +56,26 @@ const Header = () => {
     });
   };
 
+  const handleLogout = async () => {
+    await authApi.post('auth/logout', {});
+    removeAuthToken();
+    setIsLoggedIn(false);
+    navigate("/")
+  }
+
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-
+  useEffect(() => {
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }
+  , [user, loading]);
 
   return (
     <header className="white-header">
@@ -125,7 +145,7 @@ const Header = () => {
                     <i className="fas fa-cog me-2"></i> Settings
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={() => setIsLoggedIn(false)} className="dropdown-item-white">
+                  <NavDropdown.Item onClick={handleLogout} className="dropdown-item-white">
                     <i className="fas fa-sign-out-alt me-2"></i> Logout
                   </NavDropdown.Item>
                 </NavDropdown>
