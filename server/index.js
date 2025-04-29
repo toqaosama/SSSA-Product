@@ -32,6 +32,7 @@ app.get('/', (req, res) => res.send('Welcome to the SSA API')); // Welcome messa
 app.post('/auth/register', require('./routes/auth/register')); // Register a new user
 app.post('/auth/login', require('./routes/auth/login')); // Login a user
 app.post('/auth/logout', checkAuth, require('./routes/auth/logout')); // Logout a user
+app.get("/auth/user", checkAuth, require('./routes/auth/user')); // Get user information
 
 // Category
 const category = require('./routes/category/category');
