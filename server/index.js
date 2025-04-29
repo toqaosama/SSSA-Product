@@ -33,6 +33,8 @@ app.post('/auth/register', require('./routes/auth/register')); // Register a new
 app.post('/auth/login', require('./routes/auth/login')); // Login a user
 app.post('/auth/logout', checkAuth, require('./routes/auth/logout')); // Logout a user
 app.get("/auth/user", checkAuth, require('./routes/auth/user')); // Get user information
+app.post("/auth/verify-otp", require("./routes/auth/verifyOTP"))
+
 
 // Category
 const category = require('./routes/category/category');
