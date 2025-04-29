@@ -5,6 +5,8 @@ import Split from './Section/SplitBar'
 import ServesCard from './ServesCard'
 import SupportSection from './Section/SupportSection'
 import Review from '../Component/Review/section/Review'
+import Offers from '../Component/Offers/Section/Offers'
+import OfferContact from '../Component/Offers/Section/OfferContact'
 
 const Home = () => {
     return (
@@ -13,6 +15,8 @@ const Home = () => {
        <Split />
        <SupportSection />
        <ServesCard />
+       <Offers />
+       <OfferContact />
        <Review />
       </div>
     );

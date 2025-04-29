@@ -47,7 +47,7 @@
   /* Dark theme card */
   .card-dark {
     background-color: #917243; /* Bootstrap's dark color */
-    color: #231f20; /* Bootstrap's light text color */
+    color: #ECECEC; /* Bootstrap's light text color */
   }
   
   /* Light theme card */

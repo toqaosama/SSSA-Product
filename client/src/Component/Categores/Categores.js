@@ -59,7 +59,7 @@ const Categores = () => {
               />
             </div>
             <div className="card-contents">
-              <h3 className="card-title">{category.title}</h3>
+              <h3 className="card-titless">{category.title}</h3>
               <p className="card-description">{category.description}</p>
               <button className="explore-btn">Explore {category.title}</button>
             </div>
