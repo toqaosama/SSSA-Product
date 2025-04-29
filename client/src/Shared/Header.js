@@ -18,7 +18,7 @@ const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
-  const {user, loading, removeAuthToken} = useAuth(); 
+  const {user, loading, removeAuthToken, isAdmin} = useAuth(); 
 
   const navigate = useNavigate();
 
@@ -141,9 +141,10 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to="/profile" className="dropdown-item-white">
                     <i className="fas fa-user me-2"></i> Profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/settings" className="dropdown-item-white">
-                    <i className="fas fa-cog me-2"></i> Settings
+                  {isAdmin() && <NavDropdown.Item as={Link} to="/admin" className="dropdown-item-white">
+                    <i className="fas fa-cog me-2"></i> Admin Dashboard
                   </NavDropdown.Item>
+                  }
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleLogout} className="dropdown-item-white">
                     <i className="fas fa-sign-out-alt me-2"></i> Logout

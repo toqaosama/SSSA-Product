@@ -35,11 +35,11 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const token = crypto.randomBytes(16).toString('hex');
-        const otp = await sendOTP(email);
+        // const otp = await sendOTP(email);
         // Random OTP generation for testing
         // In production, you would use sendOTP function to send the OTP to the user's email
-        // const otp = Math.floor(100000 + Math.random() * 900000).toString(); 
-
+        const otp = Math.floor(100000 + Math.random() * 900000).toString(); 
+        console.log("OTP: ", otp)
         const qres = await query('INSERT INTO user (name, email, password, role, phone, token, otp, isver) VALUES (?, ?, ?, ?, ?, ?, ?, ?);', [name, email, hashedPassword, "user", phone, token, otp, 0]);
         const userId = qres.insertId;
         res.status(201).json({ message: 'User registered successfully. Please verify your email with the OTP sent.', userId });

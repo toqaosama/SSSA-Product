@@ -42,6 +42,10 @@ export const AuthProvider = ({ children }) => {
     return !!user;
   }, [user]); 
 
+  const isAdmin = useCallback(()=>{
+    return user.role==='admin';
+  }, [user])
+
   useEffect(() => {
     loadUser();
   }, [token, loadUser]);
@@ -53,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   }
   
   return (
-    <AuthContext.Provider value={{ token, setAuthToken, removeAuthToken, user, loading, isAuthenticated }}>
+    <AuthContext.Provider value={{ token, setAuthToken, removeAuthToken, user, loading, isAuthenticated, isAdmin}}>
       {children}
     </AuthContext.Provider>
   );

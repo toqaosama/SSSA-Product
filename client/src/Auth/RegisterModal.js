@@ -123,13 +123,13 @@ const SignupModal = ({ show, onClose, onSwitchToLogin }) => {
             {!otpStep ? (
               <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3">
-                  <Form.Label style={{fontWeight:'bolder'}}>Username</Form.Label>
+                  <Form.Label style={{fontWeight:'bolder'}}>Name</Form.Label>
                   <Form.Control 
                     type="text" 
                     name="name"
                     value={data.name}
                     onChange={handleChange}
-                    placeholder="Enter username" 
+                    placeholder="Enter your name" 
                   />
                 </Form.Group>
 

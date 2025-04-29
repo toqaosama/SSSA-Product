@@ -59,6 +59,15 @@ app.post('/review/:id/activate', checkAdmin, review.activateReview); // Activate
 app.post('/review/:id/deactivate', checkAdmin, review.deactivateReview); // Deactivate a review by ID
 app.delete('/review/:id/', checkAdmin, review.deleteReview); // Delete a review by ID
 
+// Users
+const users = require('./routes/users/users');
+app.get('/users', checkAdmin, users.getAllUsers); // Get all users
+app.get('/users/:id', checkAdmin, users.getUserById); // Get user by ID
+app.post('/users', checkAdmin, users.createUser); // Create a new user
+app.put('/users/:id', checkAuth, users.updateUser); // Update a user by ID
+app.delete('/users/:id', checkAdmin, users.deleteUser); // Delete a user by ID
+
+
 // Init server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
