@@ -130,7 +130,7 @@ export const ProductManagement = () => {
 
       {showAddModal && (
         <div className="modal">
-          <div className="modal-content">
+          <div className="modal-contentss">
             <h3>Add New Product</h3>
             <button onClick={() => setShowAddModal(false)}>Close</button>
           </div>

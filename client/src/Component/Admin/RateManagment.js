@@ -131,7 +131,7 @@ export const RateManagement = () => {
 
       {showAddModal && (
         <div className="modal">
-          <div className="modal-content">
+          <div className="modal-contentss">
             <h3>Set New Rate</h3>
             <button onClick={() => setShowAddModal(false)}>Close</button>
           </div>

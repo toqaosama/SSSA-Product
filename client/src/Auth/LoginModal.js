@@ -4,7 +4,7 @@ import { Eye, EyeSlash } from 'react-bootstrap-icons';
 import api from '../api/api';
 import {useNavigate} from 'react-router-dom';
 import {useAuth} from '../Context/AuthContext.js';
-
+import './style/LoginModal.css'; // Import the CSS file
 
 const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
   const {setAuthToken} = useAuth();
@@ -50,7 +50,6 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Run validation before making the API call
     if (!validate()) return;
 
     try {
@@ -68,11 +67,10 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
 
         setAuthToken(res.data.token);
         
-        onClose(); // close the modal to navigate 
-        
+        onClose();
         navigate("/");
 
-    } else {
+      } else {
         setMessage({
           type: 'error',
           text: 'Login failed. Please try again later'
@@ -88,43 +86,34 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
   };
 
   return (
-    <Modal show={show} onHide={onClose} centered size="lg">
+    <Modal 
+      show={show} 
+      onHide={onClose} 
+      centered 
+      dialogClassName="login-modal"
+    >
       <Modal.Body className="p-0">
         <Row className="g-0">
-          <Col md={6} className="bg" style={{
-            minHeight: '350px',
-            backgroundColor: '#917243',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
+          <Col md={6} className="modal-left-side">
             <h3 className="text-white">Welcome Back!</h3>
           </Col>
 
-          <Col md={6} className="p-4 position-relative">
+          <Col md={6} className="modal-right-side">
             <button 
               onClick={onClose}
-              style={{
-                position: 'absolute',
-                top: '15px',
-                right: '15px',
-                background: 'none',
-                border: 'none',
-                fontSize: '1.5rem',
-                cursor: 'pointer'
-              }}
+              className="modal-close-btn"
             >
               &times;
             </button>
 
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3">
-                <Form.Label style={{fontWeight:'bolder'}}>Email</Form.Label>
+                <Form.Label className="form-label">Email</Form.Label>
                 <Form.Control onChange={handleChange} name="email" type="email" placeholder="Enter your email" />
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label style={{ fontWeight: 'bolder' }}>Password</Form.Label>
+                <Form.Label className="form-label">Password</Form.Label>
                 <InputGroup>
                   <Form.Control 
                     onChange={handleChange} 
@@ -132,14 +121,14 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
                     type={showPassword ? "text" : "password"} 
                     placeholder="Password" 
                   />
-                  <InputGroup.Text onClick={() => setShowPassword(!showPassword)} style={{ cursor: 'pointer' }}>
+                  <InputGroup.Text onClick={() => setShowPassword(!showPassword)} className="password-toggle">
                     {showPassword ? <EyeSlash /> : <Eye />}
                   </InputGroup.Text>
                 </InputGroup>
               </Form.Group>
 
               <div className="d-grid gap-2 mb-3">
-                <Button variant="primary" type="submit" style={{ backgroundColor: '#917243', border: 'none' }}>
+                <Button variant="primary" type="submit" className="login-btn">
                   Login
                 </Button>
               </div>

@@ -131,7 +131,7 @@ export const MeetingManagement = () => {
 
       {showAddModal && (
         <div className="modal">
-          <div className="modal-content">
+          <div className="modal-contentss">
             <h3>Schedule New Meeting</h3>
             <button onClick={() => setShowAddModal(false)}>Close</button>
           </div>

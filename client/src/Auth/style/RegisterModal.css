@@ -1,0 +1,50 @@
+/* SignupModal.css */
+.signup-modal {
+    max-width: 800px; /* Makes the modal larger */
+    margin: 0 auto;
+  }
+  
+  .modal-content {
+    border-radius: 0;
+    border: none;
+  }
+  
+  .modal-left-side {
+    min-height: 350px;
+    background-color: #917243;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-right-side {
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .signup-btn {
+    background-color: #917243;
+    border: none;
+  }
+  
+  .signup-btn:hover {
+    background-color: #7a5f38;
+  }
+  
+  .form-label {
+    font-weight: bolder;
+  }
+  
+  .password-toggle {
+    cursor: pointer;
+  }

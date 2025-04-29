@@ -139,7 +139,7 @@ export const OfferManagement = () => {
 
       {showAddModal && (
         <div className="modal">
-          <div className="modal-content">
+          <div className="modal-contentss">
             <h3>Add New Offer</h3>
             <button onClick={() => setShowAddModal(false)}>Close</button>
           </div>

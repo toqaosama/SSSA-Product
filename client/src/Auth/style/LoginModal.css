@@ -1,0 +1,54 @@
+/* LoginModal.css */
+.login-modal {
+    max-width: 1000px;
+    width: 100%; /* Makes the modal larger */
+    margin: 0 auto;
+  }
+  
+  .modal-content {
+    background:#fff;
+      padding:0px;
+      border-radius:5px;
+      width: 1000px;
+      max-width: 90%;
+  }
+  
+  .modal-left-side {
+    min-height: 350px;
+    background-color: #917243;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-right-side {
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .login-btn {
+    background-color: #917243;
+    border: none;
+  }
+  
+  .login-btn:hover {
+    background-color: #7a5f38;
+  }
+  
+  .form-label {
+    font-weight: bolder;
+  }
+  
+  .password-toggle {
+    cursor: pointer;
+  }

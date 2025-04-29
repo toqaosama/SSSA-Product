@@ -128,7 +128,7 @@ export const CategoryManagement = () => {
 
       {showAddModal && (
         <div className="modal">
-          <div className="modal-content">
+          <div className="modal-contentss">
             <h3>Add New Category</h3>
             <button onClick={() => setShowAddModal(false)}>Close</button>
           </div>
