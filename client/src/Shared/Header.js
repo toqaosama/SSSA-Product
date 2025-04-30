@@ -129,11 +129,12 @@ const Header = () => {
                   <i className="fab fa-youtube"></i>
                 </a>
               </div>
-
+              <span className="text-white mx-3">
+                |
+              </span>
               {/* Authentication Section */}
               {isLoggedIn ? (
-                <NavDropdown
-                  title={<i className="fas fa-user-circle"></i>}
+                <NavDropdown title={<i style={{ color: 'white', fontSize: '30px' }} className="fas fa-user-circle"></i>}
                   id="profile-dropdown"
                   align="end"
                   className="profile-dropdown"

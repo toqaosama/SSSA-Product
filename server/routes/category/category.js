@@ -30,10 +30,19 @@ const getCategories = async (req, res) => {
     try {
         const query = util.promisify(connection.query).bind(connection);
         const categories = await query('SELECT * FROM category');
-        res.status(200).json({categories});
+
+        const categoriesWithCount = await Promise.all(categories.map(async (cat) => {
+            const [result] = await query('SELECT COUNT(*) as count FROM product WHERE category_id = ?', [cat.id]);
+            return {
+                ...cat,
+                products: result.count
+            };
+        }));
+
+        res.status(200).json({categories: categoriesWithCount});
     } catch (error) {
         console.error('Error fetching categories:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({message: 'Internal server error'});
     }
 };
 
