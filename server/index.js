@@ -58,6 +58,8 @@ app.post('/review/create', checkAuth, review.createReview); // Create a new revi
 app.post('/review/:id/activate', checkAdmin, review.activateReview); // Activate a review by ID
 app.post('/review/:id/deactivate', checkAdmin, review.deactivateReview); // Deactivate a review by ID
 app.delete('/review/:id/', checkAdmin, review.deleteReview); // Delete a review by ID
+app.get("/review/", checkAdmin, review.getAllReviews)
+
 
 // Users
 const users = require('./routes/users/users');

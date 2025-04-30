@@ -1,5 +1,6 @@
 const util = require('util');
 const connection = require('../../database/connection');
+const bcrypt = require("bcrypt");
 
 const getAllUsers = async (req, res) => {
     try {
@@ -51,10 +52,11 @@ const createUser = async (req, res) => {
         
         const token = crypto.randomBytes(16).toString('hex');
 
+        const hashPassword = await bcrypt.hash(password, 10);
         // Insert user
         const result = await query(
             'INSERT INTO user (name, email, password, token, role, otp, isver, phone, isActive) VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?)',
-            [name, email, password, role, otp, isver, phone, isActiveDefault]
+            [name, email, hashPassword,token, role, otp, isver, phone, isActiveDefault]
         );
 
         const createdUser = await query('SELECT id, name, email, role, otp, isver, phone, isActive FROM user WHERE id = ?', [result.insertId]);

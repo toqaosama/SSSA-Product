@@ -44,9 +44,9 @@ const Sidebar = () => {
           <FiSettings className="nav-icon" />
           <span>Meeting Schedule</span>
         </Nav.Link>
-        <Nav.Link  as={Link} to="/admin/Rate" className="nav-link dash">
+        <Nav.Link  as={Link} to="/admin/Review" className="nav-link dash">
           <FiSettings className="nav-icon" />
-          <span>Rate Manage</span>
+          <span>Reviews Manage</span>
         </Nav.Link>
           <Nav.Link  as={Link} to="/" className="nav-link dash">
               <FiHome className="nav-icon" />

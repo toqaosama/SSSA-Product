@@ -10,6 +10,7 @@ const AdminLayout = () => {
     if(!isAuthenticated() || !isAdmin()) {
         return <Navigate to="/" />;
     }
+
   return (
     <div className="admin-layout">
       <Sidebar />

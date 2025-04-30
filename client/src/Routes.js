@@ -18,7 +18,7 @@ import Product from "./Component/Admin/ProductManagement ";
 import Categories from "./Component/Admin/CategoryManagement ";
 import OfferTable from "./Component/Admin/OfferManagement";
 import Meeting from "./Component/Admin/MeetingManagement";
-import Rate from "./Component/Admin/RateManagment";
+import Review from "./Component/Admin/ReviewManagement";
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
       { path: "Categories", element: <Categories /> },
       { path: "OfferTable", element: <OfferTable /> },
       { path: "Meeting", element: <Meeting /> },
-      { path: "Rate", element: <Rate /> },
+      { path: "Review", element: <Review /> },
       // Add more admin routes here as needed
     ],
   },
