@@ -39,8 +39,9 @@ const register = async (req, res) => {
         // Random OTP generation for testing
         // In production, you would use sendOTP function to send the OTP to the user's email
         const otp = Math.floor(100000 + Math.random() * 900000).toString(); 
-        console.log("OTP: ", otp)
-        const qres = await query('INSERT INTO user (name, email, password, role, phone, token, otp, isver) VALUES (?, ?, ?, ?, ?, ?, ?, ?);', [name, email, hashedPassword, "user", phone, token, otp, 0]);
+        const isActiveDefault=1;
+
+        const qres = await query('INSERT INTO user (name, email, password, role, phone, token, otp, isver, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);', [name, email, hashedPassword, "user", phone, token, otp, 0, isActiveDefault]);
         const userId = qres.insertId;
         res.status(201).json({ message: 'User registered successfully. Please verify your email with the OTP sent.', userId });
     } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
-import { FiGrid, FiUsers, FiBarChart2, FiBell, FiSettings } from 'react-icons/fi';
+import {FiGrid, FiUsers, FiBarChart2, FiBell, FiSettings, FiHome} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react'; // or use an inline SVG if needed
 import './AdminSetting/Style/Sidebar.css';
@@ -48,6 +48,10 @@ const Sidebar = () => {
           <FiSettings className="nav-icon" />
           <span>Rate Manage</span>
         </Nav.Link>
+          <Nav.Link  as={Link} to="/" className="nav-link dash">
+              <FiHome className="nav-icon" />
+              <span>Back To Home Page</span>
+          </Nav.Link>
       </Nav>
     </nav>
   );

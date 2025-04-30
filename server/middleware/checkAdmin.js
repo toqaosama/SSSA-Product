@@ -20,6 +20,10 @@ const checkAdmin = async (req, res, next) => {
             return res.status(401).json({ message: 'User not verified' });
         }
 
+        if(!user[0].isActive) {
+            return res.status(403).json({ message: 'User is deactivated by admin' });
+        }
+
         if(user[0].role !== 'admin') {
             return res.status(403).json({ message: 'Access denied. Admins only.' });
         }

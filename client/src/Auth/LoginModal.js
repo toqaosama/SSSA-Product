@@ -60,16 +60,15 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
       });
 
       if (res && res.status === 200) {
-        setMessage({
-          type: 'success',
-          text: 'Login successful!'
-        });
+          setMessage({
+            type: 'success',
+            text: 'Login successful!'
+          });
 
-        setAuthToken(res.data.token);
-        
-        onClose();
-        navigate("/");
+          setAuthToken(res.data.token);
 
+          onClose();
+          navigate("/");
       } else {
         setMessage({
           type: 'error',
@@ -77,11 +76,22 @@ const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
         });
       }
     } catch (error) {
-      console.log(error)
-      setMessage({
-        type: 'error',
-        text: 'An error occurred while logging in. Please try again.'
-      });
+       if(error.status === 401) {
+          setMessage({
+            type: 'error',
+            text: 'Login failed. Wrong email or password'
+          });
+        } else if (error.status === 403) {
+          setMessage({
+            type: 'error',
+            text: 'Sorry, Your account is deactivated by admin'
+          });
+        } else {
+         setMessage({
+           type: 'error',
+           text: 'An error occurred while logging in. Please try again.'
+         });
+       }
     }
   };
 

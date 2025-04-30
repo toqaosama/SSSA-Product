@@ -24,17 +24,27 @@ const login = async (req, res) => {
 
         // use util.promisify to connect to the database and create query
         const query = util.promisify(connection.query).bind(connection);
-        const user = await query('SELECT * FROM user WHERE email = ?', [email]);
+        let user = await query('SELECT * FROM user WHERE email = ?', [email]);
         if (user.length === 0) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        const isMatch = await bcrypt.compare(password, user[0].password);
+        user = user[0];
+
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
+
+        if(user.isver !== 1) {
+            return res.status(404).json({ message: 'Your account is not verified' });
+        }
+
+        if(user.isActive !== 1) {
+            return res.status(403).json({ message: 'User is deactivated by admin' });
+        }
         
-        // TODO: Tell radwan about this 
+        // TODO: Tell radwan about this
         const token = crypto.randomBytes(16).toString('hex');
         await query('UPDATE user SET token = ? WHERE email = ?', [token, email]);
         res.status(200).json({ message: 'Login successful', token });

@@ -20,6 +20,10 @@ const checkAuth = async (req, res, next) => {
             return res.status(401).json({ message: 'User not verified' });
         }
 
+        if(!user[0].isActive) {
+            return res.status(403).json({ message: 'User is deactivated by admin' });
+        }
+
         // set req.user to user but without password
         const { password, ...userWithoutPassword } = user[0];
         req.user = userWithoutPassword;

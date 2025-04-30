@@ -14,7 +14,6 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
     const { id } = req.params;
-
     try {
         const query = util.promisify(connection.query).bind(connection);
         const user = await query('SELECT * FROM user WHERE id = ?', [id]);
@@ -39,7 +38,7 @@ const createUser = async (req, res) => {
   
     const otp = Math.floor(1000 + Math.random() * 9000).toString(); // simple 4-digit OTP
     const isver = 1;
-    const isActive = 0;
+    const isActiveDefault = 1;
   
     try {
         const query = util.promisify(connection.query).bind(connection);
@@ -54,8 +53,8 @@ const createUser = async (req, res) => {
 
         // Insert user
         const result = await query(
-        'INSERT INTO user (name, email, password, token, role, otp, isver, phone, isActive) VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?)',
-        [name, email, password, role, otp, isver, phone, isActive]
+            'INSERT INTO user (name, email, password, token, role, otp, isver, phone, isActive) VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?)',
+            [name, email, password, role, otp, isver, phone, isActiveDefault]
         );
 
         const createdUser = await query('SELECT id, name, email, role, otp, isver, phone, isActive FROM user WHERE id = ?', [result.insertId]);
