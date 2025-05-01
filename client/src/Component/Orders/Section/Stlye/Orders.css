@@ -120,6 +120,34 @@
   
   .btn-icon {
     margin-right: 6px;
+    height: 30px;
+    width: 60px;
+  }
+  .arrow-container {
+    position: relative;
+    width: 100%; /* Full width */
+    margin: 20px 0;
+  }
+  
+  .arrow-body {
+    background: #4CAF50; /* Arrow color */
+    color: white;
+    padding: 15px;
+    width: calc(100% - 30px); /* Account for arrow head */
+    position: relative;
+    z-index: 1;
+  }
+  
+  .arrow-head {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 30px solid #4CAF50; /* Same as arrow body */
+    z-index: 2;
   }
   
   @media (max-width: 768px) {

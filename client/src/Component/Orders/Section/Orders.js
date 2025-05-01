@@ -65,18 +65,24 @@ const Orders = () => {
             
             <div className="order-actions">
               <button className={`action-btn ${order.status === 'Processing' ? 'active' : ''}`}>
-                <House className="btn-icon" /> House
+                <House className="btn-icon" /> 
               </button>
-              <button className={`action-btn ${order.status === 'Shipped' ? 'active' : ''}`}>
-                <Truck className="btn-icon" /> Shipping
+              <button className={`action-btn ${order.status === 'Shipped' ?   'active' : ''}`}>
+                <Truck className="btn-icon" /> 
               </button>
               <button className={`action-btn ${order.status === 'Delivered' ? 'active' : ''}`}>
-                <CheckCircle className="btn-icon" /> Delivered
+                <CheckCircle className="btn-icon" /> 
               </button>
               <button className={`action-btn ${order.status === 'Received' ? 'active' : ''}`}>
-                <BoxArrowInDown className="btn-icon" /> Received
+                <BoxArrowInDown className="btn-icon" /> 
               </button>
+
             </div>
+            <div class="arrow-container">
+  <div class="arrow-body">Your dynamic content here</div>
+  <div class="arrow-head"></div>
+</div>
+            
           </div>
         ))}
       </div>
