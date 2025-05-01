@@ -7,28 +7,6 @@ const Profile = () => {
   return (
     <div className='profile-page-container'>
 
-      <div className='profile-sidebar'>
-        <div className='profile-sidebar-header'>
-          <h3>Hello, {userName}</h3>
-        </div>
-        <div className='profile-sidebar-item profile-active'>
-          <h3 as={Link} to="/admin/profile">Profile Details</h3>
-        </div>
-        <div className='profile-sidebar-item'>
-          <h3 as={Link} to="/admin/dashboard">Dashboard</h3>
-        </div>
-        <div className='profile-sidebar-item orderr'>
-          <Link to="/orders">
-            <h3>Orders</h3>
-          </Link>
-        </div>
-        <div className='profile-sidebar-item'>
-          <h3 as={Link} to="/admin/settings">Settings</h3>
-        </div>
-        <div className='profile-sidebar-item profile-signout'>
-          <h3 as={Link} to="/logout">Sign Out</h3>
-        </div>
-      </div>
 
       <div className='profile-content'>
         <form className='profile-form'>
