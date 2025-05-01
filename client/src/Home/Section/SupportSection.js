@@ -48,7 +48,8 @@ const SupportSection = () => {
           style={{
             borderColor: '#231f20',
             color: '#231f20',
-            backgroundColor: '#917243'
+            backgroundColor: '#917243',
+            marginBottom:'15%',marginTop:'-1%'
           }}
         >
           Contact Us

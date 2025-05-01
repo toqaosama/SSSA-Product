@@ -38,7 +38,14 @@ function AutoRotatingCards() {
             }`}
           >
             <Card.Body className="card-content">
-              <Card.Title style={{fontSize:'6rem'}}>{card.title}</Card.Title>
+              <Card.Title style={{
+  
+  '@media (max-width: 1230px)': { fontSize: '6rem' },
+  '@media (max-width: 992px)': { fontSize: '5rem' },
+  '@media (max-width: 768px)': { fontSize: '4rem' },
+  '@media (max-width: 576px)': { fontSize: '3rem' },
+  '@media (max-width: 400px)': { fontSize: '2rem' }
+}}>{card.title}</Card.Title>
               {/* <Card.Text>{card.title}</Card.Text> */}
             </Card.Body>
           </Card>

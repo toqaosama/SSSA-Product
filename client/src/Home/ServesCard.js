@@ -30,6 +30,9 @@ const BrandIdentityCard = () => {
     setTransform('');
   };
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+
   return (
     <Card 
       ref={cardRef}
@@ -137,7 +140,8 @@ const CardsPage = () => {
             fontWeight:'bolder',
             color:'#917243',
             marginTop:'2%',
-            marginBottom:'2%'
+            marginBottom:'2%',
+            
         }}>Our Services</h1>
       <Row>
         {[...Array(6)].map((_, index) => (
