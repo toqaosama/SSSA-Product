@@ -86,7 +86,7 @@ const Header = () => {
             <img 
               src={Logo} 
               alt="Backlink Group" 
-              width="150"
+              width="100"
               height="auto"
               className="logo-img"
             />
