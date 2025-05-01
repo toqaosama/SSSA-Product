@@ -7,7 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(sessionStorage.getItem('token') || null);
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Initially set loading to true
 
   const setAuthToken = useCallback((newToken) => {
     setToken(newToken);
@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
 
   const removeAuthToken = useCallback(() => {
     setToken(null);
+    setUser(null); // Ensure user is also cleared on logout
     sessionStorage.removeItem('token');
   }, []);
 
@@ -26,8 +27,9 @@ export const AuthProvider = ({ children }) => {
         if (response.status === 200) {
           const userData = await response.data;
           setUser(userData.user);
-          console.log(userData.user);
+          console.log('User loaded:', userData.user);
         } else {
+          console.log('Failed to load user (non-200 status), removing token.');
           removeAuthToken();
         }
       } catch (error) {
@@ -35,31 +37,30 @@ export const AuthProvider = ({ children }) => {
         removeAuthToken();
       }
     }
-    setLoading(false);
+    setLoading(false); // Set loading to false regardless of success or failure
   }, [token, removeAuthToken]);
 
   const isAuthenticated = useCallback(() => {
     return !!user;
-  }, [user]); 
+  }, [user]);
 
-  const isAdmin = useCallback(()=>{
-    return user.role==='admin';
-  }, [user])
+  const isAdmin = useCallback(() => {
+    return user?.role === 'admin'; // Use optional chaining to avoid errors if user is null
+  }, [user]);
 
   useEffect(() => {
     loadUser();
   }, [token, loadUser]);
 
-  if(loading) {
-    return (
-      <LoadingOverlay />
-    )
+  // Ensure LoadingOverlay is shown during the initial load
+  if (loading) {
+    return <LoadingOverlay />;
   }
-  
+
   return (
-    <AuthContext.Provider value={{ token, setAuthToken, removeAuthToken, user, loading, isAuthenticated, isAdmin}}>
-      {children}
-    </AuthContext.Provider>
+      <AuthContext.Provider value={{ token, setAuthToken, removeAuthToken, user, loading, isAuthenticated, isAdmin }}>
+        {children}
+      </AuthContext.Provider>
   );
 };
 

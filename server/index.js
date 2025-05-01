@@ -46,10 +46,10 @@ app.get('/category/:id/products', category.getCategoryProducts); // Get products
 
 // Product
 const product = require('./routes/product/product');
-app.post('/product/create', checkAdmin, product.createProduct); // Create a new product
+app.post('/product/create', checkAdmin, upload.array("images"), product.createProduct); // Create a new product
 app.post('/product/delete/:id', checkAdmin, product.deleteProduct); // Delete a product by ID
 app.get('/products', product.getAllProducts); // Get all products
-app.post('/product/update/:id', checkAdmin, product.updateProduct); // Update a product by ID
+app.post('/product/update/:id', checkAdmin, upload.array("images"), product.updateProduct); // Update a product by ID
 
 // Review
 const review = require('./routes/reviews/reviews');

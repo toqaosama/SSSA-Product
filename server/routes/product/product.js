@@ -4,17 +4,19 @@
     const query = util.promisify(connection.query).bind(connection);
 
     const createProduct = async (req, res) => {
-        const { name, Category_id , description } = req.body;
+        const { name, category_id , descriptions, price } = req.body;
         const images = req.files; // multer stores uploaded files in req.files
-    
+
+        console.log(req.body)
+
         try {
             //
             // Insert product name
-            const result = await query("INSERT INTO product (name ,category_id ) VALUES(?,?)", [name,Category_id]);
+            const result = await query("INSERT INTO product (name ,category_id, price ) VALUES(?,?, ?)", [name,category_id, price]);
             const product_id = result.insertId;
     
             // Insert descriptions
-            for (const item of description) {
+            for (const item of descriptions) {
                 if (!item.header || !item.description) {
                     return res.status(400).json({ error: 'Each description item must have header and description.' });
                 }
@@ -23,7 +25,7 @@
                     [product_id, item.header, item.description]
                 );
             }
-    
+
             // Insert uploaded images (only if images exist)
             if (Array.isArray(images) && images.length > 0) {
                 for (const image of images) {
@@ -43,13 +45,15 @@
     };
 
     const updateProduct = async (req, res) => {
-        const { product_id } = req.params;
-        const { name, category_id, description } = req.body;
+        const { id } = req.params;
+        const { name, category_id, description, price } = req.body;
         const images = req.files; // multer stores uploaded files
+
+        console.log(req.body)
     
         try {
             // 1. Get the current product data
-            const [currentProduct] = await query("SELECT * FROM product WHERE product_id = ?", [product_id]);
+            const [currentProduct] = await query("SELECT * FROM product WHERE id = ?", [id]);
             if (!currentProduct) {
                 return res.status(404).json({ message: 'Product not found' });
             }
@@ -59,14 +63,14 @@
             const updatedCategory = category_id || currentProduct.category_id;
     
             await query(
-                "UPDATE product SET name = ?, category_id = ? WHERE product_id = ?",
-                [updatedName, updatedCategory, product_id]
+                "UPDATE product SET name = ?, category_id = ?, price=? WHERE id = ?",
+                [updatedName, updatedCategory, price, id]
             );
     
             // 3. Update descriptions if provided
             if (description && Array.isArray(description)) {
                 // Delete old descriptions first (optional, depending on your case)
-                await query("DELETE FROM desc_product WHERE product_id = ?", [product_id]);
+                await query("DELETE FROM desc_product WHERE product_id = ?", [id]);
     
                 for (const item of description) {
                     if (!item.header || !item.description) {
@@ -74,7 +78,7 @@
                     }
                     await query(
                         "INSERT INTO desc_product (product_id, head, `desc`) VALUES (?, ?, ?)",
-                        [product_id, item.header, item.description]
+                        [id, item.header, item.description]
                     );
                 }
             }
@@ -85,7 +89,7 @@
                     const imagePath = image.filename;
                     await query(
                         "INSERT INTO img_product (product_id, img) VALUES (?, ?)",
-                        [product_id, imagePath]
+                        [id, imagePath]
                     );
                 }
             }
@@ -98,17 +102,17 @@
     };
 
     const deleteProduct = async (req, res) => {
-        const { product_id } = req.params;
+        const { id } = req.params;
     
         try {
             // Delete product images
-            await query("DELETE FROM img_product WHERE product_id = ?", [product_id]);
+            await query("DELETE FROM img_product WHERE product_id = ?", [id]);
     
             // Delete product descriptions
-            await query("DELETE FROM desc_product WHERE product_id = ?", [product_id]);
+            await query("DELETE FROM desc_product WHERE product_id = ?", [id]);
     
             // Delete product
-            await query("DELETE FROM product WHERE product_id = ?", [product_id]);
+            await query("DELETE FROM product WHERE id = ?", [id]);
     
             res.status(200).json({ message: 'Product deleted successfully.' });
         } catch (error) {
@@ -121,12 +125,14 @@
         try {
             const queryStr = `
                 SELECT 
-                    p.name,
+                    p.*,
+                    c.name AS categoryName,
                     GROUP_CONCAT(DISTINCT CONCAT(d.head, '||', d.desc) SEPARATOR ';;') AS desc_combined,
                     GROUP_CONCAT(DISTINCT i.img SEPARATOR ';;') AS imgs
                 FROM product p
                 LEFT JOIN desc_product d ON p.id = d.product_id
                 LEFT JOIN img_product i ON p.id = i.product_id
+                LEFT JOIN category c ON p.category_id = c.id
                 GROUP BY p.id
             `;
     
