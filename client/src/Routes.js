@@ -8,6 +8,7 @@ import Support from "./Component/Support/Section/Support";
 import Categores from "./Component/Categores/Categores";
 import Sales from "./Component/Sales/Section/Sales";
 import Offers from "./Component/Offers/Section/Offers";
+import ProductShow from "./Component/Product/Product";
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
       { path: "Offers", element: <Offers /> }, 
       { path: "Sales", element: <Sales /> }, 
       { path: "Profile", element: <Profile /> }, 
+      { path: "ProductShow", element: <ProductShow /> }, 
      
    
     ],
