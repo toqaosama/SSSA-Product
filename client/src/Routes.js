@@ -19,6 +19,7 @@ import Categories from "./Component/Admin/CategoryManagement ";
 import OfferTable from "./Component/Admin/OfferManagement";
 import Meeting from "./Component/Admin/MeetingManagement";
 import Review from "./Component/Admin/ReviewManagement";
+import Profile from "./Component/Profile/Section/Profile";
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +34,7 @@ export const router = createBrowserRouter([
       { path: "Categores", element: <Categores /> }, 
       { path: "Offers", element: <Offers /> }, 
       { path: "Sales", element: <Sales /> }, 
+      { path: "Profile", element: <Profile /> }, 
      
    
     ],
