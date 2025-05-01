@@ -1,0 +1,172 @@
+.product-gallery-container {
+    padding-top: 0px;
+    z-index: auto;
+    box-sizing: border-box;
+    padding: 5%;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    border: 0px none rgb(119, 119, 119);
+    vertical-align: baseline;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    font-stretch: 50%;
+    line-height: 25.6px;
+    font-family: SatoshiVariable, Arial, Helvetica, sans-serif;
+    font-optical-sizing: auto;
+    font-kerning: auto;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    font-size: 16px;
+    position: relative;
+    justify-items: center;
+    justify-content: center;
+  }
+  
+  .discount-badge {
+    top: 15px;
+    right: 0;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 30%;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .discount-badge span {
+    background-color: rgb(255, 255, 255);
+    direction: ltr;
+    padding: 5px 10px;
+    min-width: 50px;
+    color: rgb(36, 36, 36);
+    text-align: center;
+    text-transform: uppercase;
+    word-break: break-all;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14.4px;
+    box-sizing: border-box;
+    margin: 0px;
+    border: 0px none rgb(36, 36, 36);
+    vertical-align: baseline;
+    font-style: normal;
+    font-variant: normal;
+    font-stretch: 100%;
+    font-family: SatoshiVariable, Arial, Helvetica, sans-serif;
+    font-optical-sizing: auto;
+    font-kerning: auto;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+  }
+  
+  .main-carousel {
+    position: relative;
+    overflow: clip;
+    padding: 0px;
+    margin-left: -5px;
+    margin-right: -5px;
+    touch-action: pan-y;
+    border-radius: 0.001px;
+    display: block;
+    box-sizing: border-box;
+    border: 0px none rgb(119, 119, 119);
+    vertical-align: baseline;
+  }
+  
+  .main-carousel .carousel-inner {
+    height: 912.362px;
+  }
+  
+  .main-image {
+    width: 100%;
+    border-radius: 0.001px;
+    max-width: 100%;
+    height: auto;
+    border: 0px none rgb(94, 104, 33);
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .thumbnail-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .thumbnail-item {
+    flex: 0 0 20%;
+    max-width: 20%;
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+    opacity: 0.5;
+  }
+  
+  .thumbnail-item.active {
+    opacity: 1;
+  }
+  
+  .thumbnail-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.001px;
+    border: 1px solid transparent;
+  }
+  
+  .thumbnail-item.active .thumbnail-image {
+    border-color: #5e6821;
+  }
+  
+  .enlarge-button {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 3;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .enlarge-link {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    min-width: 50.4px;
+    height: 50.4px;
+    border-radius: 36px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease 0s;
+  }
+  
+  .enlarge-link span {
+    overflow: hidden;
+    max-width: 0px;
+    white-space: nowrap;
+    font-size: 14.4px;
+    font-weight: 600;
+    transition: padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) 0s, 
+                max-width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) 0s;
+  }
+  
+  .enlarge-link:hover span {
+    max-width: 200px;
+    padding: 0 10px;
+  }
