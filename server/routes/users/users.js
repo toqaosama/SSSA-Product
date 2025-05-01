@@ -1,6 +1,7 @@
 const util = require('util');
 const connection = require('../../database/connection');
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 const getAllUsers = async (req, res) => {
     try {
@@ -40,7 +41,6 @@ const createUser = async (req, res) => {
     const otp = Math.floor(1000 + Math.random() * 9000).toString(); // simple 4-digit OTP
     const isver = 1;
     const isActiveDefault = 1;
-  
     try {
         const query = util.promisify(connection.query).bind(connection);
     
@@ -55,7 +55,7 @@ const createUser = async (req, res) => {
         const hashPassword = await bcrypt.hash(password, 10);
         // Insert user
         const result = await query(
-            'INSERT INTO user (name, email, password, token, role, otp, isver, phone, isActive) VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?)',
+            'INSERT INTO user (name, email, password, token, role, otp, isver, phone, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [name, email, hashPassword,token, role, otp, isver, phone, isActiveDefault]
         );
 
