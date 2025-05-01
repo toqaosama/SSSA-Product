@@ -15,6 +15,65 @@
     background-color: var(--profile-dark-bg);
   }
   
+  /* Existing root variables and base styles remain the same */
+
+/* Sidebar item styling - consistent for all items */
+.profile-sidebar-item {
+  padding: 16px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  margin: 4px 0; /* Add slight spacing between items */
+}
+
+.profile-sidebar-item h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--profile-text-dark);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for all sidebar items (including Orders) */
+.profile-sidebar-item:hover {
+  background-color: rgba(145, 114, 67, 0.1); /* Gold tint */
+  border-left: 4px solid var(--profile-gold);
+}
+
+.profile-sidebar-item:hover h3 {
+  color: var(--profile-gold); /* Gold text on hover */
+}
+
+/* Active state (for Profile Details) */
+.profile-sidebar-item.profile-active {
+  background-color: rgba(145, 114, 67, 0.1);
+  border-left: 4px solid var(--profile-gold);
+}
+
+.profile-sidebar-item.profile-active h3 {
+  color: var(--profile-gold);
+}
+
+/* Orders link specific (remove underline + match hover) */
+.profile-sidebar-item.orderr a {
+  text-decoration: none;
+  display: block; /* Ensure full area is clickable */
+}
+
+.profile-sidebar-item.orderr h3 {
+  padding: 0; /* Remove extra padding (handled by parent) */
+}
+
+/* Sign Out styling (red remains) */
+.profile-sidebar-item.profile-signout:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+  border-left: 4px solid var(--profile-error-red);
+}
+
+.profile-sidebar-item.profile-signout:hover h3 {
+  color: var(--profile-error-red);
+}
+
   /* Sidebar styling */
   .profile-sidebar {
     width: 300px;
