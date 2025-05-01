@@ -1,0 +1,209 @@
+:root {
+    --light-bg: #ECECEC;     /* Sidebar background */
+    --dark-bg: #FFFFFF;      /* Form background (white) */
+    --text-dark: #231F20;    /* Dark text */
+    --gold: #917243;         /* Gold accent color */
+    --gold-light: #b08d5a;   /* Lighter gold */
+    --error-red: #e74c3c;    /* Error/Sign out color */
+  }
+  
+  /* Base styles */
+  .profile-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-bg);
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 300px;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    padding: 30px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar-header {
+    padding: 0 30px 20px 30px;
+    border-bottom: 1px solid var(--gold);
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-header h3 {
+    color: var(--text-dark);
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .sidebar-item {
+    padding: 16px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+  }
+  
+  .sidebar-item h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .sidebar-item:hover {
+    background-color: rgba(35, 31, 32, 0.05);
+  }
+  
+  .sidebar-item.active {
+    background-color: rgba(145, 114, 67, 0.1);
+    color: var(--gold);
+    border-left: 4px solid var(--gold);
+  }
+  
+  .sidebar-item.signout {
+    margin-top: auto;
+    color: var(--error-red);
+  }
+  
+  .sidebar-item.signout:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+  }
+  
+  /* Profile content - full width */
+  .profile-content {
+    flex: 1;
+    padding: 40px;
+    background-color: var(--dark-bg);
+  }
+  
+  .profile-form {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--dark-bg);
+    color: var(--text-dark);
+  }
+  
+  .form-title {
+    color: var(--gold);
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 28px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 14px 18px;
+    background-color: var(--dark-bg);
+    color: var(--text-dark);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(145, 114, 67, 0.2);
+  }
+  
+  textarea.form-input {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .save-button {
+    background-color: var(--gold);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .save-button:hover {
+    background-color: var(--gold-light);
+  }
+  
+  .cancel-button {
+    background-color: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 14px 30px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cancel-button:hover {
+    background-color: rgba(145, 114, 67, 0.1);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1024px) {
+    .sidebar {
+      width: 280px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-container {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      padding: 20px 0;
+    }
+    
+    .profile-content {
+      padding: 30px;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form-actions {
+      flex-direction: column;
+    }
+    
+    .save-button, .cancel-button {
+      width: 100%;
+    }
+  }

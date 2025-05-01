@@ -134,30 +134,33 @@ const Header = () => {
               </span>
               {/* Authentication Section */}
               {isLoggedIn ? (
-                <NavDropdown title={<i style={{ color: 'white', fontSize: '30px' }} className="fas fa-user-circle"></i>}
+                <NavDropdown 
+                title={<i style={{ color: 'white', fontSize: '30px' }} className="fas fa-user-circle "></i>}
                   id="profile-dropdown"
                   align="end"
-                  className="profile-dropdown"
+                  className="nav-dropdown-white"
+                  style={{color:'#917243'}}
+                 
                 >
                   <NavDropdown.Item as={Link} to="/profile" className="dropdown-item-white">
                     <i className="fas fa-user me-2"></i> Profile
                   </NavDropdown.Item>
                   {isAdmin() && <NavDropdown.Item as={Link} to="/admin" className="dropdown-item-white">
-                    <i className="fas fa-cog me-2"></i> Admin Dashboard
+                    <i style={{color:'#917243'}} className="fas fa-cog me-2"></i> Admin Dashboard
                   </NavDropdown.Item>
                   }
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleLogout} className="dropdown-item-white">
-                    <i className="fas fa-sign-out-alt me-2"></i> Logout
+                    <i style={{color:'#917243'}} className="fas fa-sign-out-alt me-2"></i> Logout
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <>
                   <Nav.Link onClick={openLogin} className="nav-link-icon Login" title="Login">
-                    <i className="fas fa-sign-in-alt"></i>
+                    <i style={{color:'white'}}  className="fas fa-sign-in-alt"></i>
                   </Nav.Link>
                   <Nav.Link onClick={openSignup} className="nav-link-icon Login" title="Register">
-                    <i className="fas fa-user-plus"></i>
+                    <i style={{color:'white'}}className="fas fa-user-plus"></i>
                   </Nav.Link>
                 </>
               )}
