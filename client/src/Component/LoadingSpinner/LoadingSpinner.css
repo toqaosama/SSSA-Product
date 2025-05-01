@@ -1,0 +1,22 @@
+/* Spinner.css */
+.loading-spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Adjust as needed */
+    width: 100%; /* Make sure it takes the full width of its parent if needed */
+}
+
+.loading-spinner {
+    border: 6px solid #917243; /* Gold color */
+    border-top: 6px solid #231F20; /* Black color */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

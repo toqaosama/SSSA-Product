@@ -1,10 +1,11 @@
 // src/components/LoadingOverlay.js
 import React from 'react';
+import LoadingSpinner from "../Component/LoadingSpinner/LoadingSpinner";
 
 const LoadingOverlay = () => {
   return (
     <div style={overlayStyles}>
-      <div style={spinnerStyles}></div>
+      <LoadingSpinner />
     </div>
   );
 };
@@ -22,23 +23,5 @@ const overlayStyles = {
   zIndex: 9999, // high z-index to be above everything
   pointerEvents: 'auto', // capture all events (disable interactions behind)
 };
-
-const spinnerStyles = {
-  width: '50px',
-  height: '50px',
-  border: '6px solid #ccc',
-  borderTop: '6px solid #007bff', // blue color
-  borderRadius: '50%',
-  animation: 'spin 1s linear infinite',
-};
-
-// Add spin animation via style
-const styleSheet = document.styleSheets[0];
-styleSheet.insertRule(`
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-`, styleSheet.cssRules.length);
 
 export default LoadingOverlay;
