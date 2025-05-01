@@ -23,10 +23,10 @@ const SplitPage = () => {
             <img 
               src={Logo} 
               alt="Backlink Group" 
-              width="100"
+              width="80"
               className="logo-img"
             />
-            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>toqa</h6>
+            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>    </h6>
           </div>
         </Col>
         
@@ -46,10 +46,10 @@ const SplitPage = () => {
             <img 
               src={Logo} 
               alt="Backlink Group" 
-              width="100"
+              width="80"
               className="logo-img"
             />
-            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>toqa</h6>
+            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>    </h6>
           </div>
         </Col>
         <Col md={3} style={{ 
@@ -68,10 +68,10 @@ const SplitPage = () => {
             <img 
               src={Logo} 
               alt="Backlink Group" 
-              width="100"
+              width="80"
               className="logo-img"
             />
-            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>toqa</h6>
+            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>    </h6>
           </div>
         </Col>
         <Col md={3} style={{ 
@@ -90,10 +90,10 @@ const SplitPage = () => {
             <img 
               src={Logo} 
               alt="Backlink Group" 
-              width="100"
+              width="80"
               className="logo-img"
             />
-            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>toqa</h6>
+            <h6 style={{ fontSize: '30px', fontWeight: '', color: '#917243', margin: 0 }}>     </h6>
           </div>
         </Col>
       </Row>
