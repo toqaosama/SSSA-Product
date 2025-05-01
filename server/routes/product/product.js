@@ -8,6 +8,7 @@
         const images = req.files; // multer stores uploaded files in req.files
     
         try {
+            //
             // Insert product name
             const result = await query("INSERT INTO product (name ,category_id ) VALUES(?,?)", [name,Category_id]);
             const product_id = result.insertId;
