@@ -10,7 +10,7 @@ const createOffer = async (req, res) => {
         start_date,
         end_date,
         category_id,
-        product_ids // should be an array if type is "products"
+        product_ids
     } = req.body;
 
     if (!offer_name || !offer_description || !percentage || !type || !start_date || !end_date) {
