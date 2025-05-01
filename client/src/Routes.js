@@ -22,6 +22,7 @@ import Review from "./Component/Admin/ReviewManagement";
 import Profile from "./Component/Profile/Section/Profile";
 import Orders from "./Component/Orders/Section/Orders";
 import Cart from "./Component/Cart/Section/Cart";
+import ProductsDetails from './Component/ProductsDetails/Section/ProductsDetails'
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +40,8 @@ export const router = createBrowserRouter([
       { path: "Profile", element: <Profile /> }, 
       { path: "Orders", element: <Orders /> }, 
       { path: "Cart", element: <Cart /> }, 
+      { path: "ProductsDetails", element: <ProductsDetails /> }, 
+   
     ],
   },
   {
