@@ -145,6 +145,12 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to="/profile" className="dropdown-item-white">
                     <i className="fas fa-user me-2"></i> Profile
                   </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Orders" className="dropdown-item-white">
+  <i className="fas fa-clipboard-list me-2"></i> Orders
+</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Cart" className="dropdown-item-white">
+  <i className="fas fa-shopping-cart me-2"></i> Cart
+</NavDropdown.Item>
                   {isAdmin() && <NavDropdown.Item as={Link} to="/admin" className="dropdown-item-white">
                     <i style={{color:'#917243'}} className="fas fa-cog me-2"></i> Admin Dashboard
                   </NavDropdown.Item>
@@ -153,7 +159,7 @@ const Header = () => {
                   <NavDropdown.Item onClick={handleLogout} className="dropdown-item-white">
                     <i style={{color:'#917243'}} className="fas fa-sign-out-alt me-2"></i> Logout
                   </NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown>  
               ) : (
                 <>
                   <Nav.Link onClick={openLogin} className="nav-link-icon Login" title="Login">

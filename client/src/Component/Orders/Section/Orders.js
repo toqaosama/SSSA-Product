@@ -4,9 +4,10 @@ import {
   Truck, 
   CheckCircle, 
   BoxArrowInDown,
-  List // Added List icon (or choose another)
+  List
 } from 'react-bootstrap-icons';
 import './Stlye/Orders.css';
+
 
 const Orders = () => {
   const orders = [
@@ -36,11 +37,14 @@ const Orders = () => {
     }
   ];
 
+  const getStatusIndex = (status) => {
+    const statusOrder = ['Processing', 'Shipped', 'Delivered', 'Received'];
+    return statusOrder.indexOf(status);
+  };
+
   return (
     <div className="orders-page">
-      <h2 className="page-title">
-        <List className="title-icon" /> My Orders
-      </h2>
+
 
       <div className="orders-container">
         <div className="orders-header">
@@ -50,43 +54,62 @@ const Orders = () => {
           <div className="header-item actions">Actions</div>
         </div>
 
-        {orders.map((order, index) => (
-          <div key={index} className="order-item">
-            <div className="order-product">
-              <div className="product-name">{order.product}</div>
-              <div className="order-id">{order.id}</div>
-            </div>
-            
-            <div className="order-date">{order.date}</div>
-            
-            <div className={`order-status ${order.status.toLowerCase()}`}>
-              {order.status}
-            </div>
-            
-            <div className="order-actions">
-              <button className={`action-btn ${order.status === 'Processing' ? 'active' : ''}`}>
-                <House className="btn-icon" /> 
-              </button>
-              <button className={`action-btn ${order.status === 'Shipped' ?   'active' : ''}`}>
-                <Truck className="btn-icon" /> 
-              </button>
-              <button className={`action-btn ${order.status === 'Delivered' ? 'active' : ''}`}>
-                <CheckCircle className="btn-icon" /> 
-              </button>
-              <button className={`action-btn ${order.status === 'Received' ? 'active' : ''}`}>
-                <BoxArrowInDown className="btn-icon" /> 
-              </button>
-
-            </div>
-            <div class="arrow-container">
-
+        {orders.map((order, index) => {
+          const statusIndex = getStatusIndex(order.status);
+          
+          return (
+            <div key={index} className="order-item">
+              <div className="order-product">
+                <div className="product-name">{order.product}</div>
+                <div className="order-id">{order.id}</div>
+              </div>
               
-  <div class="arrow-body">Your dynamic content here</div>
-  <div class="arrow-head"></div>
-</div>
-            
-          </div>
-        ))}
+              <div className="order-date">{order.date}</div>
+              
+              <div className={`order-status ${order.status.toLowerCase()}`}>
+                {order.status}
+              </div>
+              
+              <div className="order-actions">
+                <div className="status-tracker">
+                  <div className={`tracker-step ${statusIndex >= 0 ? 'active' : ''}`}>
+                    <div className="step-icon-container">
+                      <House className="step-icon" />
+                    </div>
+                    <div className="step-label">Processing</div>
+                  </div>
+                  
+                  <div className={`tracker-connector ${statusIndex >= 1 ? 'active' : ''}`}></div>
+                  
+                  <div className={`tracker-step ${statusIndex >= 1 ? 'active' : ''}`}>
+                    <div className="step-icon-container">
+                      <Truck className="step-icon" />
+                    </div>
+                    <div className="step-label">Shipped</div>
+                  </div>
+                  
+                  <div className={`tracker-connector ${statusIndex >= 2 ? 'active' : ''}`}></div>
+                  
+                  <div className={`tracker-step ${statusIndex >= 2 ? 'active' : ''}`}>
+                    <div className="step-icon-container">
+                      <CheckCircle className="step-icon" />
+                    </div>
+                    <div className="step-label">Delivered</div>
+                  </div>
+                  
+                  <div className={`tracker-connector ${statusIndex >= 3 ? 'active' : ''}`}></div>
+                  
+                  <div className={`tracker-step ${statusIndex >= 3 ? 'active' : ''}`}>
+                    <div className="step-icon-container">
+                      <BoxArrowInDown className="step-icon" />
+                    </div>
+                    <div className="step-label">Received</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
