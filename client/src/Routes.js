@@ -21,6 +21,7 @@ import Meeting from "./Component/Admin/MeetingManagement";
 import Review from "./Component/Admin/ReviewManagement";
 import Profile from "./Component/Profile/Section/Profile";
 import Orders from "./Component/Orders/Section/Orders";
+import Cart from "./Component/Cart/Section/Cart";
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +38,7 @@ export const router = createBrowserRouter([
       { path: "Sales", element: <Sales /> }, 
       { path: "Profile", element: <Profile /> }, 
       { path: "Orders", element: <Orders /> }, 
+      { path: "Cart", element: <Cart /> }, 
     ],
   },
   {
