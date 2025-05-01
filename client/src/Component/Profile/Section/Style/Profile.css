@@ -23,7 +23,7 @@
     padding: 30px 0;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   }
-  
+ 
   .profile-sidebar-header {
     padding: 0 30px 20px 30px;
     border-bottom: 1px solid var(--profile-gold);
@@ -36,7 +36,33 @@
     font-size: 20px;
     font-weight: 600;
   }
+  .profile-sidebar-item.orderr h3 {
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  .profile-sidebar-item.orderr a {
+    text-decoration: none;
+  }
   
+  /* Optional: Style the <h3> inside the link */
+  .profile-sidebar-item.orderr h3 {
+    color: #333;
+    margin: 0;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    /* Add other styles as needed */
+  }
+  
+  .profile-sidebar-item.orderr h3:hover {
+
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
   .profile-sidebar-item {
     padding: 16px 30px;
     cursor: pointer;

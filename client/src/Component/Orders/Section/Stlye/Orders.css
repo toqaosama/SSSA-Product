@@ -1,0 +1,140 @@
+.orders-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .page-title {
+    display: flex;
+    align-items: center;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .title-icon {
+    margin-right: 10px;
+    font-size: 28px;
+  }
+  
+  .orders-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .orders-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    font-weight: 600;
+    color: #495057;
+  }
+  
+  .order-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  
+  .order-item:last-child {
+    border-bottom: none;
+  }
+  
+  .order-product {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .order-id {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .order-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    width: fit-content;
+  }
+  
+  .order-status.processing {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .order-status.shipped {
+    background-color: #cce5ff;
+    color: #004085;
+  }
+  
+  .order-status.delivered {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .order-status.received {
+    background-color: #e2e3e5;
+    color: #383d41;
+  }
+  
+  .order-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .action-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .action-btn.active {
+    background-color: #917243;
+    color: white;
+    border-color: #917243;
+  }
+  
+  .action-btn:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .action-btn.active:hover {
+    background-color: #7a5f38;
+  }
+  
+  .btn-icon {
+    margin-right: 6px;
+  }
+  
+  @media (max-width: 768px) {
+    .orders-header {
+      display: none;
+    }
+  
+    .order-item {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      padding: 15px;
+    }
+  
+    .order-actions {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
