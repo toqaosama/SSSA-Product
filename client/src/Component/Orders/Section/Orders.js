@@ -1,117 +1,94 @@
-import React from 'react';
-import { 
-  House, 
-  Truck, 
-  CheckCircle, 
-  BoxArrowInDown,
-  List
-} from 'react-bootstrap-icons';
+import React, { useState, useEffect } from 'react';
+// Removed unused icons as the status tracker is simplified
+// import {
+//   House,
+//   Truck,
+//   CheckCircle,
+//   BoxArrowInDown,
+//   List
+// } from 'react-bootstrap-icons';
 import './Stlye/Orders.css';
+import authApi from '../../../api/authApi';
+import {Badge} from "react-bootstrap";
 
+const badge_per_status = {
+  'waiting' : 'warning',
+  'processing': 'info',
+  'done':'success',
+  'cancelled':'danger',
+}
 
 const Orders = () => {
-  const orders = [
-    {
-      id: '#ORD-001',
-      product: 'Wireless Headphones',
-      date: '2023-06-15',
-      status: 'Processing'
-    },
-    {
-      id: '#ORD-002',
-      product: 'Smart Watch',
-      date: '2023-06-18',
-      status: 'Shipped'
-    },
-    {
-      id: '#ORD-003',
-      product: 'Running Shoes',
-      date: '2023-06-20',
-      status: 'Delivered'
-    },
-    {
-      id: '#ORD-004',
-      product: 'Backpack',
-      date: '2023-06-22',
-      status: 'Received'
-    }
-  ];
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const getStatusIndex = (status) => {
-    const statusOrder = ['Processing', 'Shipped', 'Delivered', 'Received'];
-    return statusOrder.indexOf(status);
+  const fetchOrders = async () => {
+    try {
+      // Use the authApi axios instance to make a GET request to the specified endpoint
+      const response = await authApi.get('/service-order/me');
+      console.log(response.data.orders);
+      setOrders(response.data.orders); // Update state with the orders array from the API response
+      setLoading(false);
+    } catch (err) {
+      setError(err);
+      setLoading(false);
+      console.error("Failed to fetch orders:", err);
+    }
   };
 
+  useEffect(() => {
+    fetchOrders();
+  }, [authApi]); // Added authApi to dependency array if it could change, though typically it's stable
+
+  if (loading) {
+    return <div className="orders-page">Loading orders...</div>;
+  }
+
+  if (error) {
+    // Display a more user-friendly error message
+    return <div className="orders-page">Error loading orders. Please try again later.</div>;
+  }
+
   return (
-    <div className="orders-page">
+      <div className="orders-page">
+        <div className="orders-container">
+          <div className="orders-header">
+            <div className="header-item product">Service </div> {/* Changed label to match API data */}
+            <div className="header-item date">Order Date</div>
+            <div className="header-item status">Status</div>
+            {/* <div className="header-item actions">Actions</div> */}
+          </div>
 
+          {orders.length === 0 ? (
+              <div className="no-orders">No orders found.</div>
+          ) : (
+              orders.map((order) => {
+                // Use order.id from the API response for the key
+                return (
+                    <div key={order.id} className="order-item">
+                      <div className="order-product">
+                        {/* Display product_id from API */}
+                        <div className="product-name"> {order.productName}</div>
+                        {/* Display order id from API */}
+                        <div className="order-id">Order ID: #{order.id}</div>
+                      </div>
 
-      <div className="orders-container">
-        <div className="orders-header">
-          <div className="header-item product">Product</div>
-          <div className="header-item date">Order Date</div>
-          <div className="header-item status">Status</div>
-          <div className="header-item actions">Actions</div>
+                      {/* Display created_at from API */}
+                      {/* Format date using toLocaleDateString for better readability */}
+                      <div className="order-date">{new Date(order.created_at).toLocaleDateString()}</div>
+
+                      {/* Display status from API. You might want to add classes based on status if needed */}
+                      <Badge variant={badge_per_status[order.status]}>
+                        {order.status}
+                      </Badge>
+
+                    </div>
+                );
+              })
+          )}
         </div>
-
-        {orders.map((order, index) => {
-          const statusIndex = getStatusIndex(order.status);
-          
-          return (
-            <div key={index} className="order-item">
-              <div className="order-product">
-                <div className="product-name">{order.product}</div>
-                <div className="order-id">{order.id}</div>
-              </div>
-              
-              <div className="order-date">{order.date}</div>
-              
-              <div className={`order-status ${order.status.toLowerCase()}`}>
-                {order.status}
-              </div>
-              
-              <div className="order-actions">
-                <div className="status-tracker">
-                  <div className={`tracker-step ${statusIndex >= 0 ? 'active' : ''}`}>
-                    <div className="step-icon-container">
-                      <House className="step-icon" />
-                    </div>
-                    <div className="step-label">Processing</div>
-                  </div>
-                  
-                  <div className={`tracker-connector ${statusIndex >= 1 ? 'active' : ''}`}></div>
-                  
-                  <div className={`tracker-step ${statusIndex >= 1 ? 'active' : ''}`}>
-                    <div className="step-icon-container">
-                      <Truck className="step-icon" />
-                    </div>
-                    <div className="step-label">Shipped</div>
-                  </div>
-                  
-                  <div className={`tracker-connector ${statusIndex >= 2 ? 'active' : ''}`}></div>
-                  
-                  <div className={`tracker-step ${statusIndex >= 2 ? 'active' : ''}`}>
-                    <div className="step-icon-container">
-                      <CheckCircle className="step-icon" />
-                    </div>
-                    <div className="step-label">Delivered</div>
-                  </div>
-                  
-                  <div className={`tracker-connector ${statusIndex >= 3 ? 'active' : ''}`}></div>
-                  
-                  <div className={`tracker-step ${statusIndex >= 3 ? 'active' : ''}`}>
-                    <div className="step-icon-container">
-                      <BoxArrowInDown className="step-icon" />
-                    </div>
-                    <div className="step-label">Received</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
       </div>
-    </div>
   );
 };
 

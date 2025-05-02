@@ -85,11 +85,12 @@ app.delete("/offers/:id/delete", offers.deleteOffer); // Delete an offer by ID
 app.put("/offers/:id/update", offers.updateOffer); // Delete an offer by ID
 
 
-
-
-
-
-
+// Services Orders routes
+const servicesOrders = require('./routes/services_orders/services_orders');
+app.post("/service-order", checkAuth, servicesOrders.createServiceOrder);
+app.get("/service-order", checkAdmin, servicesOrders.getAllServiceOrders);
+app.get("/service-order/me", checkAuth, servicesOrders.getUserOrders);
+app.delete("/service-order", checkAuth, servicesOrders.deleteServiceOrder)
 
 // Init server
 app.listen(port, () => {
