@@ -13,7 +13,31 @@
     color: #917243;
     margin-top: 2%;
 }
-
+/* Remove all styling from anchor tags */
+a {
+    color: inherit; /* Inherit text color from parent */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Show pointer cursor on hover */
+  }
+  
+  /* Optionally add hover effect if desired */
+  a:hover {
+    text-decoration: none; /* Ensure no underline on hover */
+    color: inherit; /* Maintain same color on hover */
+  }
+  
+  .support-container a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .support-container a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* etc... */
 .support-subtitle {
     font-weight: bold;
     color: #231f20;
