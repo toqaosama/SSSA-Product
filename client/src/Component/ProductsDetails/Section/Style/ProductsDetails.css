@@ -245,12 +245,12 @@
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s;
+    width: 50%;
 }
 
 .add-to-cart {
     background-color: #917243; /* Gold-brown */
     color: white;
-    flex: 2;
 }
 
 .add-to-cart:hover {
@@ -271,6 +271,45 @@
 
 .wishlist:hover {
     background-color: #e0e0e0;
+}
+
+.product-features {
+    background-color: #f8f9fa; /* Light background for the section */
+    padding: 1.5rem;
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #dee2e6; /* Subtle border */
+}
+
+.product-features h3 {
+    color: #343a40; /* Darker heading color */
+    border-bottom: 2px solid #0d6efd; /* Accent border */
+    padding-bottom: 0.5rem;
+    display: inline-block; /* Make border only as wide as text */
+}
+
+.features-list-enhanced .feature-item {
+    border-bottom: 1px dashed #e0e0e0; /* Dashed separator */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.features-list-enhanced .feature-item:last-child {
+    border-bottom: none; /* Remove border for the last item */
+}
+
+/* Optional: Add hover effect */
+.features-list-enhanced .feature-item:hover {
+    background-color: #e9ecef; /* Slight background change on hover */
+}
+
+.features-list-enhanced .feature-head {
+    flex-basis: 180px; /* Adjust width as needed */
+    flex-shrink: 0; /* Prevent shrinking */
+    color: #495057; /* Slightly muted head color */
+}
+
+.features-list-enhanced .feature-value {
+    color: #212529; /* Standard text color */
+    flex-grow: 1; /* Allow value to take remaining space */
 }
 
 /* Responsive adjustments */

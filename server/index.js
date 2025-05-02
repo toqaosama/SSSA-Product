@@ -57,6 +57,7 @@ app.post('/product/create', checkAdmin, upload.array("images"), product.createPr
 app.post('/product/delete/:id', checkAdmin, product.deleteProduct); // Delete a product by ID
 app.get('/products', product.getAllProducts); // Get all products
 app.post('/product/update/:id', checkAdmin, upload.array("images"), product.updateProduct); // Update a product by ID
+app.get("/products/:id", product.getProductById)
 
 // Review routes
 const review = require('./routes/reviews/reviews');
@@ -77,6 +78,7 @@ app.delete('/users/:id', checkAdmin, users.deleteUser); // Delete a user by ID
 
 // Offer routes
 const offers = require('./routes/offers/offers');
+const {getProductById} = require("./routes/product/product");
 app.get("/offers", offers.getOffers); // Get all offers
 app.post("/offers/create", offers.createOffer); // Create an offer
 app.delete("/offers/:id/delete", offers.deleteOffer); // Delete an offer by ID
