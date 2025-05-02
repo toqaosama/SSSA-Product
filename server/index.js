@@ -84,6 +84,13 @@ app.post("/offers/create", offers.createOffer); // Create an offer
 app.delete("/offers/:id/delete", offers.deleteOffer); // Delete an offer by ID
 app.put("/offers/:id/update", offers.updateOffer); // Delete an offer by ID
 
+
+
+
+
+
+
+
 // Init server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
