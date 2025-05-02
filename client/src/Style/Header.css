@@ -196,3 +196,18 @@
     font-size: 16px;
   }
 }
+
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: var(navbar-toggler-icon-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  background-color: #ECECEC !important;
+  border-radius: 25% !important;
+  color: #917243 !important;
+}
