@@ -141,7 +141,6 @@ const BehindStory = () => {
             300k+ users are now actively using HappyAddons. Check our users' reviews to see how much they love us.
           </p>
           
-          
           {/* Testimonial Carousel */}
           <Slider {...carouselSettings}>
             {testimonials.map((testimonial) => (
