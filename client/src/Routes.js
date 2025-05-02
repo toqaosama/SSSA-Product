@@ -5,9 +5,10 @@ import NotFound from "./Shared/Error";
 import Register from "./Auth/RegisterModal";
 import BehindStory from "./Component/AboutUs/Section/BehindStory";
 import Support from "./Component/Support/Section/Support";
-import Categores from "./Component/Categores/Categores";
+import Services from "./Component/Categores/Services";
 import Sales from "./Component/Sales/Section/Sales";
 import Offers from "./Component/Offers/Section/Offers";
+import ResetPassword from "./Component/ResetPassword/ResetPassword";
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -34,14 +35,14 @@ export const router = createBrowserRouter([
       { path: "", element: <Home /> }, // shows at "/"
       { path: "BehindStory", element: <BehindStory /> }, 
       { path: "Support", element: <Support /> }, 
-      { path: "Categores", element: <Categores /> }, 
+      { path: "Services", element: <Services /> },
       { path: "Offers", element: <Offers /> }, 
       { path: "Sales", element: <Sales /> }, 
       { path: "Profile", element: <Profile /> }, 
       { path: "Orders", element: <Orders /> }, 
       { path: "Cart", element: <Cart /> }, 
-      { path: "ProductsDetails", element: <ProductsDetails /> }, 
-   
+      { path: "ProductsDetails/:id", element: <ProductsDetails /> },
+      { path: "ResetPassword", element: <ResetPassword />}
     ],
   },
   {

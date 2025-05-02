@@ -34,12 +34,14 @@ const authLogin = require('./routes/auth/login');
 const authLogout = require('./routes/auth/logout');
 const authUser = require('./routes/auth/user');
 const verifyOTP = require("./routes/auth/verifyOTP");
+const resetPassword = require("./routes/auth/resetPassword");
 
 app.post('/auth/register', authRegister); // Register a new user
 app.post('/auth/login', authLogin); // Login a user
 app.post('/auth/logout', checkAuth, authLogout); // Logout a user
 app.get("/auth/user", checkAuth, authUser); // Get user information
 app.post("/auth/verify-otp", verifyOTP); // Verify OTP
+app.post("/auth/reset-password", checkAuth, resetPassword);
 
 // Category routes
 const category = require('./routes/category/category');

@@ -1,0 +1,84 @@
+.split-page-container {
+    height: auto;
+    margin-bottom: 0%;
+    margin-top: 0%;
+    padding: 0;
+  }
+  
+  .split-page-row {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .split-page-col {
+    height: 11vh;
+    background-color: #231f20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo-img {
+    width: 60px;
+    height: auto;
+  }
+  
+  .logo-text {
+    font-size: 30px;
+    font-weight: normal;
+    color: #917243;
+    margin: 0;
+  }
+  
+  /* Medium devices (tablets, less than 992px) */
+  @media (max-width: 991.98px) {
+    .logo-img {
+      width: 50px;
+    }
+    
+    .logo-text {
+      font-size: 24px;
+    }
+  }
+  
+  /* Small devices (landscape phones, less than 768px) */
+  @media (max-width: 767.98px) {
+    .split-page-col {
+      height: 9vh;
+    }
+    
+    .logo-img {
+      width: 40px;
+    }
+    
+    .logo-text {
+      font-size: 18px;
+    }
+  }
+  
+  /* Extra small devices (portrait phones, less than 576px) */
+  @media (max-width: 575.98px) {
+    .split-page-col {
+      height: 8vh;
+      padding: 5px;
+    }
+    
+    .logo-container {
+      gap: 0.5rem;
+    }
+    
+    .logo-img {
+      width: 30px;
+    }
+    
+    .logo-text {
+      font-size: 14px;
+    }
+  }

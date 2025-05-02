@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { servicesData } from '../Core/servicesData'; // Import your data
 
-const BrandIdentityCard = () => {
+const ServiceCard = ({ service }) => {
   const cardRef = useRef(null);
   const [transform, setTransform] = useState('');
 
@@ -15,12 +16,10 @@ const BrandIdentityCard = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    // Calculate distance from center (normalized to -1 to 1)
     const moveX = (x - centerX) / centerX;
     const moveY = (y - centerY) / centerY;
     
-    // Move in opposite direction (parallax effect)
-    const translateX = -moveX * 10; // 10px max movement
+    const translateX = -moveX * 10;
     const translateY = -moveY * 10;
     
     setTransform(`translate(${translateX}px, ${translateY}px)`);
@@ -69,7 +68,7 @@ const BrandIdentityCard = () => {
             color: '#917243',
             fill: '#917243'
           }}>
-            <i aria-hidden="true"></i>
+            <i className={`fas ${service.icon}`} aria-hidden="true"></i>
           </div>
         </div>
         
@@ -84,7 +83,7 @@ const BrandIdentityCard = () => {
             lineHeight: '26px',
             letterSpacing: '-0.1px'
           }}>
-            Brand Identity
+            {service.title}
           </Card.Title>
           
           <Card.Text style={{
@@ -96,11 +95,11 @@ const BrandIdentityCard = () => {
             fontWeight: 400,
             lineHeight: '24px'
           }}>
-            Logo, Business card, Letter head, Envelopes, Folder, ID, Flyer, Brochure, Catalogue
+            {service.description}
           </Card.Text>
           
           <Button 
-            href="https://backlink-group.com/brand-identity/"
+            href={service.link}
             style={{
               color: '#231f20',
               borderRadius: '6px',
@@ -127,22 +126,24 @@ const BrandIdentityCard = () => {
   );
 };
 
-const CardsPage = () => {
+const ServicesPage = () => {
   return (
     <Container>
-        <h1 style={{
-            textAlign:'center',
-            justifyContent:'center',
-            justifyItems:'center',
-            fontWeight:'bolder',
-            color:'#917243',
-            marginTop:'2%',
-            marginBottom:'2%'
-        }}>Our Services</h1>
+      <h1 style={{
+          textAlign: 'center',
+          justifyContent: 'center',
+          justifyItems: 'center',
+          fontWeight: 'bolder',
+          color: '#917243',
+          marginTop: '2%',
+          marginBottom: '2%',
+      }}>
+        Our Services
+      </h1>
       <Row>
-        {[...Array(6)].map((_, index) => (
-          <Col key={index} md={4} className="mb-4">
-            <BrandIdentityCard />
+        {servicesData.map((service) => (
+          <Col key={service.id} md={4} className="mb-4">
+            <ServiceCard service={service} />
           </Col>
         ))}
       </Row>
@@ -150,4 +151,4 @@ const CardsPage = () => {
   );
 };
 
-export default CardsPage;
+export default ServicesPage;

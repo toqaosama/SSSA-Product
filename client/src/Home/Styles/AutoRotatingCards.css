@@ -42,8 +42,45 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    
+  }
+  /* Card title styles - default (large screens) */
+.card-content .card-title {
+  font-size: 6rem;
+}
+  
+/* Media queries for responsive font sizes */
+@media (max-width: 992px) {
+  .card-content .card-title {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-content .card-title {
+    font-size: 4rem;
+  text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-content .card-title {
+    font-size: 3rem;
   }
   
+  .cards-container {
+    height: 60vh; /* Adjust height for mobile if needed */
+  }
+}
+
+@media (max-width: 400px) {
+  .card-content .card-title {
+    font-size: 2.5rem;
+  }
+}
+
+
   /* Dark theme card */
   .card-dark {
     background-color: #917243; /* Bootstrap's dark color */
@@ -57,3 +94,8 @@
   }
   
   /* You can add more card variations as needed */
+
+
+
+
+  

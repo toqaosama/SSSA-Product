@@ -186,3 +186,65 @@
 .tracker-connector.active::after {
   border-left: 5px solid #0d6efd;
 }
+
+
+@media (max-width: 768px) {
+  .orders-header {
+    display: none; /* Hide the header on mobile */
+  }
+  
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+  
+  .header-item,
+  .order-product,
+  .order-date,
+  .order-status,
+  .order-actions {
+    flex: 1 1 100%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .order-status {
+    width: auto;
+    align-self: flex-start;
+  }
+  
+  .status-tracker {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .tracker-step {
+    min-width: 60px;
+  }
+  
+  /* Add labels for each field */
+  .order-product::before {
+    content: "Product: ";
+    font-weight: bold;
+  }
+  
+  .order-date::before {
+    content: "Date: ";
+    font-weight: bold;
+  }
+  
+  .order-status::before {
+    content: "Status: ";
+    font-weight: bold;
+    display: inline;
+  }
+  
+  .order-actions::before {
+    content: "Tracking: ";
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+}

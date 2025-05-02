@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import '../styles//Support.css';
+import '../styles/Support.css';
 
 const Support = () => {
   return (
@@ -33,12 +33,22 @@ const Support = () => {
           >
             <h4 className="mb-3">Support Information</h4>
             <p>
-              <strong>Email:</strong> support@example.com<br />
-              <strong>Phone:</strong> (123) 456-7890<br />
+              <strong>Email:</strong> strategystarsads@gmail.com<br />
+              <strong>Phone:</strong> 
+              <a href="tel:+201113337724"> +20 111 333 7724</a>, 
+              <a href="tel:+201112221449"> +20 111 222 1449</a><br />
+              <strong>Address:</strong> 
+              <a 
+                href="https://maps.google.com/?q=Almaza Street from Thawra Street - Heliopolis, Cairo, Egypt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Almaza Street from Thawra Street - Heliopolis, Cairo, Egypt
+              </a><br />
               <strong>Hours:</strong> Monday-Friday, 9AM-5PM
             </p>
             <p>
-              For immediate assistance, please use the contact form or check our FAQ section.
+              For immediate assistance, please use the contact form or call us directly.
             </p>
           </div>
         </Col>

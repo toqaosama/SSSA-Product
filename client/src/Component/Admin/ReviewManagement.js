@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Table, Button, Spinner, Alert } from 'react-bootstrap';
 import './AdminSetting/Style/Tables.css';
 import authApi from '../../api/authApi';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const REVIEWS_PER_PAGE = 10;
 
@@ -195,11 +196,7 @@ const ReviewsManagement = () => {
 
           {/* Loading and Error States */}
           {loading && (
-              <div className="spinner-container text-center py-4">
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
-              </div>
+              <LoadingSpinner />
           )}
           {error && (
               <Alert variant="danger" className="mt-3">
