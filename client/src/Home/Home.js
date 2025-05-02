@@ -17,7 +17,6 @@ const Home = () => {
        <ServesCard />
        <Offers />
        <OfferContact />
-       <Review />
       </div>
     );
   

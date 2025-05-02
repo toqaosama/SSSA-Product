@@ -245,7 +245,7 @@
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s;
-    width: 50%;
+    flex:1
 }
 
 .add-to-cart {

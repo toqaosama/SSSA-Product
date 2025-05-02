@@ -1,9 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
 import './Style/ProductsDetails.css'; // Make sure this CSS file exists and is styled
 import authApi from '../../../api/authApi'; // Assuming this is configured for your backend
-import { Cart, Heart, StarFill, Star } from "react-bootstrap-icons";
+import {Cart, Heart, StarFill, Star, CheckAll} from "react-bootstrap-icons";
 import { Table, Form, Button, Spinner, Alert } from 'react-bootstrap'; // Import necessary components
 import { useState, useEffect } from "react";
+import {AiOutlineLoading} from "react-icons/ai";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -21,7 +23,8 @@ const ProductDetails = () => {
   const [submittingReview, setSubmittingReview] = useState(false);
   const [reviewSubmissionError, setReviewSubmissionError] = useState(null); // State for submission error
   const [reviewSubmissionSuccess, setReviewSubmissionSuccess] = useState(false); // State for submission success message
-
+  const [requestServiceLoading, setRequestServiceLoading] = useState(false);
+  const [requestServiceSuccess, setRequestServiceSuccess] = useState(false);
   // --- Star Rendering Component (Optional but recommended for reuse) ---
   const StarRating = ({ rating }) => {
     const roundedRating = Math.round(rating); // Use rounded rating for filled stars
@@ -120,10 +123,18 @@ const ProductDetails = () => {
 
     fetchProductAndReviews();
   }, [id]); // Dependency array includes 'id'
-  // --- Add to Cart Handler ---
-  const handleAddToCart = () => {
-    alert(`Added ${product.name} to cart!`);
-    // TODO: Implement actual cart logic
+
+  const handleRequestService = async () => {
+    try {
+      setRequestServiceLoading(true);
+      const res = await authApi.post('/service-order', {product_id: product.id});
+      setRequestServiceSuccess(true);
+      setRequestServiceLoading(false);
+    } catch (e) {
+      console.log(e)
+      alert("Failed to request service. Please try again.")
+      setRequestServiceLoading(true);
+    }
   };
 
   // --- Review Form Handlers ---
@@ -288,16 +299,19 @@ const ProductDetails = () => {
             <div className="product-actions mt-3">
               <button
                   className="add-to-cart btn btn-primary me-2"
-                  onClick={handleAddToCart}
-                  disabled={!product.inStock}
+                  onClick={handleRequestService}
+                  disabled={requestServiceLoading}
               >
-                <span className={"align-middle"}><Cart /></span>
-                <span className={"ms-2 align-middle"}>{product.inStock ? 'Add to Cart' : 'Out of Stock'}</span>
+                {requestServiceLoading ? (
+                    <AiOutlineLoading />
+                ): (
+                    requestServiceSuccess ? <CheckAll />: <Cart />
+                )}
+                <span className={"ms-2 align-middle"}>
+                  {requestServiceLoading ? "Loading..." : (requestServiceSuccess ? "Done" : "Request Service")}
+                </span>
               </button>
-              <button className="wishlist btn btn-outline-secondary">
-                <span className={"align-middle"}><Heart /></span>
-                <span className={"ms-2 align-middle"}>Add to Favourites</span>
-              </button>
+
             </div>
           </div>
         </div> {/* End of product-details-container */}

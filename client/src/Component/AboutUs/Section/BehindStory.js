@@ -123,30 +123,6 @@ const BehindStory = () => {
           />
         </Container>
       </section>
-
-      {/* Users Love Us Section */}
-      <section className="section">
-        <Container className="wide-container">
-          <h1 className="section-title light">Why Our Users</h1>
-          <h1 className="section-title bold"> Love Us</h1>
-          <p className="section-intro">
-            300k+ users are now actively using HappyAddons. Check our users' reviews to see how much they love us.
-          </p>
-          
-          {/* Testimonial Carousel */}
-          <Slider {...carouselSettings}>
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="testimonial-card">
-                <blockquote className="testimonial-quote">
-                  "{testimonial.quote}"
-                </blockquote>
-                <div className="testimonial-author">{testimonial.author}</div>
-                <div className="testimonial-role">{testimonial.role}</div>
-              </div>
-            ))}
-          </Slider>
-        </Container>
-      </section>
     </div>
   );
 };
