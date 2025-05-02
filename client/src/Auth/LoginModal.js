@@ -4,7 +4,7 @@ import { Eye, EyeSlash } from 'react-bootstrap-icons';
 import api from '../api/api';
 import {useNavigate} from 'react-router-dom';
 import {useAuth} from '../Context/AuthContext.js';
-import './style/LoginModal.css'; // Import the CSS file
+import './style/LoginModal.css'; // Import the CSS filee
 
 const LoginModal = ({ show, onClose, onSwitchToSignup }) => {
   const {setAuthToken} = useAuth();
