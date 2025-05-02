@@ -255,8 +255,58 @@
   .profile-cancel-button:hover {
     background-color: rgba(145, 114, 67, 0.1);
   }
-  
-  /* Responsive styles */
+
+
+
+ .read-only-input {
+   background-color: #ECECEC;
+   border: none;
+   border-radius: 5px;
+   padding: 10px;
+   font-size: 14px;
+   color: #231f20;
+   width: 100%;
+   height: 40px;
+   outline: none;
+ }
+
+ .profile-reset-password-button {
+   background-color: #ECECEC;
+   color: var(--profile-gold);
+   border: 3px solid #917243;
+   border-radius: 5px;
+   font-size: 14px;
+   font-weight: 600;
+   padding: 0 60px;
+ }
+
+ .input-group {
+   position: relative;
+ }
+
+ .password-toggle-btn {
+   position: absolute;
+   right: 10px;
+   top: 50%;
+   transform: translateY(-50%);
+   background: none;
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   color: #666;
+   font-size: 1.2rem;
+ }
+
+ .password-toggle-btn:focus {
+   outline: none;
+ }
+
+ .profile-form-input {
+   padding-right: 2.5rem; /* space for the eye icon */
+ }
+
+
+ /* Responsive styles */
   @media (max-width: 1024px) {
     .profile-sidebar {
       width: 280px;
