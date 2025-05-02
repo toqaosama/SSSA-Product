@@ -115,20 +115,17 @@ const Header = () => {
               <Nav.Link as={Link} to="/Support" className="nav-link-white">Contact</Nav.Link>
               
               {/* Social Icons */}
-              <div className="social-icons d-flex">
-                <a href="https://www.facebook.com/Backlink.Marketing" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/backlink.marketing" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/backlink-marketing-agency/" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.youtube.com/@BacklinkMarketingAgency/videos" target="_blank" rel="noopener noreferrer" className="social-icon">
-                  <i className="fab fa-youtube"></i>
-                </a>
-              </div>
+<div className="social-icons d-flex">
+  <a href="https://www.facebook.com/strategy.stars.ads?mibextid=wwXIfr&rdid=fd093EjuhuxOtYYP&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NMFRyr4gQ%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" className="social-icon">
+    <i className="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/strategy.stars.ads/?igsh=dWI3bWFnMm9sdDly" target="_blank" rel="noopener noreferrer" className="social-icon">
+    <i className="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.linkedin.com/company/strategy-stars-ads/" target="_blank" rel="noopener noreferrer" className="social-icon">
+    <i className="fab fa-linkedin-in"></i>
+  </a>
+</div>
               <span className="text-white mx-3">
                 |
               </span>
