@@ -106,7 +106,7 @@ const Header = () => {
                 id="services-dropdown" 
                 className="nav-dropdown-white"
               >
-                <NavDropdown.Item as={Link} to="/Categores" className="dropdown-item-white">
+                <NavDropdown.Item as={Link} to="/Services" className="dropdown-item-white">
                 Electronics
                 </NavDropdown.Item>
             
