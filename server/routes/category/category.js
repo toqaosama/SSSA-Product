@@ -4,11 +4,15 @@ const upload = require('../../middleware/upload');
 
 // Create a new category
 const createCategory = async (req, res) => {
-    const { name } = req.body;
+    const { name, desc } = req.body;
     const image = req.file ? req.file.filename : null;
 
     if (!name) {
         return res.status(400).json({ message: 'Category name is required' });
+    }
+
+    if (!desc) {
+        return res.status(400).json({ message: 'Category description is required' });
     }
 
     if (!image) {
@@ -17,7 +21,7 @@ const createCategory = async (req, res) => {
 
     try {
         const query = util.promisify(connection.query).bind(connection);
-        await query('INSERT INTO category (name, img) VALUES (?, ?)', [name, image]);
+        await query('INSERT INTO category (name, img, `desc`) VALUES (?, ?, ?)', [name, image, desc]);
         res.status(201).json({ message: 'Category created successfully' });
     } catch (error) {
         console.error('Error creating category:', error);
@@ -39,10 +43,10 @@ const getCategories = async (req, res) => {
             };
         }));
 
-        res.status(200).json({categories: categoriesWithCount});
+        res.status(200).json({ categories: categoriesWithCount });
     } catch (error) {
         console.error('Error fetching categories:', error);
-        res.status(500).json({message: 'Internal server error'});
+        res.status(500).json({ message: 'Internal server error' });
     }
 };
 
@@ -52,7 +56,7 @@ const getCategoryProducts = async (req, res) => {
     try {
         const query = util.promisify(connection.query).bind(connection);
         const products = await query('SELECT * FROM product WHERE category_id = ?', [id]);
-        res.status(200).json({products});
+        res.status(200).json({ products });
     } catch (error) {
         console.error('Error fetching category products:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -63,27 +67,23 @@ const getCategoryProducts = async (req, res) => {
 // Update a category
 const updateCategory = async (req, res) => {
     const { id } = req.params;
-    const { name } = req.body;
+    const { name, desc } = req.body;
     const image = req.file ? req.file.filename : null;
-
-
-    if (image) {
-        try {
-            const query = util.promisify(connection.query).bind(connection);
-            await query('UPDATE category SET img = ? WHERE id = ?', [image, id]);
-        } catch (error) {
-            console.error('Error updating category image:', error);
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-    }
 
     if (!name) {
         return res.status(400).json({ message: 'Category name is required' });
     }
+    if (!desc) {
+        return res.status(400).json({ message: 'Category description is required' });
+    }
 
     try {
         const query = util.promisify(connection.query).bind(connection);
-        const result = await query('UPDATE category SET name = ? WHERE id = ?', [name, id]);
+        //update image
+        if (image) {
+            await query('UPDATE category SET img = ? WHERE id = ?', [image, id]);
+        }
+        const result = await query('UPDATE category SET name = ?, `desc` = ? WHERE id = ?', [name, desc, id]);
 
         if (result.affectedRows === 0) {
             return res.status(404).json({ message: 'Category not found' });

@@ -6,7 +6,6 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const CategoryRow = ({ category, onEdit, onDelete }) => {
   const imageUrl = category.img ? `${process.env.REACT_APP_API_URL}/uploads/${category.img}` : 'https://via.placeholder.com/50';
-  console.log(imageUrl)
   return (
       <tr>
         <td>{category.id}</td>
@@ -23,6 +22,7 @@ const CategoryRow = ({ category, onEdit, onDelete }) => {
           </div>
         </td>
         <td>{category.name}</td>
+        <td>{category.desc}</td> {/* Display the description */}
         <td>{category.products || 0}</td>
         <td>
           <button className='action-btn edit' onClick={() => onEdit(category)}>Edit</button>
@@ -40,6 +40,7 @@ const CategoryTable = ({ data, onEdit, onDelete }) => {
           <th>ID</th>
           <th>Image</th>
           <th>Name</th>
+          <th>Description</th> {/* Added Description header */}
           <th>Products</th>
           <th>Actions</th>
         </tr>
@@ -47,7 +48,7 @@ const CategoryTable = ({ data, onEdit, onDelete }) => {
         <tbody>
         {data.length === 0 ? (
             <tr>
-              <td colSpan="4" className="text-center">No categories found</td>
+              <td colSpan="5" className="text-center">No categories found</td> {/* Updated colspan */}
             </tr>
         ) : (
             data.map((category) => (
@@ -71,6 +72,7 @@ export const CategoryManagement = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [editCategory, setEditCategory] = useState(null);
   const [newCategoryName, setNewCategoryName] = useState('');
+  const [newCategoryDescription, setNewCategoryDescription] = useState(''); // New state for description
   const [newCategoryImage, setNewCategoryImage] = useState(null);
 
   const fetchData = useCallback(async () => {
@@ -104,6 +106,7 @@ export const CategoryManagement = () => {
 
     const formData = new FormData();
     formData.append('name', newCategoryName);
+    formData.append('desc', newCategoryDescription); // Send the description
     if (newCategoryImage) {
       formData.append('image', newCategoryImage);
     }
@@ -116,6 +119,7 @@ export const CategoryManagement = () => {
       });
       setShowAddModal(false);
       setNewCategoryName('');
+      setNewCategoryDescription(''); // Clear the description state
       setNewCategoryImage(null);
       await fetchData();
     } catch (error) {
@@ -127,6 +131,7 @@ export const CategoryManagement = () => {
   const handleEditCategory = async (category) => {
     setEditCategory(category);
     setNewCategoryName(category.name);
+    setNewCategoryDescription(category.desc || ''); // Populate description for editing
     setShowAddModal(true);
   };
 
@@ -137,6 +142,7 @@ export const CategoryManagement = () => {
     }
     const formData = new FormData();
     formData.append('name', newCategoryName);
+    formData.append('desc', newCategoryDescription); // Send the updated description
     if (newCategoryImage) {
       formData.append('image', newCategoryImage);
     }
@@ -148,6 +154,7 @@ export const CategoryManagement = () => {
       });
       setShowAddModal(false);
       setNewCategoryName('');
+      setNewCategoryDescription(''); // Clear the description state
       setNewCategoryImage(null);
       setEditCategory(null);
       await fetchData();
@@ -182,6 +189,7 @@ export const CategoryManagement = () => {
                 <button className='btn btn-primary' onClick={() => {
                   setEditCategory(null);
                   setNewCategoryName('');
+                  setNewCategoryDescription(''); // Clear description on add new
                   setNewCategoryImage(null);
                   setShowAddModal(true);
                 }}>
@@ -206,11 +214,11 @@ export const CategoryManagement = () => {
                     onDelete={handleDeleteCategory}
                 />
                 {currentData.length > 0 && (
-                  <div className='table-pagination'>
-                    <span>
-                      Showing 1 to {currentData.length} of {categories.length} entries
-                    </span>
-                  </div>
+                    <div className='table-pagination'>
+                <span>
+                  Showing 1 to {currentData.length} of {categories.length} entries
+                </span>
+                    </div>
                 )}
               </div>
           )}
@@ -220,6 +228,7 @@ export const CategoryManagement = () => {
           setShowAddModal(false);
           setEditCategory(null);
           setNewCategoryName('');
+          setNewCategoryDescription(''); // Clear description on modal close
           setNewCategoryImage(null);
         }}>
           <Modal.Header closeButton>
@@ -237,6 +246,15 @@ export const CategoryManagement = () => {
                     required
                 />
               </Form.Group>
+              <Form.Group className="mb-3" controlId="formCategoryDescription"> {/* New form group for description */}
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    placeholder="Enter category description"
+                    value={newCategoryDescription}
+                    onChange={(e) => setNewCategoryDescription(e.target.value)}
+                />
+              </Form.Group>
               <Form.Group className="mb-3" controlId="formCategoryImage">
                 <Form.Label>Category Image</Form.Label>
                 <Form.Control
@@ -252,6 +270,7 @@ export const CategoryManagement = () => {
               setShowAddModal(false);
               setEditCategory(null);
               setNewCategoryName('');
+              setNewCategoryDescription(''); // Clear description on cancel
               setNewCategoryImage(null);
             }}>
               Cancel

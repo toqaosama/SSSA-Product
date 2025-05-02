@@ -25,6 +25,11 @@ const ProductRow = ({ product, onEdit, onDelete }) => (
         }
       </td>
       <td>
+        <div style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {product.main_description || <span style={{ color: '#999' }}>No main description</span>}
+        </div>
+      </td>
+      <td>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
           {product.descriptions.map((desc, index) => (
               <span key={index} style={{
@@ -62,6 +67,7 @@ const ProductTable = ({ data, onEdit, onDelete }) => (
         <th>Name</th>
         <th>Price</th>
         <th>Category</th>
+        <th>Main Description</th>
         <th>Descriptions</th>
         <th>Image</th>
         <th>Actions</th>
@@ -84,7 +90,14 @@ export const ProductManagement = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [formData, setFormData] = useState({ name: '', price: '', category_id: 0, descriptions: [], images: [] });
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    category_id: 0,
+    main_description: '',
+    descriptions: [],
+    images: []
+  });
   const [editingProduct, setEditingProduct] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -114,17 +127,21 @@ export const ProductManagement = () => {
     formDataToSend.append('name', formData.name);
     formDataToSend.append('price', formData.price);
     formDataToSend.append('category_id', formData.category_id);
+    formDataToSend.append('main_description', formData.main_description);
+
     // Handle descriptions as objects with head and desc properties
     formData.descriptions.forEach((desc, index) => {
       formDataToSend.append(`descriptions[${index}][header]`, desc.head);
       formDataToSend.append(`descriptions[${index}][description]`, desc.desc);
     });
+
     // Append each image file
     if (formData.images && formData.images.length > 0) {
       formData.images.forEach((image) => {
         formDataToSend.append('images', image); // 'images' can be the field name your backend expects for multiple files
       });
     }
+
     try {
       if (editingProduct) {
         await authApi.post(`/product/update/${editingProduct.id}`, formDataToSend, {
@@ -140,7 +157,14 @@ export const ProductManagement = () => {
         });
       }
       setShowAddModal(false);
-      setFormData({ name: '', price: '', category_id: 0, descriptions: [], images: [] });
+      setFormData({
+        name: '',
+        price: '',
+        category_id: 0,
+        main_description: '',
+        descriptions: [],
+        images: []
+      });
       setEditingProduct(null);
       fetchProducts();
     } catch (err) {
@@ -155,7 +179,8 @@ export const ProductManagement = () => {
     setFormData({
       name: product.name,
       price: product.price,
-      category_id: product.category_id, // Make sure to include category_id
+      category_id: product.category_id,
+      main_description: product.main_description || '', // Include main_description
       descriptions: product.descriptions ? product.descriptions.map(desc => ({
         head: desc.head || '',
         desc: desc.desc || ''
@@ -166,7 +191,7 @@ export const ProductManagement = () => {
   };
 
   const handleDelete = async (id) => {
-    const ok = window.confirm("Are you sure you want to delete this product ?");
+    const ok = window.confirm("Are you sure you want to delete this product?");
     if (!ok) return;
     setLoading(true);
     try {
@@ -222,7 +247,14 @@ export const ProductManagement = () => {
                 <button className='btn btn-primary' onClick={() => {
                   setShowAddModal(true);
                   setEditingProduct(null);
-                  setFormData({ name: '', price: '', category_id: 0, descriptions: [], images: [] });
+                  setFormData({
+                    name: '',
+                    price: '',
+                    category_id: 0,
+                    main_description: '',
+                    descriptions: [],
+                    images: []
+                  });
                 }}>
                   Add New Product
                 </button>
@@ -285,9 +317,20 @@ export const ProductManagement = () => {
                   ))}
                 </select>
               </div>
-              {/* Descriptions */}
+              {/* Main Description */}
               <div className="mb-3">
-                <label>Descriptions</label>
+                <label>Main Description</label>
+                <textarea
+                    className="form-control"
+                    value={formData.main_description}
+                    onChange={e => setFormData({ ...formData, main_description: e.target.value })}
+                    placeholder="Enter a main description for the product"
+                    rows={3}
+                />
+              </div>
+              {/* Detailed Descriptions */}
+              <div className="mb-3">
+                <label>Detailed Descriptions</label>
                 {formData.descriptions.map((desc, index) => (
                     <div key={index} className="mb-2">
                       <div className="input-group mb-2">
@@ -301,13 +344,13 @@ export const ProductManagement = () => {
                         />
                       </div>
                       <div className="input-group mb-2">
-                                        <textarea
-                                            className="form-control"
-                                            value={desc.desc}
-                                            onChange={e => handleDescriptionChange(index, 'desc', e.target.value)}
-                                            placeholder="Description"
-                                            required
-                                        />
+                        <textarea
+                            className="form-control"
+                            value={desc.desc}
+                            onChange={e => handleDescriptionChange(index, 'desc', e.target.value)}
+                            placeholder="Description"
+                            required
+                        />
                       </div>
                       <button
                           type="button"

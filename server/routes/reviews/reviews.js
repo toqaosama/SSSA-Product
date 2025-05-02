@@ -36,7 +36,13 @@ const getProductReviews = async (req, res) => {
 
     try {
         const query = util.promisify(connection.query).bind(connection);
-        const reviews = await query('SELECT * FROM review WHERE product_id = ?', [id]);
+        const reviews = await query(`
+              SELECT r.*, u.name AS userName
+              FROM review r
+              LEFT JOIN user u ON r.user_id = u.id
+              WHERE r.product_id = ?
+              ORDER BY r.created_at DESC;
+            `, [id]);
         res.status(200).json({reviews});
     } catch (error) {
         console.error('Error fetching product reviews:', error);
