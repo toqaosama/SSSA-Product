@@ -1,0 +1,156 @@
+/* Color Variables */
+:root {
+    --primary-color: #917243;
+    --secondary-color: #ECECEC;
+    --dark-text: #231F20;
+    --white: #FFFFFF;
+  }
+  .change{
+    background-color: var(--secondary-color);
+  }
+  
+  /* Base Styles */
+  .behind-story-container {
+    font-family: inherit;
+  }
+  
+  .section {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  .content-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .narrow-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    min-height: 80vh;
+    display: flex;
+    background-color: var(--secondary-color);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--primary-color);
+  }
+  
+  .hero-subtitle {
+    font-weight: bolder;
+  }
+  
+  .hero-title {
+    font-weight: bolder;
+  }
+  
+  /* Text Styles */
+  .history-text {
+    line-height: 1.6;
+  }
+  
+  .section-title {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-text {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight-text {
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+  
+  /* Image Section */
+  .image-text-section {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mission-image {
+    padding: 1rem;
+  }
+  
+  .text-content {
+    max-width: 500px;
+  }
+  
+  /* Growth Section */
+  .growth-section {
+    min-height: 70vh;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .growth-title {
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .youtube-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .youtube-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .section {
+      min-height: auto;
+      padding: 4rem 0;
+    }
+    
+    .hero-section {
+      min-height: 60vh;
+    }
+    
+    .mission-image {
+      width: 280px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+    }
+  }

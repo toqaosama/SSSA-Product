@@ -2,83 +2,12 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
+import '../Style/BehindStory.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import ReviewCarousel from '../../Review/section/CardReview';
 
 const BehindStory = () => {
-  // Styles object for consistent styling
-  const styles = {
-    heroSection: {
-      minHeight: "80vh",
-      display: "flex",
-      backgroundColor: "#ECECEC",
-      justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
-      color:'#917243',
-    },
-    section: {
-      minHeight: "70vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
-      padding: "2rem 0"
-    },
-    logoSection: {
-      minHeight: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
-      backgroundColor: "#ECECEC"
-    },
-    imageTextSection: {
-      minHeight: "70vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    },
-    growthSection: {
-      minHeight: "70vh",
-      backgroundColor: "#ECECEC",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    },
-    youtubeIcon: {
-      width: "60px",
-      height: "60px",
-      backgroundColor: "#917243",
-      borderRadius: "50%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "white",
-      fontSize: "24px",
-      textDecoration: "none"
-    },
-    textGradient: {
-      // background: "linear-gradient(to right, #6a11cb, #2575fc)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "#917243"
-    },
-    highlightText: {
-      color: "#917243",
-      fontWeight: "bold"
-    },
-    testimonialCard: {
-      background: "#917243",
-      padding: "30px",
-      margin: "0 15px",
-      borderRadius: "10px",
-      boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
-      width: "400px"
-    }
-  };
-
   // Testimonial data for the carousel
   const testimonials = [
     {
@@ -130,93 +59,74 @@ const BehindStory = () => {
   };
 
   return (
-    <div>
+    <div className="behind-story-container">
       {/* Hero Section */}
-      <div style={styles.heroSection}>
+      <section className="hero-section">
         <Container>
-          <h5 style={{fontWeight:'bolder'}}>About Us</h5>
-          <h1 style={{fontWeight:'bolder'}}>Behind Story</h1>
+          <h5 className="hero-subtitle">About Us</h5>
+          <h1 className="hero-title">Behind Story</h1>
         </Container>
-      </div>
+      </section>
 
       {/* History Section */}
-      <div style={styles.section}>
-        <div>
-          <h2 style={{ ...styles.textGradient, fontWeight: 'bold', textAlign: 'center' ,color:'#917243'}}>The History Of</h2>
-          <h2><span style={{ fontWeight: 'bold',color:'#231f20' }}>HappyAddons</span></h2>
-          <p style={{ maxWidth: '700px', margin: '0 auto' }}>
-            HappyAddons started its journey in 2019 with a vision of making web development easier. <br />
-            And it is doing so from the very beginning by empowering the Elementor Page Builder.
-            Let's get to know the history of HappyAddons below.
+      <section className="section">
+        <div className="content-wrapper">
+          <p className="history-text">
+            SSA is a full-service marketing agency, specializing in digital marketing, branding, packaging, printing, 
+            designs, strategy, content and communication, social media, advertising, media buying, events, promotions, 
+            Production, Billboards, Outdoors and Square Zone. We provide each of our customers a custom marketing campaign, 
+            tailored to their specific marketing needs.
+            <br /><br />
+            Our highly skilled and experienced marketing professionals help businesses achieve consistent and sustainable growth. 
+            Our clients are our number one priority, which reflects with our phenomenal customer retention rate.
           </p>
         </div>
-      </div>
-
-      {/* Logo Section */}
-      <div style={styles.logoSection}>
-        <Container style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem' }}>
-          <img 
-            src='https://happyaddons.com/wp-content/uploads/2022/10/happy-monster-logo.svg' 
-            width="350" 
-            alt="Happy Monster Logo"
-            style={{ padding: '2rem' }}
-          />
-          <img 
-            src='https://happyaddons.com/wp-content/uploads/2022/10/weDevs-full-logo.png' 
-            width="350" 
-            alt="weDevs Logo"
-            style={{ padding: '2rem' }}
-          />
-        </Container>
-      </div>
+      </section>
 
       {/* Imagination Section */}
-      <div style={styles.imageTextSection}>
-        <Container style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '3rem' }}>
+      <section className="image-text-section change">
+        <Container className="flex-container">
           <img 
             src='https://happyaddons.com/wp-content/uploads/2022/10/behindstory-imagine.svg' 
             width="350" 
-            alt="Bringing Imagination to Reality"
-            style={{ padding: '1rem' }}
+            alt="Our Mission"
+            className="mission-image"
           />
-          <div style={{ maxWidth: '500px' }}>
-            <h2>Bringing Imagination into Reality</h2>
-            <p>
-              Bringing a unique set of Widgets and Problem-solving features for Elementor users 
-              has always been the aim of <span style={styles.highlightText}>weDevs</span> and <span style={styles.highlightText}>HappyMonster</span>.
+          <div className="text-content">
+            <h2 className="section-title">Our Mission</h2>
+            <p className="section-text">
+              To provide personalized marketing strategies that help brands engage their
+              <span className="highlight-text"> audiences </span> and <span className="highlight-text">achieve measurable growth</span>.
             </p>
           </div>
         </Container>
-      </div>
+      </section>
 
       {/* Story Section */}
-      <div style={{ padding: '3rem 0' }}>
-        <Container style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <p>
-            Our origin story is interesting. The HappyAddons project is the brainchild of the team HappyMonster – 
-            a super-talented group of engineers, thinkers, and artists. Their work was primarily based on developing 
-            page builders and providing customer support for web development.
-          </p>
-          <br />
-          <p>
-            As the market for Elementor was semi-saturated, they created their niche with their experience in 
-            Engineering, R&D, and Design sectors.
-          </p>
-          <br />
-          <p>
-            But only developing is not enough to grow a business; marketing and technical support also play a vital role. 
-            Since weDevs is experienced in marketing and giving technical support on a massive scale, Team HappyMonster 
-            partnered with weDevs before launching the premium version of HappyAddons.
-          </p>
+      <section className="story-section change">
+        <Container className="flex-container ">
+          <div className="text-content">
+            <h2 className="section-title">Our Vision</h2>
+            <p className="section-text">
+              To be the leading marketing agency in the region, and to provide proven and effective 
+              marketing services to ensure your company remains competitive now and in the future.
+            </p>
+          </div>
+          <img 
+            src='https://happyaddons.com/wp-content/uploads/2022/10/behindstory-imagine.svg' 
+            width="350" 
+            alt="Our Mission"
+            className="mission-image"
+          />
         </Container>
-      </div>
+      </section>
 
-      {/* Growth Section */}
-      <div style={styles.growthSection}>
-        <Container style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '3rem' }}>
-          <div style={{ maxWidth: '500px', textAlign: 'left' }}>
-            <h1 style={{color:'#917243'}}>HappyAddons Keeps <br /> Growing</h1>
-            <p>
+      {/* Growth Section
+      <section className="growth-section">
+        <Container className="flex-container">
+          <div className="text-content">
+            <h1 className="growth-title">HappyAddons Keeps <br /> Growing</h1>
+            <p className="section-text">
               We are the pioneer of creating features like Cross-Domain Copy paste, design presets, unlimited nested sections, 
               image masking, live copying facility from our demo website to anyone's site, floating effects, CSS transforms, 
               Text Stroke, line icons, and more.
@@ -227,20 +137,37 @@ const BehindStory = () => {
               href="https://www.youtube.com/@BacklinkMarketingAgency/videos" 
               target="_blank" 
               rel="noopener noreferrer" 
-              style={styles.youtubeIcon}
+              className="youtube-icon"
             >
               <FontAwesomeIcon icon={faYoutube} />
             </a>
           </div>
         </Container>
-      </div>
+      </section> */}
 
       {/* Users Love Us Section */}
-      <div style={styles.section}>
-        <Container style={{ maxWidth: '1200px' }}>
-         <ReviewCarousel />
+      <section className="section">
+        <Container className="wide-container">
+          <h1 className="section-title light">Why Our Users</h1>
+          <h1 className="section-title bold"> Love Us</h1>
+          <p className="section-intro">
+            300k+ users are now actively using HappyAddons. Check our users' reviews to see how much they love us.
+          </p>
+          
+          {/* Testimonial Carousel */}
+          <Slider {...carouselSettings}>
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="testimonial-card">
+                <blockquote className="testimonial-quote">
+                  "{testimonial.quote}"
+                </blockquote>
+                <div className="testimonial-author">{testimonial.author}</div>
+                <div className="testimonial-role">{testimonial.role}</div>
+              </div>
+            ))}
+          </Slider>
         </Container>
-      </div>
+      </section>
     </div>
   );
 };
