@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
+
 const BehindStory = () => {
   // Testimonial data for the carousel
   const testimonials = [
@@ -63,16 +64,18 @@ const BehindStory = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <Container>
-          <h5 className="hero-subtitle">About Us</h5>
+          <h5 className="hero-subtitle ">About Us</h5>
           <h1 className="hero-title">Behind Story</h1>
+          
         </Container>
       </section>
 
       {/* History Section */}
       <section className="section">
         <div className="content-wrapper">
+          <h2 className='history-title'>Strategy Stars Ads</h2>
           <p className="history-text">
-            SSA is a full-service marketing agency, specializing in digital marketing, branding, packaging, printing, 
+            SSA is a  <span className='change' >full-service</span> marketing agency, specializing in digital marketing, branding, packaging, printing, 
             designs, strategy, content and communication, social media, advertising, media buying, events, promotions, 
             Production, Billboards, Outdoors and Square Zone. We provide each of our customers a custom marketing campaign, 
             tailored to their specific marketing needs.
@@ -120,30 +123,6 @@ const BehindStory = () => {
           />
         </Container>
       </section>
-
-      {/* Growth Section
-      <section className="growth-section">
-        <Container className="flex-container">
-          <div className="text-content">
-            <h1 className="growth-title">HappyAddons Keeps <br /> Growing</h1>
-            <p className="section-text">
-              We are the pioneer of creating features like Cross-Domain Copy paste, design presets, unlimited nested sections, 
-              image masking, live copying facility from our demo website to anyone's site, floating effects, CSS transforms, 
-              Text Stroke, line icons, and more.
-            </p>
-          </div>
-          <div>
-            <a 
-              href="https://www.youtube.com/@BacklinkMarketingAgency/videos" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="youtube-icon"
-            >
-              <FontAwesomeIcon icon={faYoutube} />
-            </a>
-          </div>
-        </Container>
-      </section> */}
 
       {/* Users Love Us Section */}
       <section className="section">
