@@ -13,7 +13,7 @@ const Footer = () => {
             </h3>
             <ul style={{ maxHeight: '140px', padding: 0, transition: 'max-height 0.6s ease', margin: 0, overflow: 'hidden' }}>
               <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-                <Link as={Link} to="/admin/tables" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Women</Link>
+                <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Women</Link>
               </li>
               <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
                 <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>MEN</Link>

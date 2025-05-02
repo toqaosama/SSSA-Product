@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import ReviewCarousel from '../../Review/section/CardReview';
 
 const BehindStory = () => {
   // Styles object for consistent styling
@@ -237,24 +238,7 @@ const BehindStory = () => {
       {/* Users Love Us Section */}
       <div style={styles.section}>
         <Container style={{ maxWidth: '1200px' }}>
-          <h1 style={{ fontWeight: 'lighter', color: '#917243', fontSize: '2.5rem' }}>Why Our Users</h1>
-          <h1 style={{ fontWeight: 'bold', color: '#917243', fontSize: '2.5rem' }}> Love Us</h1>
-          <p style={{ marginBottom: '3rem' }}>
-            300k+ users are now actively using HappyAddons. Check our users' reviews to see how much they love us.
-          </p>
-          
-          {/* Testimonial Carousel */}
-          <Slider {...carouselSettings}>
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} style={styles.testimonialCard}>
-                <blockquote style={{ fontStyle: 'italic', marginBottom: '20px' }}>
-                  "{testimonial.quote}"
-                </blockquote>
-                <div style={{ fontWeight: 'bold' }}>{testimonial.author}</div>
-                <div style={{ color: '#917243' }}>{testimonial.role}</div>
-              </div>
-            ))}
-          </Slider>
+         <ReviewCarousel />
         </Container>
       </div>
     </div>
