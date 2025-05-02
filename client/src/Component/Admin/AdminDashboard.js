@@ -91,7 +91,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Admin Activity Log */}
+        {/* Admin Activity Log
         <div className="activity-log">
           <h2>Admin Activity History</h2>
           <table>
@@ -112,7 +112,7 @@ const Dashboard = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     </div>
   );

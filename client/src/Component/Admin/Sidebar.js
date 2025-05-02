@@ -48,6 +48,10 @@ const Sidebar = () => {
           <FiSettings className="nav-icon" />
           <span>Reviews Manage</span>
         </Nav.Link>
+        <Nav.Link  as={Link} to="/admin/ServiceOrder" className="nav-link dash">
+          <FiSettings className="nav-icon" />
+          <span>Service Order</span>
+        </Nav.Link>
           <Nav.Link  as={Link} to="/" className="nav-link dash">
               <FiHome className="nav-icon" />
               <span>Back To Home Page</span>

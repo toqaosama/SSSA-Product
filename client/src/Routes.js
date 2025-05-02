@@ -24,6 +24,7 @@ import Profile from "./Component/Profile/Section/Profile";
 import Orders from "./Component/Orders/Section/Orders";
 import Cart from "./Component/Cart/Section/Cart";
 import ProductsDetails from './Component/ProductsDetails/Section/ProductsDetails'
+import ServiceOrder from './Component/Admin/servicesOrders'
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -58,6 +59,7 @@ export const router = createBrowserRouter([
       { path: "OfferTable", element: <OfferTable /> },
       { path: "Meeting", element: <Meeting /> },
       { path: "Review", element: <Review /> },
+      { path: "ServiceOrder", element: <ServiceOrder /> },
       // Add more admin routes here as needed
     ],
   },
