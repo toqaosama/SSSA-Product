@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { Border } from 'react-bootstrap-icons';
 
 const BehindStory = () => {
   // Styles object for consistent styling
@@ -74,7 +75,8 @@ const BehindStory = () => {
       margin: "0 15px",
       borderRadius: "10px",
       boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
-      width: "400px"
+      width: "400px",
+      
     }
   };
 
