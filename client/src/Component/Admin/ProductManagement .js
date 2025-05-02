@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import authApi from '../../api/authApi';
 import './AdminSetting/Style/Tables.css';
 import { Modal, Button } from 'react-bootstrap';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const ProductRow = ({ product, onEdit, onDelete }) => (
     <tr>
@@ -19,8 +20,8 @@ const ProductRow = ({ product, onEdit, onDelete }) => (
               fontWeight: '500',
               whiteSpace: 'nowrap'
             }}>
-          {product.categoryName}
-        </span>
+                    {product.categoryName}
+                </span>
         }
       </td>
       <td>
@@ -34,8 +35,8 @@ const ProductRow = ({ product, onEdit, onDelete }) => (
                 fontSize: '0.85rem',
                 whiteSpace: 'nowrap'
               }}>
-            {desc.head}
-          </span>
+                        {desc.head}
+                    </span>
           ))}
         </div>
       </td>
@@ -85,8 +86,10 @@ export const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [formData, setFormData] = useState({ name: '', price: '', category_id: 0, descriptions: [], images: [] });
   const [editingProduct, setEditingProduct] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchProducts = async () => {
+    setLoading(true);
     try {
       const resProducts = await authApi.get('/products');
       const resCategories = await authApi.get('/category');
@@ -95,6 +98,8 @@ export const ProductManagement = () => {
       console.log(resCategories.data);
     } catch (err) {
       console.error('Failed to fetch products', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -104,24 +109,22 @@ export const ProductManagement = () => {
 
   const handleAddOrEdit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const formDataToSend = new FormData();
     formDataToSend.append('name', formData.name);
     formDataToSend.append('price', formData.price);
     formDataToSend.append('category_id', formData.category_id);
-
     // Handle descriptions as objects with head and desc properties
     formData.descriptions.forEach((desc, index) => {
       formDataToSend.append(`descriptions[${index}][header]`, desc.head);
       formDataToSend.append(`descriptions[${index}][description]`, desc.desc);
     });
-
     // Append each image file
     if (formData.images && formData.images.length > 0) {
       formData.images.forEach((image) => {
         formDataToSend.append('images', image); // 'images' can be the field name your backend expects for multiple files
       });
     }
-
     try {
       if (editingProduct) {
         await authApi.post(`/product/update/${editingProduct.id}`, formDataToSend, {
@@ -142,6 +145,8 @@ export const ProductManagement = () => {
       fetchProducts();
     } catch (err) {
       console.error('Failed to save product', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -162,13 +167,15 @@ export const ProductManagement = () => {
 
   const handleDelete = async (id) => {
     const ok = window.confirm("Are you sure you want to delete this product ?");
-    if(!ok) return;
-
+    if (!ok) return;
+    setLoading(true);
     try {
       await authApi.post(`/product/delete/${id}`);
       setProducts(prev => prev.filter((p) => p.id !== id));
     } catch (err) {
       console.error('Failed to delete product', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -201,6 +208,10 @@ export const ProductManagement = () => {
   const currentData = products;
   const totalEntries = currentData.length;
 
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
   return (
       <div className='admin-content' style={{ padding: '20px', width: '100%' }}>
         <div className='content-container' style={{ width: '100%' }}>
@@ -217,12 +228,10 @@ export const ProductManagement = () => {
                 </button>
               </div>
             </div>
-
             <div className='nav-tabs-container'>
               <button className="nav-tab active">All</button>
             </div>
           </div>
-
           <div className='data-table-container' style={{ width: '100%', overflowX: 'auto' }}>
             <ProductTable data={currentData} onEdit={handleEdit} onDelete={handleDelete} />
             <div className='table-pagination' style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
@@ -235,7 +244,6 @@ export const ProductManagement = () => {
             </div>
           </div>
         </div>
-
         {/* Bootstrap Modal for Add/Edit */}
         <Modal show={showAddModal} onHide={() => setShowAddModal(false)}>
           <Modal.Header closeButton>
@@ -277,7 +285,6 @@ export const ProductManagement = () => {
                   ))}
                 </select>
               </div>
-
               {/* Descriptions */}
               <div className="mb-3">
                 <label>Descriptions</label>
@@ -294,13 +301,13 @@ export const ProductManagement = () => {
                         />
                       </div>
                       <div className="input-group mb-2">
-                        <textarea
-                            className="form-control"
-                            value={desc.desc}
-                            onChange={e => handleDescriptionChange(index, 'desc', e.target.value)}
-                            placeholder="Description"
-                            required
-                        />
+                                        <textarea
+                                            className="form-control"
+                                            value={desc.desc}
+                                            onChange={e => handleDescriptionChange(index, 'desc', e.target.value)}
+                                            placeholder="Description"
+                                            required
+                                        />
                       </div>
                       <button
                           type="button"
@@ -315,7 +322,6 @@ export const ProductManagement = () => {
                   Add Description
                 </button>
               </div>
-
               {/* Image Upload */}
               <div className="mb-3">
                 <label>Images</label>
@@ -326,12 +332,11 @@ export const ProductManagement = () => {
                     multiple
                 />
               </div>
-
               <div className="d-flex justify-content-between">
-                <Button type="submit" variant="success">
-                  {editingProduct ? 'Update' : 'Create'}
+                <Button type="submit" variant="success" disabled={loading}>
+                  {loading ? 'Saving...' : (editingProduct ? 'Update' : 'Create')}
                 </Button>
-                <Button variant="secondary" onClick={() => setShowAddModal(false)}>
+                <Button variant="secondary" onClick={() => setShowAddModal(false)} disabled={loading}>
                   Cancel
                 </Button>
               </div>

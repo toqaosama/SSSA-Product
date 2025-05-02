@@ -8,7 +8,7 @@ import Support from "./Component/Support/Section/Support";
 import Categores from "./Component/Categores/Categores";
 import Sales from "./Component/Sales/Section/Sales";
 import Offers from "./Component/Offers/Section/Offers";
-
+import ResetPassword from "./Component/ResetPassword/ResetPassword";
 
 
 // Layouts for admin pages onlyyyyyyy////////////////////////////////////////////////////////////////////////////////////
@@ -41,8 +41,8 @@ export const router = createBrowserRouter([
       { path: "Profile", element: <Profile /> }, 
       { path: "Orders", element: <Orders /> }, 
       { path: "Cart", element: <Cart /> }, 
-      { path: "ProductsDetails", element: <ProductsDetails /> }, 
-   
+      { path: "ProductsDetails", element: <ProductsDetails /> },
+      { path: "ResetPassword", element: <ResetPassword />}
     ],
   },
   {
