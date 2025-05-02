@@ -5,6 +5,7 @@ import { FiClock, FiShoppingBag, FiTag } from 'react-icons/fi';
 import OfferContact from '../../Offers/Section/OfferContact';
 import authApi from '../../../api/authApi';
 import LoadingSpinner from '../../../Component/LoadingSpinner/LoadingSpinner'; // Import the Spinner component
+import { Link } from 'react-router-dom';
 
 const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/300';
 
@@ -125,8 +126,14 @@ const Sales = () => {
                     </span>
                         <span className="category">{item.categoryName}</span>
                       </div>
-                      <button className="compact-shop-button">
-                        <FiShoppingBag size={12} /> Shop Now
+                      <button className="compact-shop-button" >
+                      <Link 
+          to={`/ProductsDetails/${item.id}`} // Or whatever your product route is
+          className="compact-shop-button"
+        >
+          <FiShoppingBag size={12} /> Shop Now
+        </Link>
+                       
                       </button>
                     </div>
                   </div>
