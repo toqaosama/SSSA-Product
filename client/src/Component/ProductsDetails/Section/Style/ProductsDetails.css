@@ -330,3 +330,108 @@
         width: 100%;
     }
 }
+
+/* Add this to your ProductsDetails.css or equivalent */
+
+.product-page-container {
+    /* Optional: if you want to constrain the overall width */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles for the new Reviews Section */
+.product-reviews-section {
+    background-color: #f9f9f9; /* Light background for separation */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* margin-top: 40px; /* Ensure spacing below product details */
+}
+
+.product-reviews-section h2 {
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.review-item {
+    background-color: #fff; /* White background for each review card */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    /* Styles for the top part of the review (name and stars) */
+}
+
+.review-user-name {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Re-using star styles */
+.star-rating .star {
+    color: #ccc; /* Color for empty stars */
+    font-size: 1.1em; /* Adjust size if needed */
+    margin-right: 2px;
+}
+
+.star-rating .star.filled {
+    color: #f8d64e; /* Color for filled stars */
+}
+
+
+.review-comment {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #666; /* Slightly muted text */
+    margin-top: 8px; /* Space between header and comment */
+}
+
+/* Ensure general star styles are defined if not already */
+/* .star {
+  font-size: 1.2em;
+  color: #ccc;
+  cursor: default;
+}
+
+.star.filled {
+  color: #f8d64e;
+} */
+
+/* Ensure product rating styles align */
+.product-rating .star-rating {
+    display: inline-block; /* Align stars nicely */
+    vertical-align: middle;
+}
+
+.product-rating .review-count {
+    vertical-align: middle;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+    .product-reviews-section {
+        padding: 15px;
+    }
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .review-header .star-rating {
+        margin-top: 5px;
+    }
+}
+
+
+.write-review-btn {
+    background-color: #917243;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
