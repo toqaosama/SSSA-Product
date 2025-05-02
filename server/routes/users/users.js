@@ -73,6 +73,10 @@ const createUser = async (req, res) => {
     const { id } = req.params;
     const { name, email, phone, role, isActive } = req.body;
 
+    if(req.user.id !== id && req.user.role !== 'admin') {
+        return res.status(403).json({ message: 'You are not authorized to update this user' });
+    }
+
     try {
         // Construct an array of fields to update and their values
         const updateFields = [];

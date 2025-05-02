@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import authApi from '../../api/authApi'; // Import your axios instance
-import { Button, Modal, Form, Table, Badge } from 'react-bootstrap'; // Import Bootstrap components
+import { Button, Modal, Form, Table, Badge } from 'react-bootstrap';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner"; // Import Bootstrap components
 
 // Safe rendering helper function
 const safeRender = (value) => {
@@ -444,7 +445,7 @@ const OfferManagement = () => {
           </div>
 
           <div className='data-table-container'>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <LoadingSpinner />}
             {error && <p className="text-danger">{error}</p>}
             {!isLoading && currentData.length === 0 && !error && (
                 <p>No offers found. Create a new offer to get started.</p>

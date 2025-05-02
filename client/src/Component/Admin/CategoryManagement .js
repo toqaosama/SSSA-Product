@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Form, Modal, Image } from 'react-bootstrap';
 import './AdminSetting/Style/Tables.css';
 import authApi from '../../api/authApi';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const CategoryRow = ({ category, onEdit, onDelete }) => {
   const imageUrl = category.img ? `${process.env.REACT_APP_API_URL}/uploads/${category.img}` : 'https://via.placeholder.com/50';
@@ -192,11 +193,7 @@ export const CategoryManagement = () => {
           </div>
 
           {loading ? (
-              <div className="spinner-container text-center py-4">
-                <div className="spinner-border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-              </div>
+              <LoadingSpinner />
           ) : error ? (
               <Alert variant="danger" className="mt-3">
                 {error}
