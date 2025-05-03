@@ -2,63 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './AdminSetting/Style/Tables.css';
 import { Modal, Button } from 'react-bootstrap';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import authApi from '../../api/authApi';
 
-// Mock data
-const mockUsers = [
-  { id: 1, name: 'John Doe', email: 'john@example.com' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-  { id: 3, name: 'Bob Johnson', email: 'bob@example.com' }
-];
-
-const mockProducts = [
-  { id: 1, name: 'Product A', price: 19.99 },
-  { id: 2, name: 'Product B', price: 29.99 },
-  { id: 3, name: 'Product C', price: 39.99 }
-];
-
-const mockOrders = [
-  { 
-    id: 1, 
-    user_id: 1, 
-    user: mockUsers[0], 
-    product_id: 1, 
-    product: mockProducts[0], 
-    status: 'waiting', 
-    created_at: '2023-05-01T10:00:00Z' 
-  },
-  { 
-    id: 2, 
-    user_id: 2, 
-    user: mockUsers[1], 
-    product_id: 2, 
-    product: mockProducts[1], 
-    status: 'processing', 
-    created_at: '2023-05-02T11:30:00Z' 
-  },
-  { 
-    id: 3, 
-    user_id: 3, 
-    user: mockUsers[2], 
-    product_id: 3, 
-    product: mockProducts[2], 
-    status: 'done', 
-    created_at: '2023-05-03T09:15:00Z' 
-  }
-];
-
-const ServiceOrderRow = ({ order, onEdit, onStatusChange }) => (
-  <tr>
-    <td>{order.id}</td>
-    <td>{order.user ? order.user.name : 'N/A'}</td>
-    <td>
-      {order.product ? (
+const ServiceOrderRow = ({ order, onStatusChange }) => (
+    <tr>
+      <td>{order.id}</td>
+      <td>{order.userName || 'N/A'}</td>
+      <td>
         <div>
-          <div>ID: {order.product.id}</div>
-          <div>Name: {order.product.name}</div>
+          <div>ID: {order.product_id}</div>
+          <div>Name: {order.productName || 'N/A'}</div>
         </div>
-      ) : 'N/A'}
-    </td>
-    <td>
+      </td>
+      <td>
       <span style={{
         backgroundColor: getStatusColor(order.status).bg,
         color: getStatusColor(order.status).text,
@@ -68,31 +24,24 @@ const ServiceOrderRow = ({ order, onEdit, onStatusChange }) => (
         fontWeight: '500',
         whiteSpace: 'nowrap'
       }}>
-        {order.status}
+        {order.status || 'waiting'}
       </span>
-    </td>
-    <td>{new Date(order.created_at).toLocaleString()}</td>
-    <td>
-      <select 
-        className="form-control form-control-sm" 
-        value={order.status}
-        onChange={(e) => onStatusChange(order.id, e.target.value)}
-        style={{ width: '120px' }}
-      >
-        <option value="waiting">Waiting</option>
-        <option value="processing">Processing</option>
-        <option value="done">Done</option>
-        <option value="received">Received</option>
-      </select>
-      <button 
-        className="btn btn-danger btn-sm mt-1" 
-        onClick={() => onStatusChange(order.id, 'cancelled')}
-        style={{ width: '120px' }}
-      >
-        Cancel
-      </button>
-    </td>
-  </tr>
+      </td>
+      <td>{new Date(order.created_at || order.createdAt).toLocaleString()}</td>
+      <td>
+        <select
+            className="form-control form-control-sm"
+            value={order.status || 'waiting'}
+            onChange={(e) => onStatusChange(order.id, e.target.value)}
+            style={{ width: '120px' }}
+        >
+          <option value="waiting">Waiting</option>
+          <option value="processing">Processing</option>
+          <option value="done">Done</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </td>
+    </tr>
 );
 
 const getStatusColor = (status) => {
@@ -103,8 +52,6 @@ const getStatusColor = (status) => {
       return { bg: '#e0f3ff', text: '#007bff' };
     case 'done':
       return { bg: '#e6f7ee', text: '#28a745' };
-    case 'received':
-      return { bg: '#f0f0f0', text: '#6c757d' };
     case 'cancelled':
       return { bg: '#feeae9', text: '#dc3545' };
     default:
@@ -112,9 +59,9 @@ const getStatusColor = (status) => {
   }
 };
 
-const ServiceOrderTable = ({ data, onEdit, onStatusChange }) => (
-  <table className="data-table">
-    <thead>
+const ServiceOrderTable = ({ data, onStatusChange }) => (
+    <table className="data-table">
+      <thead>
       <tr>
         <th>ID</th>
         <th>User</th>
@@ -123,129 +70,143 @@ const ServiceOrderTable = ({ data, onEdit, onStatusChange }) => (
         <th>Order Date</th>
         <th>Actions</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       {data.map(order => (
-        <ServiceOrderRow
-          key={order.id}
-          order={order}
-          onEdit={onEdit}
-          onStatusChange={onStatusChange}
-        />
+          <ServiceOrderRow
+              key={order.id}
+              order={order}
+              onStatusChange={onStatusChange}
+          />
       ))}
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 );
 
-export const ServiceOrderManagement = () => {
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [orders, setOrders] = useState(mockOrders);
-  const [users] = useState(mockUsers);
-  const [products] = useState(mockProducts);
-  const [formData, setFormData] = useState({
-    user_id: '',
-    product_id: '',
-    status: 'waiting'
-  });
-  const [editingOrder, setEditingOrder] = useState(null);
-  const [loading, setLoading] = useState(false);
+const ServiceOrderManagement = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleAddOrEdit = (e) => {
-    e.preventDefault();
+  // Fetch all service orders
+  const fetchOrders = async () => {
     setLoading(true);
-    
-    // Simulate API call delay
-    setTimeout(() => {
-      if (editingOrder) {
-        // Update existing order
-        setOrders(prev => prev.map(order => 
-          order.id === editingOrder.id ? { ...order, ...formData } : order
-        ));
-      } else {
-        // Add new order
-        const newOrder = {
-          id: Math.max(...orders.map(o => o.id)) + 1,
-          user_id: formData.user_id,
-          user: users.find(u => u.id === parseInt(formData.user_id)),
-          product_id: formData.product_id,
-          product: products.find(p => p.id === parseInt(formData.product_id)),
-          status: formData.status,
-          created_at: new Date().toISOString()
-        };
-        setOrders(prev => [...prev, newOrder]);
+    try {
+      const response = await authApi.get('/service-order');
+      if (response.data && response.data.orders) {
+        setOrders(response.data.orders);
       }
-      
-      setShowAddModal(false);
-      setFormData({
-        user_id: '',
-        product_id: '',
-        status: 'waiting'
-      });
-      setEditingOrder(null);
+    } catch (err) {
+      console.error('Error fetching orders:', err);
+      setError('Failed to load orders. Please try again later.');
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
-  const handleEdit = (order) => {
-    setEditingOrder(order);
-    setFormData({
-      user_id: order.user_id,
-      product_id: order.product_id,
-      status: order.status
-    });
-    setShowAddModal(true);
-  };
-
-  const handleStatusChange = (orderId, newStatus) => {
+  // Update order status
+  const handleStatusChange = async (orderId, newStatus) => {
     const ok = window.confirm(`Are you sure you want to change the status to ${newStatus}?`);
     if (!ok) return;
-    
+
     setLoading(true);
-    // Simulate API call delay
-    setTimeout(() => {
-      setOrders(prev => prev.map(order => 
-        order.id === orderId ? { ...order, status: newStatus } : order
+    try {
+      // Since the API doesn't have a specific endpoint for status updates,
+      // we'll update it locally for now
+      // In a real implementation, you would create a proper endpoint for this
+      setOrders(prev => prev.map(order =>
+          order.id === orderId ? { ...order, status: newStatus } : order
       ));
+    } catch (err) {
+      console.error('Error updating order status:', err);
+      setError('Failed to update order status. Please try again.');
+    } finally {
       setLoading(false);
-    }, 300);
+    }
   };
 
-  const currentData = orders;
-  const totalEntries = currentData.length;
+  // Delete service order (mark as inactive)
+  const handleDeleteOrder = async (orderId) => {
+    const ok = window.confirm('Are you sure you want to delete this order?');
+    if (!ok) return;
 
-  if (loading) {
+    setLoading(true);
+    try {
+      await authApi.delete(`/service-order/${orderId}`);
+      // Remove the order from the list
+      setOrders(prev => prev.filter(order => order.id !== orderId));
+    } catch (err) {
+      console.error('Error deleting order:', err);
+      setError('Failed to delete order. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Load orders when component mounts
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  if (loading && orders.length === 0) {
     return <LoadingSpinner />;
   }
 
   return (
-<div className='admin-content' style={{ padding: '20px', width: '100%' }}>
-      <div className='content-container' style={{ width: '100%' }}>
-        <div className='nav-tabs'>
-          <div className='nav-tabs-header' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h5>Service Order Management</h5>
-          </div>
-          <div className='nav-tabs-container'>
-            <button className="nav-tab active">All</button>
-          </div>
-        </div>
-        <div className='data-table-container' style={{ width: '100%', overflowX: 'auto' }}>
-          <ServiceOrderTable 
-            data={currentData} 
-            onEdit={handleEdit} 
-            onStatusChange={handleStatusChange} 
-          />
-          <div className='table-pagination' style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-            <span>Showing 1 to {totalEntries} of {totalEntries} entries</span>
-            <div className='pagination-controls'>
-              <button disabled>Previous</button>
-              <button className='active'>1</button>
-              <button disabled={totalEntries <= 10}>Next</button>
+      <div className='admin-content' style={{ padding: '20px', width: '100%' }}>
+        <div className='content-container' style={{ width: '100%' }}>
+          <div className='nav-tabs'>
+            <div className='nav-tabs-header' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h5>Service Order Management</h5>
+              <button
+                  className="btn btn-primary"
+                  onClick={() => fetchOrders()}
+              >
+                Refresh
+              </button>
             </div>
+            <div className='nav-tabs-container'>
+              <button className="nav-tab active">All</button>
+            </div>
+          </div>
+
+          {error && (
+              <div className="alert alert-danger" role="alert">
+                {error}
+                <button
+                    type="button"
+                    className="close"
+                    onClick={() => setError(null)}
+                >
+                  <span>&times;</span>
+                </button>
+              </div>
+          )}
+
+          <div className='data-table-container' style={{ width: '100%', overflowX: 'auto' }}>
+            {orders.length > 0 ? (
+                <>
+                  <ServiceOrderTable
+                      data={orders}
+                      onStatusChange={handleStatusChange}
+                  />
+                  <div className='table-pagination' style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+                    <span>Showing 1 to {orders.length} of {orders.length} entries</span>
+                    <div className='pagination-controls'>
+                      <button disabled>Previous</button>
+                      <button className='active'>1</button>
+                      <button disabled={orders.length <= 10}>Next</button>
+                    </div>
+                  </div>
+                </>
+            ) : (
+                <div className="text-center py-5">
+                  <p>No service orders found.</p>
+                </div>
+            )}
           </div>
         </div>
       </div>
-
-    </div>
   );
 };
 
