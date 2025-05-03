@@ -91,6 +91,8 @@ app.post("/service-order", checkAuth, servicesOrders.createServiceOrder);
 app.get("/service-order", checkAdmin, servicesOrders.getAllServiceOrders);
 app.get("/service-order/me", checkAuth, servicesOrders.getUserOrders);
 app.delete("/service-order", checkAuth, servicesOrders.deleteServiceOrder)
+app.get("/service-order/:product_id", checkAuth, servicesOrders.getUserOrderForProduct)
+app.post("/service-order/update-status/:order_id", checkAdmin, servicesOrders.updateStatus)
 
 // Init server
 app.listen(port, () => {

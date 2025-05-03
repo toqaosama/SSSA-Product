@@ -212,7 +212,11 @@
     border-radius: 4px 0 0 4px;
     font-size: 0.9rem;
   }
-  
+
+  .category {
+    color: #917243;
+  }
+
   .compact-subscribe button {
     background: #917243;
     color: white;

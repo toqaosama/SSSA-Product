@@ -93,7 +93,7 @@ const Header = () => {
                       <NavDropdown.Item
                           key={category.id}
                           as={Link}
-                          to={`/Services#${category.id}`}
+                          to={`/Sales?category=${category.id}`}
                           className="dropdown-item-white"
                           onClick={() => setExpanded(false)}
                       >
@@ -125,9 +125,6 @@ const Header = () => {
                       </NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/Orders" className="dropdown-item-white">
                         <i className="fas fa-clipboard-list me-2"></i> Orders
-                      </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/Cart" className="dropdown-item-white">
-                        <i className="fas fa-shopping-cart me-2"></i> Cart
                       </NavDropdown.Item>
                       {isAdmin() && (
                           <NavDropdown.Item as={Link} to="/admin" className="dropdown-item-white">

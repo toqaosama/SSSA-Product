@@ -7,6 +7,7 @@ import SupportSection from './Section/SupportSection'
 import Review from '../Component/Review/section/Review'
 import Offers from '../Component/Offers/Section/Offers'
 import OfferContact from '../Component/Offers/Section/OfferContact'
+import Services from "../Component/Categores/Services";
 
 const Home = () => {
     return (
@@ -14,7 +15,7 @@ const Home = () => {
        <AutoRotatingCards />
        <Split />
        <SupportSection />
-       <ServesCard />
+          <Services max={3} />
        <Offers />
        <OfferContact />
       </div>

@@ -63,7 +63,7 @@ const Services = () => {
                             <div className="card-contents">
                                 <h3 className="card-namess">{category.name}</h3>
                                 <p className="card-description">{category.desc}</p>
-                                <Link to={`/sales?category=${category.id}`} className="explore-btn">Explore {category.name}</Link>
+                                <Link to={`/sales?category=${category.id}`} className="explore-btn">Explore More</Link>
                             </div>
                         </div>
                     ))}

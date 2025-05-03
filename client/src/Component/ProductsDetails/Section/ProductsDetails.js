@@ -1,11 +1,12 @@
 import { useParams, Link } from 'react-router-dom';
 import './Style/ProductsDetails.css'; // Make sure this CSS file exists and is styled
 import authApi from '../../../api/authApi'; // Assuming this is configured for your backend
-import {Cart, Heart, StarFill, Star, CheckAll} from "react-bootstrap-icons";
+import {Cart, Heart, StarFill, Star, CheckAll, Clock} from "react-bootstrap-icons";
 import { Table, Form, Button, Spinner, Alert } from 'react-bootstrap'; // Import necessary components
 import { useState, useEffect } from "react";
 import {AiOutlineLoading} from "react-icons/ai";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import {useAuth} from "../../../Context/AuthContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -25,7 +26,9 @@ const ProductDetails = () => {
   const [reviewSubmissionSuccess, setReviewSubmissionSuccess] = useState(false); // State for submission success message
   const [requestServiceLoading, setRequestServiceLoading] = useState(false);
   const [requestServiceSuccess, setRequestServiceSuccess] = useState(false);
-  // --- Star Rendering Component (Optional but recommended for reuse) ---
+  const [orderExistsStatus, setOrderExistsStatus] = useState("");
+  const {isAuthenticated} = useAuth();
+
   const StarRating = ({ rating }) => {
     const roundedRating = Math.round(rating); // Use rounded rating for filled stars
     return (
@@ -38,9 +41,7 @@ const ProductDetails = () => {
         </div>
     );
   };
-  // -------------------------------------------------------------------
 
-// --- Fetch Product and Reviews ---
   useEffect(() => {
     const fetchProductAndReviews = async () => {
       setLoading(true);
@@ -121,10 +122,25 @@ const ProductDetails = () => {
       }
     };
 
+    const fetchOrderIsExists = async () => {
+      try {
+        const res = await authApi.get(`/service-order/${id}`);
+        setOrderExistsStatus(res.data.order.status);
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+    fetchOrderIsExists();
     fetchProductAndReviews();
   }, [id]); // Dependency array includes 'id'
 
   const handleRequestService = async () => {
+    if (!isAuthenticated()) {
+      alert("Please login to request service")
+      return;
+    }
+
     try {
       setRequestServiceLoading(true);
       const res = await authApi.post('/service-order', {product_id: product.id});
@@ -297,8 +313,27 @@ const ProductDetails = () => {
             )}
 
             <div className="product-actions mt-3">
-              <button
-                  className="add-to-cart btn btn-primary me-2"
+              {orderExistsStatus === 'processing' || orderExistsStatus === 'waiting' ?
+                  <Button
+                      variant={orderExistsStatus === 'waiting' ? 'warning' : 'success'}
+                      disabled
+                      className="w-100 p-2"
+                  >
+                    {orderExistsStatus === 'waiting' && (
+                        <>
+                          <Clock /> Your order is currently waiting
+                        </>
+                    )}
+                    {orderExistsStatus === 'processing' && (
+                        <>
+                          <AiOutlineLoading /> Your order is currently processing
+                        </>
+                    )}
+                  </Button>
+
+                  :
+                  (<button
+                  className="add-to-cart me-2"
                   onClick={handleRequestService}
                   disabled={requestServiceLoading}
               >
@@ -310,7 +345,7 @@ const ProductDetails = () => {
                 <span className={"ms-2 align-middle"}>
                   {requestServiceLoading ? "Loading..." : (requestServiceSuccess ? "Done" : "Request Service")}
                 </span>
-              </button>
+              </button>)}
 
             </div>
           </div>
