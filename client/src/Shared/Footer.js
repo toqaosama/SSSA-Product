@@ -38,40 +38,40 @@ const Footer = () => {
           </h3>
           <ul style={{ maxHeight: '140px', padding: 0, transition: 'max-height 0.6s ease', margin: 0, overflow: 'hidden' }}>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Brand Identity</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Brand Identity</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Printing</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Printing</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Digital Marketing</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Digital Marketing</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Graphic Design</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Graphic Design</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Video Production</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Video Production</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
               <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Social Media</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Advertising</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Advertising</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Billboards</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Billboards</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Packaging</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Packaging</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Strategy</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Strategy</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Promotions</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Promotions</Link>
             </li>
             <li style={{ listStyleType: 'none', paddingBottom: '4px' }}>
-              <Link as={Link} to="/" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Outdoors</Link>
+              <Link as={Link} to="/Sales/:id" style={{ color: '#000', lineHeight: '18.2px', textDecoration: 'none' }}>Outdoors</Link>
             </li>
           </ul>
         </Col>
