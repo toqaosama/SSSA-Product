@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { servicesData } from '../Core/servicesData'; // Import your data
 
 const ServiceCard = ({ service }) => {
@@ -97,29 +97,6 @@ const ServiceCard = ({ service }) => {
           }}>
             {service.description}
           </Card.Text>
-          
-          <Button 
-            href={service.link}
-            style={{
-              color: '#231f20',
-              borderRadius: '6px',
-              fontSize: '15px',
-              padding: '14px 28px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              lineHeight: '24px',
-              backgroundColor: '#231f20',
-              backgroundImage: 'linear-gradient(#917243 0%, #917243 100%)',
-              fontFamily: 'Archivo, sans-serif',
-              fontWeight: 500,
-              fill: '#917243',
-              border: '1.6px groove #231f20',
-              textDecoration: 'none',
-              transition: 'transform 0.3s ease'
-            }}
-          >
-            More Details <i aria-hidden="true" style={{ marginLeft: '5px' }}></i>
-          </Button>
         </div>
       </div>
     </Card>
@@ -142,7 +119,13 @@ const ServicesPage = () => {
       </h1>
       <Row>
         {servicesData.map((service) => (
-          <Col key={service.id} md={4} className="mb-4">
+          <Col 
+            key={service.id} 
+            lg={4}  // 3 cards in a row (12/4=3)
+            md={6}  // 2 cards in a row (12/6=2)
+            xs={12} // 1 card in a row (12/12=1)
+            className="mb-4"
+          >
             <ServiceCard service={service} />
           </Col>
         ))}
