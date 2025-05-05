@@ -1,38 +1,27 @@
-const mysql = require("mysql");
-require("dotenv").config();
+const mysql = require('mysql');
 
 const connection = mysql.createConnection({
+<<<<<<< Updated upstream
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
+=======
+  host: '127.0.0.1', // or 'localhost'
+  port: 3306,
+  user: 'radwan', // usually 'root' for local development
+  password: 'RDRsWBWp1Tdv8eQUW5XS',
+  database: 'ssa'
+>>>>>>> Stashed changes
 });
 
 connection.connect((err) => {
-    if (err) {
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            console.error("Database connection was closed.");
-        }
-        if (err.code === 'ER_CON_COUNT_ERROR') {
-            console.error("Database has too many connections.");
-        }
-        if (err.code === 'ECONNREFUSED') {
-            console.error("Database connection was refused.");
-        }
-        if (err.code === 'ER_ACCESS_DENIED_ERROR') {
-            console.error("Access denied for user.");
-        }
-        if (err.code === 'ER_BAD_DB_ERROR') {
-            console.error("Database does not exist.");
-        }
-        else {
-            console.error("Database connection error: ", err);
-        }
-        process.exit(1); // Exit the process with failure
-    }
-    
-    console.log("Connected to the database");
+  if (err) {
+    console.error('Error connecting to MySQL:', err.message);
+    return;
+  }
+  console.log('Connected to MySQL!');
 });
 
 module.exports = connection;

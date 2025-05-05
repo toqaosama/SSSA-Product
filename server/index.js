@@ -1,32 +1,27 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const path = require('path');
-const cors = require('cors');
-
-const upload = require('./middleware/upload');
+//================= init express app ===============
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const path = require('path'); // Import the path module
+const PORT = process.env.PORT || 4000;
+require('dotenv').config();
 const checkAuth = require('./middleware/checkAuth');
 const checkAdmin = require('./middleware/checkAdmin');
-
-dotenv.config();
-
-const app = express();
-const port = process.env.PORT || 3000;
-
-// Middleware
+const upload = require('./middleware/upload');
+// Serve static files from the uploads directory
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+//=================Global middleware==================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+app.use(cors());  // Allow HTTP requests, responses
 
-// Static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.get("/", (req, res) => {
+  res.send("Welcome to Golden Pharaoh Tours API!");
+});
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
-// --------- Routes --------- 
-// Base route
-app.get('/', (req, res) => res.send('Welcome to the SSA API')); // Welcome message for the API
 
 // Auth routes
 const authRegister = require('./routes/auth/register');
@@ -94,7 +89,3 @@ app.delete("/service-order", checkAuth, servicesOrders.deleteServiceOrder)
 app.get("/service-order/:product_id", checkAuth, servicesOrders.getUserOrderForProduct)
 app.post("/service-order/update-status/:order_id", checkAdmin, servicesOrders.updateStatus)
 
-// Init server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
