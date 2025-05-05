@@ -118,20 +118,17 @@ const ServicesPage = () => {
         Our Services
       </h1>
       <Row>
-        {servicesData.map((service) => (
-          <Col 
-            key={service.id} 
-            lg={4}  // 3 cards in a row (12/4=3)
-            md={6}  // 2 cards in a row (12/6=2)
-            xs={12} // 1 card in a row (12/12=1)
-            className="mb-4"
-          >
-            <ServiceCard service={service} />
-          </Col>
-        ))}
+      {servicesData && servicesData.length > 0 ? (
+  servicesData.map((service) => (
+    <Col key={service.id} lg={4} md={6} xs={12} className="mb-4">
+      <ServiceCard service={service} />
+    </Col>
+  ))
+) : (
+  <p>No services found.</p>
+)}
       </Row>
     </Container>
   );
 };
-
 export default ServicesPage;

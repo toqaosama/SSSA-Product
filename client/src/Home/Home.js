@@ -15,7 +15,7 @@ const Home = () => {
        <AutoRotatingCards />
        <Split />
        <SupportSection />
-          <Services max={3} />
+        <ServesCard max={3} />
        <Offers />
        <OfferContact />
       </div>
