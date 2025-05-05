@@ -52,3 +52,58 @@
   .password-toggle {
     cursor: pointer;
   }
+
+  /* LoginModal.css */
+
+/* Default styling (for desktops and tablets) */
+.login-modal .modal-left-side {
+  background-color: #917243;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-modal .modal-right-side {
+  padding: 40px;
+  position: relative;
+  background-color: #fff;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 100%;
+    margin: 0 auto; /* Centers the modal */
+  }
+
+  .login-modal .modal-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .login-modal .modal-right-side {
+    padding: 20px;
+  }
+
+  .modal-body {
+    padding: 0 !important;
+  }
+
+  body.modal-open {
+    padding-right: 0 !important; /* Prevents body padding */
+  }
+}
+

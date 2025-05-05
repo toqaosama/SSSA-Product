@@ -48,3 +48,36 @@
   .password-toggle {
     cursor: pointer;
   }
+
+  /* Responsive Fixes for Mobile */
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .signup-modal .modal-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .signup-modal .modal-left-side {
+    display: none; /* Hide left side on small screens */
+  }
+
+  .signup-modal .modal-right-side {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .modal-body {
+    padding: 0 !important;
+  }
+
+  body.modal-open {
+    padding-right: 0 !important;
+  }
+}
