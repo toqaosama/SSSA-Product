@@ -43,4 +43,6 @@
   
   .cta-button:hover {
     transform: translateY(-2px);
+    color:rgb(224, 224, 224) ;
+    background-color :#231F20;
   }

@@ -1,0 +1,24 @@
+/* base styles */
+.Sign-Click {
+    height: 48px;
+    width: 11rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    font-weight: 600;
+    padding: 12px 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #231f20;
+    color: #ffffff;
+    border: 0.8px  #231f20;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .Sign-Click:hover {
+    background-color: #917243;
+    color: #231f20;
+  }
+  

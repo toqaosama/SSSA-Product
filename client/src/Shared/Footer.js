@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LoginModal from '../Auth/LoginModal';
 import RegisterModal from '../Auth/RegisterModal'; 
-
+import '../Style/Footer.css'
 const Footer = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
@@ -122,23 +122,24 @@ const Footer = () => {
               <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '1.5px' }}>
               
               </div>
-                <Button 
+                <Button className='Sign-Click' 
                   onClick={handleSignupClick}
-                  style={{ 
-                    height: '48px', 
-                    backgroundColor: '#231f20', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    width: '11rem', 
-                    borderRadius: '0px', 
-                    fontWeight: 600, 
-                    border: '0.8px solid #231f20', 
-                    padding: '12px 24px', 
-                    whiteSpace: 'nowrap', 
-                    overflow: 'hidden', 
-                    textOverflow: 'ellipsis' 
-                  }}
+                  // style={{ 
+                  //   height: '48px', 
+                  //   backgroundColor: '#231f20', 
+                  //   display: 'flex', 
+                  //   alignItems: 'center', 
+                  //   justifyContent: 'center', 
+                  //   width: '11rem', 
+                  //   borderRadius: '0px', 
+                  //   fontWeight: 600, 
+                  //   border: '0.8px solid #231f20', 
+                  //   padding: '12px 24px', 
+                  //   whiteSpace: 'nowrap', 
+                  //   overflow: 'hidden', 
+                  //   textOverflow: 'ellipsis'  ,
+                    
+                  // }}
                 >
                   Sign up
                 </Button>
